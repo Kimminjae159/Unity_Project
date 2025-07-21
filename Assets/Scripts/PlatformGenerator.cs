@@ -95,9 +95,9 @@ public class PlatformGenerator : MonoBehaviour
                 Vector2Int cell = new Vector2Int(x, y);
 
                 if (pathSet.Contains(cell))
-                    obj.tag = "Untagged";  // 경로(파란색)가 될 태그
+                    obj.tag = "Correct";  // 경로(파란색)가 될 태그
                 else
-                    obj.tag = "Cube";      // 나머지(빨간색)가 될 태그
+                    obj.tag = "Wrong";      // 나머지(빨간색)가 될 태그
             }
         }
 

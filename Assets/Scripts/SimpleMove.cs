@@ -18,12 +18,17 @@ public class SimpleMove : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Cube"))
+        if (hit.gameObject.CompareTag("Wrong"))
         {
             Destroy(hit.gameObject);
         }
+        if (hit.gameObject.CompareTag("Goal"))
+        {
+            somethingFunction(); // goal에 도착시 실행할 무언가의 행동
+        }
     }
-
+    // 필요에 맞춰 추가
+    public void somethingFunction() { }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

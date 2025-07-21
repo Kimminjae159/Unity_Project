@@ -721,6 +721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minY: -20
+  objTag: Correct
 --- !u!114 &1103070854
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -765,8 +766,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   platformGenerator: {fileID: 108237315}
-  cubeMat: {fileID: 2100000, guid: e6766dca87507c64c8736a543c13ea0b, type: 2}
-  untaggedMat: {fileID: 2100000, guid: a05141633c66fa24995fa772452dc7a1, type: 2}
+  wrongMat: {fileID: 2100000, guid: e6766dca87507c64c8736a543c13ea0b, type: 2}
+  correctMat: {fileID: 2100000, guid: a05141633c66fa24995fa772452dc7a1, type: 2}
 --- !u!4 &1792019734
 Transform:
   m_ObjectHideFlags: 0
