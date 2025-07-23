@@ -3,8 +3,8 @@ using UnityEngine;
 public class TagColorizer : MonoBehaviour
 {
     public PlatformGenerator platformGenerator; // PlatformGenerator를 Inspector에서 드래그로 연결
-    public Material cubeMat;         // "Cube" 태그(빨간)용
-    public Material untaggedMat;     // "Untagged" 태그(파랑)용
+    public Material wrongMat;         // "Wrong" 태그(빨간)용
+    public Material correctMat;     // "Correct" 태그(파랑)용
 
     public void ApplyTagColors()
     {
@@ -23,10 +23,10 @@ public class TagColorizer : MonoBehaviour
                 var renderer = obj.GetComponent<Renderer>();
                 if (!renderer) continue;
 
-                if (obj.tag == "Cube" && cubeMat != null)
-                    renderer.material = cubeMat;
-                else if (obj.tag == "Untagged" && untaggedMat != null)
-                    renderer.material = untaggedMat;
+                if (obj.tag == "Wrong" && wrongMat != null)
+                    renderer.material = wrongMat;
+                else if (obj.tag == "Correct" && correctMat != null)
+                    renderer.material = correctMat;
             }
         }
     }

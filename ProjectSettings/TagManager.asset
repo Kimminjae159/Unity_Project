@@ -4,12 +4,15 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Cube
+  - Goal
+  - Start
+  - Wrong
+  - Correct
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - post process
   - Water
   - UI
   - 
