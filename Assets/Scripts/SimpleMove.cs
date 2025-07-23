@@ -18,9 +18,24 @@ public class SimpleMove : MonoBehaviour
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag("Wrong"))
+        /// 아래의 '컨트롤러와 바닥의 닿아있는 여부를 확인하는 코드'는 void Update() 내부에 있었으나,
+        /// Wrong 태그의 발판을 밟았을 때의 추락을 구현하기 위해선 자신이 무엇을 밟고 있는지 ControllerColliderHit을 활용해 알아내는 방법 외에는 없었기에
+        /// 해당 함수 내부로 옮긴 것임
+        
+        // (캐릭터 컨트롤러가) 바닥에 닿아있는게 맞는가? 
+        if (controller.collisionFlags == CollisionFlags.Below)
         {
-            Destroy(hit.gameObject);
+            // wrong 태그의 발판과 닿았을 경우 isGround가 활성화 되지 않고 아래로 내려가는 가속도 그대로 내려감
+            if (hit.gameObject.CompareTag("Wrong"))
+            {
+                Destroy(hit.gameObject);
+            }
+            else
+            {
+                isGround = true;
+                yVelocity = 0;  // 바닥에 닿으면 아래로 못내려가게 0
+            }
+
         }
         if (hit.gameObject.CompareTag("Goal"))
         {
@@ -52,12 +67,7 @@ public class SimpleMove : MonoBehaviour
         dir.y = 0;
         dir.Normalize();
 
-        // (캐릭터 컨트롤러가) 바닥에 닿아있는게 맞는가? 
-        if(controller.collisionFlags == CollisionFlags.Below)
-        {
-            isGround = true;
-            yVelocity = 0;  // 바닥에 닿으면 아래로 못내려가게 0
-        }
+        
 
         // 바닥에 닿아있는게 맞고, 점프키를 누른게 맞다면, 
         if (isGround == true && Input.GetButtonDown("Jump"))

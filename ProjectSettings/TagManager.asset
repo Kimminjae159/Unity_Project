@@ -6,11 +6,13 @@ TagManager:
   tags:
   - Goal
   - Start
+  - Wrong
+  - Correct
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - post process
   - Water
   - UI
   - 
