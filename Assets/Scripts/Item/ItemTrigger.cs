@@ -4,13 +4,13 @@ using System.Collections;
 
 public class ItemTrigger : MonoBehaviour
 {
-    [Header("¾ÆÀÌÅÛ È¹µæ ½Ã ½ÇÇàÇÒ ±â´É")]
+    [Header("ì•„ì´í…œ íšë“ ì‹œ ì‹¤í–‰í•  ê¸°ëŠ¥")]
     public UnityEvent OnItemCollected;
 
-    [Header("ºñÈ°¼ºÈ­ÇÒ ¿ÀºêÁ§Æ®")]
-    public GameObject globalVolumeObject; // Inspector¿¡¼­ ÇÒ´ç
+    [Header("ë¹„í™œì„±í™”í•  ì˜¤ë¸Œì íŠ¸")]
+    public GameObject globalVolumeObject; // Inspectorì—ì„œ í• ë‹¹
 
-    [Header("ºñÈ°¼ºÈ­ Áö¼Ó ½Ã°£ (ÃÊ)")]
+    [Header("ë¹„í™œì„±í™” ì§€ì† ì‹œê°„ (ì´ˆ)")]
     public float disableDuration = 3.0f;
 
     private void OnTriggerEnter(Collider other)
@@ -23,10 +23,8 @@ public class ItemTrigger : MonoBehaviour
             {
                 StartCoroutine(DisableVolumeTemporarily());
             }
-            else
-            {
-                Destroy(gameObject);
-            }
+
+            Destroy(gameObject);
         }
     }
     private IEnumerator DisableVolumeTemporarily()
@@ -34,6 +32,5 @@ public class ItemTrigger : MonoBehaviour
         globalVolumeObject.SetActive(false);
         yield return new WaitForSeconds(disableDuration);
         globalVolumeObject.SetActive(true);
-        Destroy(gameObject);
     }
 }

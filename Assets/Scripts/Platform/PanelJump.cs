@@ -1,26 +1,23 @@
 using UnityEngine;
-using System.Collections; // ÄÚ·çÆ¾À» »ç¿ëÇÏ±â À§ÇØ ÇÊ¿ä
+using System.Collections; // ì½”ë£¨í‹´ì„ ì‚¬ìš©í•˜ê¸° ìœ„í•´ í•„ìš”
 
 public class PanelJump : MonoBehaviour
 {
 
     [Header("Wrong Panel Movement Settings")]
-    public float jumpHeight = 1.0f; // Å¥ºê°¡ »ó½ÂÇÒ ³ôÀÌ
-    public float jumpDuration = 1.0f; // »ó½Â ¹× ÇÏ°­¿¡ °É¸®´Â ÃÑ ½Ã°£ (¿Õº¹ ½Ã°£)
+    public float jumpHeight = 1.0f; // íë¸Œê°€ ìƒìŠ¹í•  ë†’ì´
+    public float jumpDuration = 1.0f; // ìƒìŠ¹ ë° í•˜ê°•ì— ê±¸ë¦¬ëŠ” ì´ ì‹œê°„ (ì™•ë³µ ì‹œê°„)
 
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            ApplyPanelJump();
-        }
+       
     }
     public void ApplyPanelJump()
     {
-       // Wrong ÅÂ±× Å¥ºê¸¸ Å½»ö 
-       foreach (Transform child in transform)
-       {
+        // Wrong íƒœê·¸ íë¸Œë§Œ íƒìƒ‰ 
+        foreach (Transform child in transform)
+        {
             GameObject obj = child.gameObject;
             if (obj.CompareTag("Wrong"))
             {
@@ -29,7 +26,7 @@ public class PanelJump : MonoBehaviour
         }
     }
 
-    // "Wrong" ÅÂ±×¸¦ °¡Áø ÆĞ³ÎÀ» ¿òÁ÷ÀÌ´Â ÄÚ·çÆ¾
+    // "Wrong" íƒœê·¸ë¥¼ ê°€ì§„ íŒ¨ë„ì„ ì›€ì§ì´ëŠ” ì½”ë£¨í‹´
     private IEnumerator MoveWrongPanel(GameObject panel)
     {
         Vector3 originalPosition = panel.transform.position;
@@ -37,24 +34,24 @@ public class PanelJump : MonoBehaviour
 
         float elapsedTime = 0f;
 
-        // »ó½Â ¾Ö´Ï¸ŞÀÌ¼Ç
-        while (elapsedTime < jumpDuration / 2f) // ÃÑ ½Ã°£ÀÇ Àı¹İÀº »ó½Â
+        // ìƒìŠ¹ ì• ë‹ˆë©”ì´ì…˜
+        while (elapsedTime < jumpDuration / 2f) // ì´ ì‹œê°„ì˜ ì ˆë°˜ì€ ìƒìŠ¹
         {
             panel.transform.position = Vector3.Lerp(originalPosition, targetPosition, (elapsedTime / (jumpDuration / 2f)));
             elapsedTime += Time.deltaTime;
-            yield return null; // ´ÙÀ½ ÇÁ·¹ÀÓ±îÁö ´ë±â
+            yield return null; // ë‹¤ìŒ í”„ë ˆì„ê¹Œì§€ ëŒ€ê¸°
         }
-        panel.transform.position = targetPosition; // Á¤È®ÇÑ ¸ñÇ¥ À§Ä¡·Î ¼³Á¤ (¿ÀÂ÷ ¹æÁö)
+        panel.transform.position = targetPosition; // ì •í™•í•œ ëª©í‘œ ìœ„ì¹˜ë¡œ ì„¤ì • (ì˜¤ì°¨ ë°©ì§€)
 
-        elapsedTime = 0f; // ½Ã°£ ÃÊ±âÈ­
+        elapsedTime = 0f; // ì‹œê°„ ì´ˆê¸°í™”
 
-        // ÇÏ°­ ¾Ö´Ï¸ŞÀÌ¼Ç
-        while (elapsedTime < jumpDuration / 2f) // ÃÑ ½Ã°£ÀÇ ³ª¸ÓÁö Àı¹İÀº ÇÏ°­
+        // í•˜ê°• ì• ë‹ˆë©”ì´ì…˜
+        while (elapsedTime < jumpDuration / 2f) // ì´ ì‹œê°„ì˜ ë‚˜ë¨¸ì§€ ì ˆë°˜ì€ í•˜ê°•
         {
             panel.transform.position = Vector3.Lerp(targetPosition, originalPosition, (elapsedTime / (jumpDuration / 2f)));
             elapsedTime += Time.deltaTime;
-            yield return null; // ´ÙÀ½ ÇÁ·¹ÀÓ±îÁö ´ë±â
+            yield return null; // ë‹¤ìŒ í”„ë ˆì„ê¹Œì§€ ëŒ€ê¸°
         }
-        panel.transform.position = originalPosition; // Á¤È®ÇÑ ¿ø·¡ À§Ä¡·Î ¼³Á¤ (¿ÀÂ÷ ¹æÁö)
+        panel.transform.position = originalPosition; // ì •í™•í•œ ì›ë˜ ìœ„ì¹˜ë¡œ ì„¤ì • (ì˜¤ì°¨ ë°©ì§€)
     }
 }
