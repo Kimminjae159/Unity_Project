@@ -10,7 +10,8 @@ public class SimpleMove : MonoBehaviour
     public float speed = 1; // m/s 
 
     public float jumpPower = 5f;    // 점프(수직) 힘 
-    public bool isGround = false;   // boolean : treu(1) or false(0)
+    // controller의 isgrounded 속성으로 대체
+    // public bool isGround = false;   // boolean : treu(1) or false(0)
     public float gravity = -9.8f;   // 중력
     public float yVelocity = 0;     // y의 변화 
 
@@ -21,22 +22,22 @@ public class SimpleMove : MonoBehaviour
         /// 아래의 '컨트롤러와 바닥의 닿아있는 여부를 확인하는 코드'는 void Update() 내부에 있었으나,
         /// Wrong 태그의 발판을 밟았을 때의 추락을 구현하기 위해선 자신이 무엇을 밟고 있는지 ControllerColliderHit을 활용해 알아내는 방법 외에는 없었기에
         /// 해당 함수 내부로 옮긴 것임
-        
-        // (캐릭터 컨트롤러가) 바닥에 닿아있는게 맞는가? 
-        if (controller.collisionFlags == CollisionFlags.Below)
-        {
-            // wrong 태그의 발판과 닿았을 경우 isGround가 활성화 되지 않고 아래로 내려가는 가속도 그대로 내려감
-            if (hit.gameObject.CompareTag("Wrong"))
-            {
-                Destroy(hit.gameObject);
-            }
-            else
-            {
-                isGround = true;
-                yVelocity = 0;  // 바닥에 닿으면 아래로 못내려가게 0
-            }
 
+        // (캐릭터 컨트롤러가) 바닥에 닿아있는게 맞는가? 
+        // if (controller.collisionFlags == CollisionFlags.Below)
+        // {
+        // wrong 태그의 발판과 닿았을 경우 isGround가 활성화 되지 않고 아래로 내려가는 가속도 그대로 내려감
+        if (hit.gameObject.CompareTag("Wrong"))
+        {
+            Destroy(hit.gameObject);
         }
+        // else
+        // {
+        //     isGround = true;
+        //     yVelocity = 0;  // 바닥에 닿으면 아래로 못내려가게 0
+        // }
+
+        // }
         if (hit.gameObject.CompareTag("Goal"))
         {
             somethingFunction(); // goal에 도착시 실행할 무언가의 행동
@@ -67,13 +68,27 @@ public class SimpleMove : MonoBehaviour
         dir.y = 0;
         dir.Normalize();
 
-        
 
-        // 바닥에 닿아있는게 맞고, 점프키를 누른게 맞다면, 
-        if (isGround == true && Input.GetButtonDown("Jump"))
+
+        // // 바닥에 닿아있는게 맞고, 점프키를 누른게 맞다면, 
+        // if (isGround == true && Input.GetButtonDown("Jump"))
+        // {
+        //     yVelocity = jumpPower;
+        //     isGround = false;   // 바닥에 닿은게 아니다 
+        // }
+
+        // controller.isGrounded를 사용하여 지면 여부를 판단.
+        // 이렇게 하면 절벽에서 떨어질 때도 정확하게 공중 상태를 감지할 수 있습니다.
+        if (controller.isGrounded)
         {
-            yVelocity = jumpPower;
-            isGround = false;   // 바닥에 닿은게 아니다 
+            // 지면에 있을 때는 yVelocity를 아주 살짝 아래로 향하게 하여 바닥에 붙어있도록 함
+            yVelocity = -0.1f;
+
+            // 점프 버튼을 누르면 yVelocity에 점프 힘을 할당
+            if (Input.GetButtonDown("Jump"))
+            {
+                yVelocity = jumpPower;
+            }
         }
         // 중력을 적용해라 
         yVelocity = yVelocity + gravity * Time.deltaTime;
@@ -87,5 +102,20 @@ public class SimpleMove : MonoBehaviour
         // transform.position += dir;
         // transform.Translate(dir * speed * Time.deltaTime);
         // 내가 지정한 방향으로 이동하고 싶다. 
+    }
+    private bool IsCheckGrounded()
+    {
+        // CharacterController.IsGrounded가 true라면 Raycast를 사용하지 않고 판정 종료
+        if (controller.isGrounded) return true;        
+        // 발사하는 광선의 초기 위치와 방향
+        // 약간 신체에 박혀 있는 위치로부터 발사하지 않으면 제대로 판정할 수 없을 때가 있다.
+        var ray = new Ray(this.transform.position + Vector3.up * 0.1f, Vector3.down);
+        // 탐색 거리
+        var maxDistance = 1.5f;
+        // 광선 디버그 용도
+        Debug.DrawRay(transform.position + Vector3.up * 0.1f, Vector3.down * maxDistance, Color.red);
+        // Raycast의 hit 여부로 판정
+        // 지상에만 충돌로 레이어를 지정
+        return Physics.Raycast(ray, maxDistance, _fieldLayer);
     }
 }

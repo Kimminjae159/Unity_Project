@@ -45,7 +45,7 @@ public class PlayerReset : MonoBehaviour
         if (moveScript != null)
         {
             moveScript.yVelocity = 0;        // 점프/낙하시 수직 속도 초기화
-            moveScript.isGround = false;     // 필요시 바닥상태 강제조정
+            // moveScript.isGround = false;     // 필요시 바닥상태 강제조정
         }
     }
 
