@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class PlayerReset : MonoBehaviour
 {
-    public float minY = -5f;      // ÇÃ·¹ÀÌ¾î°¡ ¶³¾îÁö´Â ±âÁØ y°ª
-    private Vector3 startPos;     // ½ÃÀÛÀ§Ä¡ ÀúÀå
-    private SimpleMove moveScript;      // ÀÌµ¿ ½ºÅ©¸³Æ® ÂüÁ¶ (Optional)
+    public float minY = -5f;      // í”Œë ˆì´ì–´ê°€ ë–¨ì–´ì§€ëŠ” ê¸°ì¤€ yê°’
+    private Vector3 startPos;     // ì‹œì‘ìœ„ì¹˜ ì €ì¥
+    private SimpleMove moveScript;      // ì´ë™ ìŠ¤í¬ë¦½íŠ¸ ì°¸ì¡° (Optional)
     private CharacterController controller;
 
 
-    private Vector3 tempPos; // »õ·Î ¹àÀº ¹ßÆÇÀÇ À§Ä¡¿Í ºñ±³¸¦ À§ÇÑ ÀÓ½Ã À§Ä¡ ÀúÀå º¯¼ö
-    public string objTag = "Correct"; // ¼¼ÀÌºê Æ÷ÀÎÆ® ±â´ÉÀ» Ãß°¡ÇÒ ¹ßÆÇÀÇ ÅÂ±×¸í ÀúÀå
+    private Vector3 tempPos; // ìƒˆë¡œ ë°ì€ ë°œíŒì˜ ìœ„ì¹˜ì™€ ë¹„êµë¥¼ ìœ„í•œ ì„ì‹œ ìœ„ì¹˜ ì €ì¥ ë³€ìˆ˜
+    public string objTag = "Correct"; // ì„¸ì´ë¸Œ í¬ì¸íŠ¸ ê¸°ëŠ¥ì„ ì¶”ê°€í•  ë°œíŒì˜ íƒœê·¸ëª… ì €ì¥
 
     void Start()
     {
-        // ÃÖÃÊ À§Ä¡ ±â¾ï
+        // ìµœì´ˆ ìœ„ì¹˜ ê¸°ì–µ
         startPos= transform.position;
-        // ÀÌµ¿ ½ºÅ©¸³Æ® ¹Ì¸® Ã£¾ÆµÎ¸é ÇÊ¿äÇÒ ¶§ y¼Óµµ ¸®¼Â µî °¡´É
+        // ì´ë™ ìŠ¤í¬ë¦½íŠ¸ ë¯¸ë¦¬ ì°¾ì•„ë‘ë©´ í•„ìš”í•  ë•Œ yì†ë„ ë¦¬ì…‹ ë“± ê°€ëŠ¥
         moveScript = GetComponent<SimpleMove>();
         controller = GetComponent<CharacterController>();
     }
@@ -41,11 +41,11 @@ public class PlayerReset : MonoBehaviour
             transform.position = startPos;
         }
 
-        // Ãß°¡: SimpleMove y°ª ¸®¼Â(³«ÇÏ/Á¡ÇÁÁßÀÌ¸é ¸ØÃã, Áß·Â °¡¼Óµµ µî ÃÊ±âÈ­)
+        // ì¶”ê°€: SimpleMove yê°’ ë¦¬ì…‹(ë‚™í•˜/ì í”„ì¤‘ì´ë©´ ë©ˆì¶¤, ì¤‘ë ¥ ê°€ì†ë„ ë“± ì´ˆê¸°í™”)
         if (moveScript != null)
         {
-            moveScript.yVelocity = 0;        // Á¡ÇÁ/³«ÇÏ½Ã ¼öÁ÷ ¼Óµµ ÃÊ±âÈ­
-            // moveScript.isGround = false;     // ÇÊ¿ä½Ã ¹Ù´Ú»óÅÂ °­Á¦Á¶Á¤
+            moveScript.yVelocity = 0;        // ì í”„/ë‚™í•˜ì‹œ ìˆ˜ì§ ì†ë„ ì´ˆê¸°í™”
+            // moveScript.isGround = false;     // í•„ìš”ì‹œ ë°”ë‹¥ìƒíƒœ ê°•ì œì¡°ì •
         }
     }
 
@@ -53,10 +53,10 @@ public class PlayerReset : MonoBehaviour
     {
         if(hit.gameObject.CompareTag(objTag))
         {
-            startPos =hit.gameObject.transform.position; // ¸¸¾à ´êÀº ¹ßÆÇÀÌ ¿Ã¹Ù¸¥ ¹ßÆÇÀÌ¸é, ±× ¹ßÆÇÀÇ ÁÂÇ¥¸¦ ¸®¼Â ÁöÁ¡À¸·Î °»½Å
-            startPos.y = 1f; // ¹ßÆÇÇÏ°í °ãÃÄ¼­ ¹Ğ·Á³ª´Â Çö»ó ¹æÁö
+            startPos =hit.gameObject.transform.position; // ë§Œì•½ ë‹¿ì€ ë°œíŒì´ ì˜¬ë°”ë¥¸ ë°œíŒì´ë©´, ê·¸ ë°œíŒì˜ ì¢Œí‘œë¥¼ ë¦¬ì…‹ ì§€ì ìœ¼ë¡œ ê°±ì‹ 
+            startPos.y = 1f; // ë°œíŒí•˜ê³  ê²¹ì³ì„œ ë°€ë ¤ë‚˜ëŠ” í˜„ìƒ ë°©ì§€
 
-            // ¾Æ·¡´Â xÃà ¹æÇâÀ¸·Î Âß ÀÌ¾îÁ® °¥ ¶§ ÀÌÀüÀÇ ¹ßÆÇÀ» ¹â¾Æµµ ÇöÀç ¼¼ÀÌºê À§Ä¡º¸´Ù µÚ¿¡ ¼¼ÀÌºê°¡ µÇ´Â Çö»ó ¹æÁö¸¦ À§ÇÑ ÄÚµå
+            // ì•„ë˜ëŠ” xì¶• ë°©í–¥ìœ¼ë¡œ ì­‰ ì´ì–´ì ¸ ê°ˆ ë•Œ ì´ì „ì˜ ë°œíŒì„ ë°Ÿì•„ë„ í˜„ì¬ ì„¸ì´ë¸Œ ìœ„ì¹˜ë³´ë‹¤ ë’¤ì— ì„¸ì´ë¸Œê°€ ë˜ëŠ” í˜„ìƒ ë°©ì§€ë¥¼ ìœ„í•œ ì½”ë“œ
             //tempPos = hit.gameObject.transform.position;
             //if (tempPos.x > startPos.x) startPos = tempPos;
 

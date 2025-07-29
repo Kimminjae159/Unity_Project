@@ -1,66 +1,74 @@
 using UnityEngine;
 
-// ³»°¡ ÁöÁ¤ÇÑ ¹æÇâÀ¸·Î ÀÌµ¿ÇÏ°í ½Í´Ù. 
-// Æ÷Áö¼ÇÀÇ °ªÀÌ ¹Ù²ï´Ù. 
+// ë‚´ê°€ ì§€ì •í•œ ë°©í–¥ìœ¼ë¡œ ì´ë™í•˜ê³  ì‹¶ë‹¤. 
+// í¬ì§€ì…˜ì˜ ê°’ì´ ë°”ë€ë‹¤. 
 public class SimpleMove : MonoBehaviour
 {
-    // string : "³»¿ë" , integer : Á¤¼ö(¼Ò¼öÁ¡ X) 
-    // float : ½Ç¼ö(¼Ò¼öÁ¡ o), Vector3 : º¤ÅÍ(x, y, z)
+    // string : "ë‚´ìš©" , integer : ì •ìˆ˜(ì†Œìˆ˜ì  X) 
+    // float : ì‹¤ìˆ˜(ì†Œìˆ˜ì  o), Vector3 : ë²¡í„°(x, y, z)
     public Vector3 dir = new Vector3(0, 0, 1);
     public float speed = 1; // m/s 
 
-    public float jumpPower = 5f;    // Á¡ÇÁ(¼öÁ÷) Èû 
-    // controllerÀÇ isgrounded ¼Ó¼ºÀ¸·Î ´ëÃ¼
+    public float jumpPower = 5f;    // ì í”„(ìˆ˜ì§) í˜ 
+    // controllerì˜ isgrounded ì†ì„±ìœ¼ë¡œ ëŒ€ì²´
     // public bool isGround = false;   // boolean : treu(1) or false(0)
-    public float gravity = -9.8f;   // Áß·Â
-    public float yVelocity = 0;     // yÀÇ º¯È­ 
+    public float gravity = -9.8f;   // ì¤‘ë ¥
+    public float yVelocity = 0;     // yì˜ ë³€í™” 
 
     CharacterController controller;
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        /// ¾Æ·¡ÀÇ 'ÄÁÆ®·Ñ·¯¿Í ¹Ù´ÚÀÇ ´ê¾ÆÀÖ´Â ¿©ºÎ¸¦ È®ÀÎÇÏ´Â ÄÚµå'´Â void Update() ³»ºÎ¿¡ ÀÖ¾úÀ¸³ª,
-        /// Wrong ÅÂ±×ÀÇ ¹ßÆÇÀ» ¹â¾ÒÀ» ¶§ÀÇ Ãß¶ôÀ» ±¸ÇöÇÏ±â À§ÇØ¼± ÀÚ½ÅÀÌ ¹«¾ùÀ» ¹â°í ÀÖ´ÂÁö ControllerColliderHitÀ» È°¿ëÇØ ¾Ë¾Æ³»´Â ¹æ¹ı ¿Ü¿¡´Â ¾ø¾ú±â¿¡
-        /// ÇØ´ç ÇÔ¼ö ³»ºÎ·Î ¿Å±ä °ÍÀÓ
+        /// ì•„ë˜ì˜ 'ì»¨íŠ¸ë¡¤ëŸ¬ì™€ ë°”ë‹¥ì˜ ë‹¿ì•„ìˆëŠ” ì—¬ë¶€ë¥¼ í™•ì¸í•˜ëŠ” ì½”ë“œ'ëŠ” void Update() ë‚´ë¶€ì— ìˆì—ˆìœ¼ë‚˜,
+        /// Wrong íƒœê·¸ì˜ ë°œíŒì„ ë°Ÿì•˜ì„ ë•Œì˜ ì¶”ë½ì„ êµ¬í˜„í•˜ê¸° ìœ„í•´ì„  ìì‹ ì´ ë¬´ì—‡ì„ ë°Ÿê³  ìˆëŠ”ì§€ ControllerColliderHitì„ í™œìš©í•´ ì•Œì•„ë‚´ëŠ” ë°©ë²• ì™¸ì—ëŠ” ì—†ì—ˆê¸°ì—
+        /// í•´ë‹¹ í•¨ìˆ˜ ë‚´ë¶€ë¡œ ì˜®ê¸´ ê²ƒì„
 
-        // (Ä³¸¯ÅÍ ÄÁÆ®·Ñ·¯°¡) ¹Ù´Ú¿¡ ´ê¾ÆÀÖ´Â°Ô ¸Â´Â°¡? 
-        // if (controller.collisionFlags == CollisionFlags.Below)
-        // {
-        // wrong ÅÂ±×ÀÇ ¹ßÆÇ°ú ´ê¾ÒÀ» °æ¿ì isGround°¡ È°¼ºÈ­ µÇÁö ¾Ê°í ¾Æ·¡·Î ³»·Á°¡´Â °¡¼Óµµ ±×´ë·Î ³»·Á°¨
-        if (hit.gameObject.CompareTag("Wrong"))
+        /// OnControllerColliderHit í•¨ìˆ˜ëŠ” CharacterControllerì˜ "Move()" í•¨ìˆ˜ê°€ í˜¸ì¶œë  ë•Œë§ˆë‹¤ ì¶©ëŒ ì—¬ë¶€ í™•ì¸í›„, ì¶©ëŒì´ ì¼ì–´ë‚¬ë‹¤ë©´ í˜¸ì¶œëœë‹¤. 
+        /// ìºë¦­í„° ì»¨íŠ¸ë¡¤ëŸ¬ì˜ ë°”ë‹¥ì´ "ì§€ë©´"ê³¼ ë‹¿ì•„ìˆì„ ê²½ìš°
+        /// 1. yVelocityë¥¼ 0ìœ¼ë¡œ ì„¤ì •
+        /// 2. í˜„ì¬ ì¶©ëŒí•œ ê²ƒì´ Wrong íƒœê·¸ë¥¼ ê°€ì§„ ì˜¤ë¸Œì íŠ¸ê°€ ì•„ë‹ˆë©´ ì í”„í‚¤ë¥¼ ëˆŒë €ì„ ë•Œ ì í”„ê°€ ê°€ëŠ¥
+        /// 3. í˜„ì¬ ì¶©ëŒí•œ ê²ƒì´ Wrong íƒœê·¸ë¥¼ ê°€ì§„ ì˜¤ë¸Œì íŠ¸ê°€ ë§ë‹¤ë©´ ë‹¿ì€ ì˜¤ë¸Œì íŠ¸ë¥¼ íŒŒê´´
+
+        if (controller.collisionFlags == CollisionFlags.Below)
         {
-            Destroy(hit.gameObject);
-        }
-        // else
-        // {
-        //     isGround = true;
-        //     yVelocity = 0;  // ¹Ù´Ú¿¡ ´êÀ¸¸é ¾Æ·¡·Î ¸ø³»·Á°¡°Ô 0
-        // }
+            yVelocity = 0;
 
-        // }
+            if (!hit.gameObject.CompareTag("Wrong"))
+            {
+                if (Input.GetButtonDown("Jump"))
+                {
+                    yVelocity = jumpPower;
+                }
+            }
+            else
+            {
+                Destroy(hit.gameObject);
+            }
+        }
+
         if (hit.gameObject.CompareTag("Goal"))
         {
-            somethingFunction(); // goal¿¡ µµÂø½Ã ½ÇÇàÇÒ ¹«¾ğ°¡ÀÇ Çàµ¿
+            somethingFunction(); // goalì— ë„ì°©ì‹œ ì‹¤í–‰í•  ë¬´ì–¸ê°€ì˜ í–‰ë™
         }
     }
-    // ÇÊ¿ä¿¡ ¸ÂÃç Ãß°¡
+    // í•„ìš”ì— ë§ì¶° ì¶”ê°€
     public void somethingFunction() { }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        controller = GetComponent<CharacterController>();   //±×¸©¿¡ µ¥ÀÌÅÍ¸¦ ´ã±â. 
+        controller = GetComponent<CharacterController>();   //ê·¸ë¦‡ì— ë°ì´í„°ë¥¼ ë‹´ê¸°. 
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ³»°¡ ÀÔ·ÂÇÑ ¹æÇâÀ¸·Î ÀÌµ¿ÇÏ°í ½Í´Ù. 
-        float h = Input.GetAxis("Horizontal");  //a(-1)³ª d(+1)¸¦ ´©¸¦ ¶§ 
-        float v = Input.GetAxis("Vertical");  //s(-1)³ª w(+1)¸¦ ´©¸¦ ¶§ 
+        // ë‚´ê°€ ì…ë ¥í•œ ë°©í–¥ìœ¼ë¡œ ì´ë™í•˜ê³  ì‹¶ë‹¤. 
+        float h = Input.GetAxis("Horizontal");  //a(-1)ë‚˜ d(+1)ë¥¼ ëˆ„ë¥¼ ë•Œ 
+        float v = Input.GetAxis("Vertical");  //s(-1)ë‚˜ w(+1)ë¥¼ ëˆ„ë¥¼ ë•Œ 
 
         dir = new Vector3(h, 0, v);
-        // Á¤±ÔÈ­ Normalize = ¹æÇâÀ» À¯ÁöÇÏ¸é¼­ º¤ÅÍÀÇ ±æÀÌ¸¦ 1·Î °íÁ¤ 
+        // ì •ê·œí™” Normalize = ë°©í–¥ì„ ìœ ì§€í•˜ë©´ì„œ ë²¡í„°ì˜ ê¸¸ì´ë¥¼ 1ë¡œ ê³ ì • 
         dir.Normalize();
 
 
@@ -68,40 +76,16 @@ public class SimpleMove : MonoBehaviour
         dir.y = 0;
         dir.Normalize();
 
-
-
-        // // ¹Ù´Ú¿¡ ´ê¾ÆÀÖ´Â°Ô ¸Â°í, Á¡ÇÁÅ°¸¦ ´©¸¥°Ô ¸Â´Ù¸é, 
-        // if (isGround == true && Input.GetButtonDown("Jump"))
-        // {
-        //     yVelocity = jumpPower;
-        //     isGround = false;   // ¹Ù´Ú¿¡ ´êÀº°Ô ¾Æ´Ï´Ù 
-        // }
-
-        // controller.isGrounded¸¦ »ç¿ëÇÏ¿© Áö¸é ¿©ºÎ¸¦ ÆÇ´Ü.
-        // ÀÌ·¸°Ô ÇÏ¸é Àıº®¿¡¼­ ¶³¾îÁú ¶§µµ Á¤È®ÇÏ°Ô °øÁß »óÅÂ¸¦ °¨ÁöÇÒ ¼ö ÀÖ½À´Ï´Ù.
-        if (controller.isGrounded)
-        {
-            // Áö¸é¿¡ ÀÖÀ» ¶§´Â yVelocity¸¦ ¾ÆÁÖ »ìÂ¦ ¾Æ·¡·Î ÇâÇÏ°Ô ÇÏ¿© ¹Ù´Ú¿¡ ºÙ¾îÀÖµµ·Ï ÇÔ
-            yVelocity = -0.1f;
-
-            // Á¡ÇÁ ¹öÆ°À» ´©¸£¸é yVelocity¿¡ Á¡ÇÁ ÈûÀ» ÇÒ´ç
-            if (Input.GetButtonDown("Jump"))
-            {
-                yVelocity = jumpPower;
-            }
-        }
-        // Áß·ÂÀ» Àû¿ëÇØ¶ó 
         yVelocity = yVelocity + gravity * Time.deltaTime;
         dir.y = yVelocity;
 
-
-        // À§Ä¡¸¦ °è¼ÓÇØ¼­ ¹Ù²Û´Ù.
-        // P(»õ·Î¿î À§Ä¡) = p0(±âÁ¸ÀÇ À§Ä¡) + v(¹æÇâ) * t(½Ã°£) 
+        // ìœ„ì¹˜ë¥¼ ê³„ì†í•´ì„œ ë°”ê¾¼ë‹¤.
+        // P(ìƒˆë¡œìš´ ìœ„ì¹˜) = p0(ê¸°ì¡´ì˜ ìœ„ì¹˜) + v(ë°©í–¥) * t(ì‹œê°„) 
         // transform.position = transform.position + dir * speed * Time.deltaTime;
         controller.Move(dir * speed * Time.deltaTime);
         // transform.position += dir;
         // transform.Translate(dir * speed * Time.deltaTime);
-        // ³»°¡ ÁöÁ¤ÇÑ ¹æÇâÀ¸·Î ÀÌµ¿ÇÏ°í ½Í´Ù. 
+        // ë‚´ê°€ ì§€ì •í•œ ë°©í–¥ìœ¼ë¡œ ì´ë™í•˜ê³  ì‹¶ë‹¤. 
     }
     
 }
