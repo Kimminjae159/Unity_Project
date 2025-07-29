@@ -1100,6 +1100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minY: -20
   objTag: Correct
+  changeMaterial: {fileID: 0}
+  SavePoint: 1
+  PathColorizer: 1
 --- !u!143 &349188247
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1140,7 +1143,6 @@ MonoBehaviour:
   dir: {x: 0, y: 0, z: 1}
   speed: 3
   jumpPower: 5
-  isGround: 0
   gravity: -9.8
   yVelocity: 0
 --- !u!136 &349188249
@@ -1395,8 +1397,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1236956464}
-        m_TargetAssemblyTypeName: PanelJump, Assembly-CSharp
-        m_MethodName: ApplyPanelJump
+        m_TargetAssemblyTypeName: PanelHiding, Assembly-CSharp
+        m_MethodName: ApplyPanelHide
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3145,8 +3147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c360153e8b42504abffa754da799de1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  jumpHeight: 1
-  jumpDuration: 1
+  delayBeforeHide: 1
+  hideDuration: 2
 --- !u!1001 &1283296103
 PrefabInstance:
   m_ObjectHideFlags: 0

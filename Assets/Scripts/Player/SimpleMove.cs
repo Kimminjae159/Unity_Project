@@ -31,10 +31,9 @@ public class SimpleMove : MonoBehaviour
 
         if (controller.collisionFlags == CollisionFlags.Below)
         {
-            yVelocity = 0;
-
             if (!hit.gameObject.CompareTag("Wrong"))
             {
+                yVelocity = 0;
                 if (Input.GetButtonDown("Jump"))
                 {
                     yVelocity = jumpPower;
