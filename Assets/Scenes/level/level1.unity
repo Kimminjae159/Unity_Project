@@ -3780,6 +3780,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minY: -20
   objTag: Correct
+  changeMaterial: {fileID: 2100000, guid: c2c12c9efc512274f90c1fcc4373c878, type: 2}
+  SavePoint: 1
+  PathColorizer: 1
 --- !u!143 &1409583288
 CharacterController:
   m_ObjectHideFlags: 0
@@ -3820,7 +3823,6 @@ MonoBehaviour:
   dir: {x: 0, y: 0, z: 1}
   speed: 3
   jumpPower: 5
-  isGround: 0
   gravity: -9.8
   yVelocity: 0
 --- !u!136 &1409583290
