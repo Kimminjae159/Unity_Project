@@ -16,6 +16,7 @@ public class SimpleMove : MonoBehaviour
     public float yVelocity = 0;     // y의 변화 
 
     CharacterController controller;
+    bool NeverCanJump = false;
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -29,20 +30,10 @@ public class SimpleMove : MonoBehaviour
         /// 2. 현재 충돌한 것이 Wrong 태그를 가진 오브젝트가 아니면 점프키를 눌렀을 때 점프가 가능
         /// 3. 현재 충돌한 것이 Wrong 태그를 가진 오브젝트가 맞다면 닿은 오브젝트를 파괴
 
-        if (controller.collisionFlags == CollisionFlags.Below)
+        if (hit.gameObject.CompareTag("Wrong"))
         {
-            if (!hit.gameObject.CompareTag("Wrong"))
-            {
-                yVelocity = 0;
-                if (Input.GetButtonDown("Jump"))
-                {
-                    yVelocity = jumpPower;
-                }
-            }
-            else
-            {
-                Destroy(hit.gameObject);
-            }
+            NeverCanJump = true;
+            Destroy(hit.gameObject);
         }
 
         if (hit.gameObject.CompareTag("Goal"))
@@ -70,7 +61,14 @@ public class SimpleMove : MonoBehaviour
         // 정규화 Normalize = 방향을 유지하면서 벡터의 길이를 1로 고정 
         dir.Normalize();
 
-
+        if (controller.collisionFlags == CollisionFlags.Below && !NeverCanJump)
+        {
+            yVelocity = 0;
+            if (Input.GetButtonDown("Jump"))
+            {
+                yVelocity = jumpPower;
+            }
+        }
         dir = Camera.main.transform.TransformDirection(dir);
         dir.y = 0;
         dir.Normalize();

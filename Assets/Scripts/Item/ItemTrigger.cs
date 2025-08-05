@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using System.Collections;
 using JetBrains.Annotations;
+using Unity.VisualScripting;
 
 public class ItemTrigger : MonoBehaviour
 {
@@ -33,7 +34,12 @@ public class ItemTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
-            OnItemCollected?.Invoke(); // OnItemCollected가 Null이 아니라면 할당된 함수를 실행
+            if (OnItemCollected != null)
+            {
+                OnItemCollected.Invoke();
+                Destroy(gameObject);
+            }
+            //OnItemCollected?.Invoke(); // OnItemCollected가 Null이 아니라면 할당된 함수를 실행
             if (ObjectDisable)
             {
                 StartCoroutine(DisableObjectFuc());

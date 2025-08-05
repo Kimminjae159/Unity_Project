@@ -1,0 +1,7 @@
+Player=주인공, NPC=Glitch
+주인공 : 거기까지다!
+주인공 : 더이상은 놓치지 않아!
+Glitch : 넌..
+Glitch : 그래 너 였구나.
+Glitch : 그날 너가 날 방해했던 거였어
+END
