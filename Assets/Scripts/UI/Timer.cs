@@ -1,11 +1,14 @@
 using UnityEngine;
 using TMPro;
 using System;
+using System.Collections;
 
 public class Timer : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI timerText;
-    [SerializeField] float remainingTime;
+    public TextMeshProUGUI timerText;
+    public float remainingTime;
+
+    public GameOverScript gameOverScript;
 
     void TimeCountdown()
     {
@@ -21,9 +24,16 @@ public class Timer : MonoBehaviour
             if (remainingTime < 0)
             {
                 remainingTime = 0;
+                StartCoroutine(GameOver());
                 timerText.color = Color.red;
             }
             TimeCountdown();
         }
+    }
+
+    IEnumerator GameOver()
+    {
+        yield return new WaitForSeconds(1);
+        gameOverScript.EndingFunc();
     }
 }
