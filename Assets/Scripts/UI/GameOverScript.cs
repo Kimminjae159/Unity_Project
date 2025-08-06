@@ -5,6 +5,7 @@ public class GameOverScript : MonoBehaviour
 {
     // 게임오버 UI 전체를 담고 있는 GameObject (Canvas 또는 Panel)를 인스펙터에서 연결합니다.
     public GameObject gameOverCanvas;
+    public GameObject otherUI;
 
     // 게임이 시작될 때 게임오버 UI를 보이지 않게 설정합니다.
     void Start()
@@ -22,6 +23,7 @@ public class GameOverScript : MonoBehaviour
         if (gameOverCanvas != null)
         {
             gameOverCanvas.SetActive(true);
+            otherUI.SetActive(false);
         }
         Debug.Log("Game Over!");
     }

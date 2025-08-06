@@ -3326,7 +3326,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5416821020908100082, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
       propertyPath: m_Name
-      value: Item_PlatformJump
+      value: Item_Portal
       objectReference: {fileID: 0}
     - target: {fileID: 5416821020908100082, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
       propertyPath: m_TagString
@@ -3364,9 +3364,9 @@ MonoBehaviour:
   OnItemCollected:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 601680886}
-        m_TargetAssemblyTypeName: PanelHiding, Assembly-CSharp
-        m_MethodName: ApplyPanelHide
+      - m_Target: {fileID: 1409583289}
+        m_TargetAssemblyTypeName: SimpleMove, Assembly-CSharp
+        m_MethodName: ApplyPortal
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4663,7 +4663,6 @@ GameObject:
   - component: {fileID: 1409583289}
   - component: {fileID: 1409583288}
   - component: {fileID: 1409583287}
-  - component: {fileID: 1409583294}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -4826,20 +4825,6 @@ Transform:
   - {fileID: 119118772}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1409583294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1409583285}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f46cc75d4b958b40b5c9fbafe0a299b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstPersonCam: {fileID: 0}
-  thirdPersonCam: {fileID: 0}
 --- !u!1001 &1453415971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5271,7 +5256,7 @@ MonoBehaviour:
   npcObject: {fileID: 0}
   dialogueTextUI: {fileID: 427202288}
   dialoguePanel: {fileID: 427202286}
-  dialogueFile: {fileID: 4900000, guid: a2b210e1707b3bb48b3084ff383b5815, type: 3}
+  dialogueFile: {fileID: 4900000, guid: 36b6947c294ce174aa9e8a2d988fd0d5, type: 3}
   nextAction: {fileID: 225512108}
 --- !u!4 &1744929991
 Transform:
@@ -6328,7 +6313,7 @@ SceneRoots:
   - {fileID: 23050636}
   - {fileID: 1496680735}
   - {fileID: 5162864615321974804}
-  - {fileID: 1299376984}
   - {fileID: 1744929991}
   - {fileID: 225512107}
   - {fileID: 1038314511}
+  - {fileID: 1299376984}

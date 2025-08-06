@@ -37,7 +37,7 @@ public class ItemTrigger : MonoBehaviour
             if (OnItemCollected != null)
             {
                 OnItemCollected.Invoke();
-                Destroy(gameObject);
+                //Destroy(gameObject);
             }
             //OnItemCollected?.Invoke(); // OnItemCollected가 Null이 아니라면 할당된 함수를 실행
             if (ObjectDisable)
