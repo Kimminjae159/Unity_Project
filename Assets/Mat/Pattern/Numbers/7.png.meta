@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Mat/Pattern/Numbers/7.png.meta
 guid: bb198306f305c8d44a6d1ea3d8774722
+=======
+guid: 3c3503c0f146e624498da23b8b9e589f
+>>>>>>> 1a7249177406ca3a951e40787d798732ee356e45:Assets/Mat/Numbers/7.png.meta
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -93,6 +97,7 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+<<<<<<< HEAD:Assets/Mat/Pattern/Numbers/7.png.meta
   - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -106,6 +111,8 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+=======
+>>>>>>> 1a7249177406ca3a951e40787d798732ee356e45:Assets/Mat/Numbers/7.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
