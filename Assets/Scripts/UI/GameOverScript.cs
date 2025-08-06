@@ -40,6 +40,6 @@ public class GameOverScript : MonoBehaviour
     {
         Debug.Log("Quitting Game...");
         // 에디터에서는 동작하지 않지만, 빌드된 게임에서는 프로그램이 종료됩니다.
-        Application.Quit();
+        SceneManager.LoadScene(0);
     }
 }
