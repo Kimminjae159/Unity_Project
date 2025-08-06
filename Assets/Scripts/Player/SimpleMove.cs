@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 // 내가 지정한 방향으로 이동하고 싶다. 
@@ -17,6 +18,7 @@ public class SimpleMove : MonoBehaviour
 
     CharacterController controller;
     bool NeverCanJump = false;
+    bool PortalOn = false; // 포탈 이동을 위한 코드
 
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
@@ -87,9 +89,19 @@ public class SimpleMove : MonoBehaviour
         // P(새로운 위치) = p0(기존의 위치) + v(방향) * t(시간) 
         // transform.position = transform.position + dir * speed * Time.deltaTime;
         controller.Move(dir * speed * Time.deltaTime);
+        if (PortalOn)
+        {
+            controller.enabled = false;
+            transform.position = new Vector3(30f, 2f, 0f);
+            PortalOn = false;
+            controller.enabled = true;
+        }
         // transform.position += dir;
         // transform.Translate(dir * speed * Time.deltaTime);
         // 내가 지정한 방향으로 이동하고 싶다. 
     }
-    
+    public void ApplyPortal()
+    {
+        PortalOn = true;
+    }
 }

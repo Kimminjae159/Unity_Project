@@ -9,6 +9,7 @@ public class DialogueManager : MonoBehaviour
     [Header("오브젝트 할당")]
     public GameObject playerObject;
     public GameObject npcObject; // NPC가 없는 독백 상황을 위해 선택 사항으로 둡니다.
+    public GameObject otherUI;
 
     [Header("UI 할당")]
     public TextMeshProUGUI dialogueTextUI; // 대사가 표시될 UI Text. TextMeshProUGUI를 사용해도 됩니다.
@@ -22,6 +23,8 @@ public class DialogueManager : MonoBehaviour
     public GameObject nextAction; // 인터페이스를 직접 할당할 수 없으므로 GameObject로 받고, 내부에서 형변환합니다.
 
     private Camera[] playerCam;
+    private Camera playerCam_1;
+    private Camera playerCam_2;
     private Camera npcCam;
 
     private string playerName;
@@ -96,6 +99,7 @@ public class DialogueManager : MonoBehaviour
         if (!isInitialized || isDialogueActive) return;
 
         Debug.Log("대화를 시작합니다.");
+        otherUI.SetActive(false);
         isDialogueActive = true;
         currentLineIndex = 0;
         if (dialoguePanel != null) dialoguePanel.SetActive(true);
