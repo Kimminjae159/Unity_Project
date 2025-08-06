@@ -4112,6 +4112,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &1122794229 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3679506294268933413, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+  m_PrefabInstance: {fileID: 1496680735}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1131891488
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4648,6 +4653,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverCanvas: {fileID: 1351400592}
+  otherUI: {fileID: 1122794229}
 --- !u!1 &1409583285
 GameObject:
   m_ObjectHideFlags: 0
@@ -5254,6 +5260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerObject: {fileID: 1409583285}
   npcObject: {fileID: 0}
+  otherUI: {fileID: 1122794229}
   dialogueTextUI: {fileID: 427202288}
   dialoguePanel: {fileID: 427202286}
   dialogueFile: {fileID: 4900000, guid: 36b6947c294ce174aa9e8a2d988fd0d5, type: 3}
