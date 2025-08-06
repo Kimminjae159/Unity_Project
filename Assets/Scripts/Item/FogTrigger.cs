@@ -12,8 +12,11 @@ public class FogTrigger : MonoBehaviour
     public float FogDensity;     // 최종 Fog 밀도 (옵션)
     public float transitionDuration = 2.0f;     // 안개 생성 애니메이션 길이 설정
 
+    private float originExposure;
+
     void OnTriggerEnter(Collider other)
     {
+        originExposure = RenderSettings.skybox.GetFloat("_Exposure");
         if (other.gameObject == playerObject)
         {
             Debug.Log("Trigger On. Fog Making start");
@@ -32,6 +35,7 @@ public class FogTrigger : MonoBehaviour
         {
             // 경과 시간에 따라 밀도를 선형적으로 보간합니다.
             RenderSettings.fogDensity = Mathf.Lerp(startDensity, FogDensity, currentTime / transitionDuration);
+            RenderSettings.skybox.SetFloat("_Exposure", Mathf.Lerp(RenderSettings.skybox.GetFloat("_Exposure"), 0, currentTime / transitionDuration));
             currentTime += Time.deltaTime; // 프레임당 시간만큼 증가
             yield return null; // 다음 프레임까지 기다립니다.
         }

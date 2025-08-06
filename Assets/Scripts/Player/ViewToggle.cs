@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class ViewToggle : MonoBehaviour
 {
-    // ÀÎ½ºÆåÅÍ Ã¢¿¡¼­ ¼³Á¤ÇÒ µÎ °³ÀÇ Ä«¸Ş¶ó º¯¼ö
+    // ì¸ìŠ¤í™í„° ì°½ì—ì„œ ì„¤ì •í•  ë‘ ê°œì˜ ì¹´ë©”ë¼ ë³€ìˆ˜
     public GameObject firstPersonCam;
     public GameObject thirdPersonCam;
-   
+
     void Start()
     {
-        // °ÔÀÓ ½ÃÀÛ ½Ã ±âº»Àº 1ÀÎÄªÀ¸·Î ¼³Á¤
+        // ê²Œì„ ì‹œì‘ ì‹œ ê¸°ë³¸ì€ 1ì¸ì¹­ìœ¼ë¡œ ì„¤ì •
         firstPersonCam.SetActive(true);
         thirdPersonCam.SetActive(false);
     }
 
     void Update()
     {
-        // T Å°¸¦ ´­·¶À» ¶§ (KeyCode)
+        // T í‚¤ë¥¼ ëˆŒë €ì„ ë•Œ (KeyCode)
         if (Input.GetKeyDown(KeyCode.T))
         {
-            // 1ÀÎÄª Ä«¸Ş¶óÀÇ ÇöÀç È°¼ºÈ­ »óÅÂ¸¦ °¡Á®¿È
+            // 1ì¸ì¹­ ì¹´ë©”ë¼ì˜ í˜„ì¬ í™œì„±í™” ìƒíƒœë¥¼ ê°€ì ¸ì˜´
             bool isActive = firstPersonCam.activeSelf;
 
-            // ¼­·ÎÀÇ È°¼ºÈ­ »óÅÂ¸¦ ÀüÈ¯
+            // ì„œë¡œì˜ í™œì„±í™” ìƒíƒœë¥¼ ì „í™˜
             firstPersonCam.SetActive(!isActive);
             thirdPersonCam.SetActive(isActive);
         }
