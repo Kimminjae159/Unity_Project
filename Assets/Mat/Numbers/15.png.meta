@@ -1,9 +1,5 @@
 fileFormatVersion: 2
-<<<<<<< HEAD:Assets/Mat/Pattern/Numbers/5.png.meta
-guid: 58fbef77cba7d4f4c87f5824e467badb
-=======
-guid: c75b64ec6b769bf4999c12a0dcd3b8d9
->>>>>>> 1a7249177406ca3a951e40787d798732ee356e45:Assets/Mat/Numbers/5.png.meta
+guid: 95eb10bed8dc8d64299ef4d6eb319c40
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -97,7 +93,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-<<<<<<< HEAD:Assets/Mat/Pattern/Numbers/5.png.meta
   - serializedVersion: 4
     buildTarget: WebGL
     maxTextureSize: 2048
@@ -111,8 +106,6 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-=======
->>>>>>> 1a7249177406ca3a951e40787d798732ee356e45:Assets/Mat/Numbers/5.png.meta
   spriteSheet:
     serializedVersion: 2
     sprites: []
