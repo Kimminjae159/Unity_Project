@@ -35,6 +35,10 @@ public class SimpleMove : MonoBehaviour
             NeverCanJump = true;
             Destroy(hit.gameObject);
         }
+        else if (NeverCanJump)
+        {
+            NeverCanJump = false;
+        }
 
         if (hit.gameObject.CompareTag("Goal"))
         {
@@ -42,7 +46,10 @@ public class SimpleMove : MonoBehaviour
         }
     }
     // 필요에 맞춰 추가
-    public void somethingFunction() { }
+    public void somethingFunction()
+    {
+        RenderSettings.skybox.SetFloat("_Exposure", 1);
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()

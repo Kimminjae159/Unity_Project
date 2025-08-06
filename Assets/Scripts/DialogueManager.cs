@@ -21,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     [Tooltip("IDialogueAction 인터페이스를 구현한 컴포넌트를 여기에 할당하세요.")]
     public GameObject nextAction; // 인터페이스를 직접 할당할 수 없으므로 GameObject로 받고, 내부에서 형변환합니다.
 
-    private Camera playerCam;
+    private Camera[] playerCam;
     private Camera npcCam;
 
     private string playerName;
@@ -63,7 +63,9 @@ public class DialogueManager : MonoBehaviour
             return;
         }
 
-        playerCam = playerObject.GetComponentInChildren<Camera>();
+        playerCam = playerObject.GetComponentsInChildren<Camera>();
+        playerCam[1].gameObject.SetActive(false);
+        playerCam[0].gameObject.SetActive(true);
         if (npcObject != null)
         {
             npcCam = npcObject.GetComponentInChildren<Camera>();
@@ -98,6 +100,8 @@ public class DialogueManager : MonoBehaviour
         currentLineIndex = 0;
         if (dialoguePanel != null) dialoguePanel.SetActive(true);
 
+        playerCam[0].gameObject.SetActive(false);
+        playerCam[1].gameObject.SetActive(true);
         // 첫 대사를 바로 표시
         ShowNextLine();
     }
@@ -171,6 +175,8 @@ public class DialogueManager : MonoBehaviour
         if (dialoguePanel != null) dialoguePanel.SetActive(false);
 
         Debug.Log("대화가 종료되었습니다.");
+        playerCam[1].gameObject.SetActive(false);
+        playerCam[0].gameObject.SetActive(true);
         if (dialogueEndAction != null)
         {
             dialogueEndAction.Apply();
@@ -195,12 +201,12 @@ public class DialogueManager : MonoBehaviour
     {
         if (speaker == playerName)
         {
-            playerCam.gameObject.SetActive(true);
+            playerCam[1].gameObject.SetActive(true);
             if (npcCam != null) npcCam.gameObject.SetActive(false);
         }
         else if (npcObject != null && speaker == npcName)
         {
-            playerCam.gameObject.SetActive(false);
+            playerCam[1].gameObject.SetActive(false);
             if (npcCam != null) npcCam.gameObject.SetActive(true);
         }
     }
