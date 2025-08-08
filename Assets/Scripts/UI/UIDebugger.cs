@@ -2,16 +2,16 @@ using UnityEngine;
 
 public class UIDebugger : MonoBehaviour
 {
-    // À¯´ÏÆ¼ ¿¡µğÅÍ¿¡¼­ ¿¬°áÇÒ UIµéÀÇ RectTransform
+    // ìœ ë‹ˆí‹° ì—ë””í„°ì—ì„œ ì—°ê²°í•  UIë“¤ì˜ RectTransform
     public RectTransform contentRect;
     public RectTransform dialogueTextRect;
 
     void Update()
     {
-        // ¸Å ÇÁ·¹ÀÓ¸¶´Ù Console Ã¢¿¡ ³Êºñ °ªÀ» Ãâ·Â
+        // ë§¤ í”„ë ˆì„ë§ˆë‹¤ Console ì°½ì— ë„ˆë¹„ ê°’ì„ ì¶œë ¥
         if (contentRect != null && dialogueTextRect != null)
         {
-            // dialogueTextRect.gameObject.activeInHierarchy´Â ÅØ½ºÆ® ¿ÀºêÁ§Æ®°¡ È°¼ºÈ­ »óÅÂÀÏ ¶§¸¸ ·Î±×¸¦ Âï±â À§ÇÔÀÔ´Ï´Ù.
+            // dialogueTextRect.gameObject.activeInHierarchyëŠ” í…ìŠ¤íŠ¸ ì˜¤ë¸Œì íŠ¸ê°€ í™œì„±í™” ìƒíƒœì¼ ë•Œë§Œ ë¡œê·¸ë¥¼ ì°ê¸° ìœ„í•¨ì…ë‹ˆë‹¤.
             if (dialogueTextRect.gameObject.activeInHierarchy)
             {
                 Debug.Log($"Content Width: {contentRect.rect.width}  |  Dialogue_Text Width: {dialogueTextRect.rect.width}");

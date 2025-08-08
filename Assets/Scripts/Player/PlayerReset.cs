@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerReset : MonoBehaviour
@@ -55,13 +56,16 @@ public class PlayerReset : MonoBehaviour
             // moveScript.isGround = false;     // 필요시 바닥상태 강제조정
         }
     }
-
+    
+    // 이전에 방문한 Instance에 대해 같은 작업을 반복하지 않도록 하기 위함
+    List<GameObject> visitedInstances = new List<GameObject>();
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
-        if (hit.gameObject.CompareTag(objTag))
+        if (hit.gameObject.CompareTag(objTag) && !visitedInstances.Contains(hit.gameObject))
         {
-            if(SavePoint) SavePointUpdate(hit);   // 세이브 포인트 갱신
-            if(PathColorizer) PastPathColorizer(hit); // 밟아온 올바른 발판에 새로운 material 표시
+            if (SavePoint) SavePointUpdate(hit);   // 세이브 포인트 갱신
+            if (PathColorizer) PastPathColorizer(hit); // 밟아온 올바른 발판에 새로운 material 표시
+            visitedInstances.Add(hit.gameObject);
         }
     }
 

@@ -11,8 +11,7 @@ public class ItemTrigger : MonoBehaviour
 
     [Header("활성화할 옵션")]
     public bool ObjectDisable = false;
-    public bool FogDisable = false;
-
+    
     [Header("비활성화할 외부 오브젝트")]
     public GameObject ExternalObject; // Inspector에서 할당
 
@@ -20,9 +19,6 @@ public class ItemTrigger : MonoBehaviour
     public float DisableDuration = 3.0f;
 
     private Renderer objectRenderer;
-
-    Color originalFogColor;       // 기존 Fog 색상 (옵션)
-    float originalFogDensity;     // 기존 Fog 밀도 (옵션)
 
     void Start()
     {
@@ -44,10 +40,6 @@ public class ItemTrigger : MonoBehaviour
             {
                 StartCoroutine(DisableObjectFuc());
             }
-            if (FogDisable)
-            {
-                StartCoroutine(DisableFogFuc());
-            }
         }
     }
 
@@ -61,24 +53,5 @@ public class ItemTrigger : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // 외부에서 코루틴 함수 실행이 가능하도록 생성한 함수
-    public void ApplyFogFuc()
-    {
-        StartCoroutine(DisableFogFuc());
-    }
-
-    private IEnumerator DisableFogFuc()
-    {
-        originalFogColor = RenderSettings.fogColor;
-        originalFogDensity = RenderSettings.fogDensity;
-
-        RenderSettings.fog = false;
-        objectRenderer.enabled = false;
-        yield return new WaitForSeconds(DisableDuration);
-        RenderSettings.fog = true;
-        RenderSettings.fogColor = originalFogColor;
-        RenderSettings.fogDensity = originalFogDensity;
-
-        Destroy(gameObject);
-    }
+    
 }
