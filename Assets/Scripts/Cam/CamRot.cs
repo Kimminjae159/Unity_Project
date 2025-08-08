@@ -1,27 +1,27 @@
 using UnityEngine;
-// Ä«¸Ş¶ó¸¦ ¸¶¿ì½º·Î Á¦¾îÇÏÀÚ(È¸Àü)
+// ì¹´ë©”ë¼ë¥¼ ë§ˆìš°ìŠ¤ë¡œ ì œì–´í•˜ì(íšŒì „)
 public class CamRot : MonoBehaviour
 {
-    public float mouseSpd = 200f;   // ¸¶¿ì½º °¨µµ
-    float mx = 0f;  // ¸¶¿ì½º x°ªÀ» ÀúÀå
-    float my = 0f;  // ¸¶¿ì½º y°ªÀ» ÀúÀå
-    
+    public float mouseSpd = 200f;   // ë§ˆìš°ìŠ¤ ê°ë„
+    float mx = 0f;  // ë§ˆìš°ìŠ¤ xê°’ì„ ì €ì¥
+    float my = 0f;  // ë§ˆìš°ìŠ¤ yê°’ì„ ì €ì¥
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        // ¸¶¿ì½ºÀÇ ¿òÁ÷ÀÓ¿¡ ´ëÇÑ °ªÀ» ¹Ş¾Æ¿ÀÀÚ.
+        // ë§ˆìš°ìŠ¤ì˜ ì›€ì§ì„ì— ëŒ€í•œ ê°’ì„ ë°›ì•„ì˜¤ì.
         float mouse_x = Input.GetAxis("Mouse X");
         float mouse_y = Input.GetAxis("Mouse Y");
         // P = p0 + vt
         mx = mx + mouse_x * mouseSpd * Time.deltaTime;
         my = my + mouse_y * mouseSpd * Time.deltaTime;
-        // °ªÀ» Á¦ÇÑÇÑ´Ù. (Á¦ÇÑÇÒ º¯¼ö, min, max)
+        // ê°’ì„ ì œí•œí•œë‹¤. (ì œí•œí•  ë³€ìˆ˜, min, max)
         my = Mathf.Clamp(my, -90, 90);
         transform.eulerAngles = new Vector3(-my, mx, 0);
     }

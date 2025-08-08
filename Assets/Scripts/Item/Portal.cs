@@ -2,14 +2,16 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour
 {
-    public Transform destination;
+    public GameObject destination;
     public GameObject player;
+
 
     // Update is called once per frame
     public void ApplyPortal()
     {
-        Debug.Log("ApplyPortal");
-        player.transform.position = new Vector3(30f, 2f, 0f);
-        Debug.Log("ApplyedPortal");
+        player.GetComponent<CharacterController>().enabled = false;
+        player.transform.position = destination.transform.position + Vector3.up;
+        Debug.Log(player.transform.position);
+        player.GetComponent<CharacterController>().enabled = true;
     }
 }
