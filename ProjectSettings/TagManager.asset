@@ -9,6 +9,7 @@ TagManager:
   - Wrong
   - Correct
   - Item
+  - NPC
   layers:
   - Default
   - TransparentFX
