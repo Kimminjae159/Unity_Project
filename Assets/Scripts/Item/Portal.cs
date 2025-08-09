@@ -5,8 +5,6 @@ public class Portal : MonoBehaviour
     public GameObject destination;
     public GameObject player;
 
-
-    // Update is called once per frame
     public void ApplyPortal()
     {
         player.GetComponent<CharacterController>().enabled = false;

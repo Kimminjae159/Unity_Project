@@ -2992,7 +2992,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 573910457}
         m_TargetAssemblyTypeName: FogRemover, Assembly-CSharp
-        m_MethodName: ApplyFogFuc
+        m_MethodName: ApplyFogFunc
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3098,7 +3098,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 601680888}
-  - component: {fileID: 601680887}
   - component: {fileID: 601680886}
   m_Layer: 0
   m_Name: Platform
@@ -3121,18 +3120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   delayBeforeHide: 1
   hideDuration: 2
---- !u!114 &601680887
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 601680885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e85a766f25691484188f47cb221461fb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &601680888
 Transform:
   m_ObjectHideFlags: 0
