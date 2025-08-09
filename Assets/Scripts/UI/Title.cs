@@ -3,19 +3,19 @@ using UnityEngine.SceneManagement;
 
 public class Title : MonoBehaviour
 {
-    [Header("¾À ÀÌ¸§")]
+    [Header("ì”¬ ì´ë¦„")]
     public string gameSceneName = "GameScene";
 
-    // Start ¹öÆ°¿¡ ¿¬°á
+    // Start ë²„íŠ¼ì— ì—°ê²°
     public void OnClickStart()
     {
         SceneManager.LoadScene(gameSceneName);
     }
 
-    // Quit ¹öÆ°¿¡ ¿¬°á
+    // Quit ë²„íŠ¼ì— ì—°ê²°
     public void OnClickQuit()
     {
         Application.Quit();
-        Debug.Log("°ÔÀÓ Á¾·á");
+        Debug.Log("ê²Œì„ ì¢…ë£Œ");
     }
 }

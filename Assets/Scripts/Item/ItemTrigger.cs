@@ -30,12 +30,12 @@ public class ItemTrigger : MonoBehaviour
 
         if (other.CompareTag("Player"))
         {
+            //OnItemCollected?.Invoke();로 대체 가능했으나 Destory 때문에 조건문으로 대체
             if (OnItemCollected != null)
             {
                 OnItemCollected.Invoke();
-                //Destroy(gameObject);
+                Destroy(gameObject);
             }
-            //OnItemCollected?.Invoke(); // OnItemCollected가 Null이 아니라면 할당된 함수를 실행
             if (ObjectDisable)
             {
                 StartCoroutine(DisableObjectFuc());
@@ -52,6 +52,4 @@ public class ItemTrigger : MonoBehaviour
 
         Destroy(gameObject);
     }
-
-    
 }
