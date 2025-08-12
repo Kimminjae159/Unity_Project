@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement; // 씬 관리를 위해 추가
 using TMPro;
 using System.Collections;
 using System;
+using Unity.VisualScripting;
 
 public class DialogueController : MonoBehaviour
 {
@@ -21,10 +22,17 @@ public class DialogueController : MonoBehaviour
     public GameObject choiceButtonPrefab; // 선택지 버튼 프리팹
     public Transform choicesLayout;       // 선택지 버튼들이 생성될 위치 (레이아웃 그룹)
 
-    private int index = 0;
-    private bool dialogueEnable = false;
+    [Header("대사 출력 속도")]
     public float typingSpeed = 0.05f;
 
+    [Header("플레이어 움직임 봉인")]
+    [Tooltip("대사가 출력되는 동안 플레이어의 wasd 움직임을 봉쇄하고 싶다면 Player 오브젝트 할당")]
+    public GameObject player;
+
+    private int index = 0;
+    private bool dialogueEnable = false;
+    bool NextClick = false;
+    bool EscapeClick = false;
 
     void Start()
     {
@@ -36,12 +44,14 @@ public class DialogueController : MonoBehaviour
     {
         if (dialogueEnable)
         {
-            if (Input.GetKeyDown(KeyCode.F))
+            if (NextClick || Input.GetKeyDown(KeyCode.Space))
             {
+                NextClick = false;
                 ContinueDialogue();
             }
-            else if (Input.GetKeyDown(KeyCode.Escape))
+            else if (EscapeClick || Input.GetKeyDown(KeyCode.Escape))
             {
+                EscapeClick = false;
                 // 특정 버튼 누를시 대화 및 선택지 강제 종료
                 dialogueEnable = false;
                 choicesLayout.gameObject.SetActive(false);
@@ -49,7 +59,16 @@ public class DialogueController : MonoBehaviour
             }
         }
     }
-
+    // Dialogue UI의 EscapeButton의 OnClick() 동작을 이 함수에 연결
+    public void ClickOnEscapeButton()
+    {
+        EscapeClick = true;
+    }
+    // Dialogue UI의 NextButton의 OnClick() 동작을 이 함수에 연결
+    public void ClickOnNextButton()
+    {
+        NextClick = true;
+    }
 
     // 외부에서 Diaglogue를 발동시키도록 하는 함수
     // 외부에서 보낸, 발동시킬 Dialogue와 끝났을때 실행될 콜백함수를 파라미터로 가짐
@@ -66,6 +85,9 @@ public class DialogueController : MonoBehaviour
 
         // 콜백 함수 저장, 만약 콜백함수를 파라미터로 보내지 않으면 null이 담김
         onDialogueEndCallback = callback;
+
+        // 대사 출력 동안에 플레이어 Move를 비활성화
+        if(player) player.GetComponent<SimpleMove>().enabled = false;
 
         StartDialogue();
     }
@@ -111,6 +133,7 @@ public class DialogueController : MonoBehaviour
     void EndDialogue()
     {
         dialoguePanel.SetActive(false);
+        player.GetComponent<SimpleMove>().enabled = true;
 
         // ActivateDialogue 함수로 받은 콜백함수를 발동
         onDialogueEndCallback?.Invoke();

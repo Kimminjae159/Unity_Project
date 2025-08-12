@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 public class DialogueTrigger : MonoBehaviour
 {
     [Header("Dialogue Controller를 지닌 오브젝트 (=Dialogue Manager 오브젝트)")]
@@ -10,8 +11,7 @@ public class DialogueTrigger : MonoBehaviour
     public Dialogue dialogue;
 
     [Header("상호작용 에셋 지정 (DialogueUI -> Interaction_Text)")]
-    public TextMeshProUGUI interactionText = null;
-
+    public Button interactionText = null;
 
     [Header("트리거 재사용 여부 결정")]
     [Tooltip("트리거가 여러번 실행되도록 하려면 체크하세요.")]
@@ -72,11 +72,17 @@ public class DialogueTrigger : MonoBehaviour
         if (interactMode) interactionText.gameObject.SetActive(true); // 상호작용키 생성
     }
 
+    // Dialogue UI의 Interaction_Button의 OnClick()과 연결
+    public void ClickOnInteraction()
+    {
+        StartDialogueController();
+    }
+    
     void StartDialogueController()
     {
         Debug.Log("StartDialogueController");
         if (isDialogueRunning) return; // Dialogue가 실행중인데 호출되면 반환
-        if(interactMode) interactionText.gameObject.SetActive(false); // 대화창 생성되므로 상호작용키 제거
+        if (interactMode) interactionText.gameObject.SetActive(false); // 대화창 생성되므로 상호작용키 제거
 
         // 아직 실행된 적 없거나, 여러 번 실행 가능한 경우에는 Dialogue 호출
         if (!hasTriggered || triggerReusing)
