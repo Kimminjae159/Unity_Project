@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a64bb563acbb3479fc65c293924c2e, type: 3}
+  m_Name: NPC1_L1 sucess
+  m_EditorClassIdentifier: 
+  sentences:
+  - "\u201C\uC774\uAC74 \u2018\uACF5\uAC10\uC758 \uC57D\u2019\uC774\uC5D0\uC694.\n\uB204\uAD70\uAC00\uC758
+    \uBC1C\uAC78\uC74C\uC744 \uBBFF\uC5B4\uBCF8 \uB2F9\uC2E0\uC5D0\uAC8C \uD544\uC694\uD55C
+    \uB2E4\uC74C \uD68C\uBCF5\uC81C\uC8E0.\u201D"
+  hasChoices: 1
+  choices:
+  - choiceText: "\uC0C9\uB9F9"
+    sceneToLoad: level1
+  - choiceText: "\uBE7D"
+    sceneToLoad: 

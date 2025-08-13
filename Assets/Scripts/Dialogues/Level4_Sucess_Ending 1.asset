@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6a64bb563acbb3479fc65c293924c2e, type: 3}
+  m_Name: Level4_Sucess_Ending 1
+  m_EditorClassIdentifier: 
+  sentences:
+  - "\u201C\uBAA8\uB4E0 \uAC83\uC774 \uBCF4\uC774\uACE0, \uB4E4\uB9AC\uACE0, \uC774\uD574\uB418\uB294
+    \uC9C0\uAE08\u2026\r\n \uB2F9\uC2E0\uC740 \uB354 \uC774\uC0C1 \uC608\uC804\uC758
+    \uB2F9\uC2E0\uC774 \uC544\uB2C8\uC5D0\uC694.\u201D\r"
+  - "\u201C\uC9C0\uAE08\uC758 \uC120\uBA85\uD568\uC744,\r\n \uAC00\uB824\uC84C\uB358
+    \uB204\uAD70\uAC00\uC758 \uC138\uC0C1\uC5D0 \uBE44\uCDB0\uC8FC\uC138\uC694.\u201D\r"
+  hasChoices: 0
+  choices: []
