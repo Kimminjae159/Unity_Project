@@ -67,6 +67,8 @@
         - Update() : 대화가 활성화된 상태이면, 사용자 입력에 따라 다음의 행동을 취함
             - F키를 누를 경우 ContinueDialogue() 호출
             - Esc키 (escape키)를 누를 경우 대화 및 선택 UI 강제종료 및 EndDialogue() 호출
+        - ClickOnEscapeButton() : Dialogue UI의 EscapeButton의 OnClick() 동작을 위해 존재
+        - ClickOnNextButton() : Dialogue UI의 NextButton의 OnClick() 동작을 위해 존재
         - ActivateDialogue() : 외부로부터 Dialogue 에셋과 콜백 함수를 파라미터로 받음
             - StartDialogue()를 호출, 즉 ActivateDialogue()가 호출되는 순간 Dialogue 출력이 시작됨
             - 전달받은 Dialogue 에셋은 스크립트내의 Dialogue 멤버에 할당됨
