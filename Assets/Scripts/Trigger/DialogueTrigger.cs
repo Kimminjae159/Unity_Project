@@ -20,7 +20,7 @@ public class DialogueTrigger : MonoBehaviour
     [Header("상호작용 모드 활성화 여부")]
     [Tooltip("상호작용 버튼이 뜨도록 하려면 체크하세요. 체크하지 않을 경우 자동으로 Trigger가 발동됩니다.")]
     public bool interactMode = false;
-    
+
     private bool isPlayerInRange = false;   // 플레이어가 Trigger 내부로 들어왔는가?
     private bool isDialogueRunning = false;  // 플레이어가 Dialogue를 실행중인가?
     private bool hasTriggered = false;      // Dialogue가 일회용일때 사용될 변수
@@ -42,7 +42,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         // 트리거에 들어온 오브젝트가 "Player" 태그를 가졌는지 확인
         if (other.CompareTag("Player"))
-        {          
+        {
             // 상호작용 모드 아님 = 없이 무조건 발동인 경우
             if (!interactMode)
             {
@@ -77,7 +77,7 @@ public class DialogueTrigger : MonoBehaviour
     {
         StartDialogueController();
     }
-    
+
     void StartDialogueController()
     {
         Debug.Log("StartDialogueController");
@@ -95,4 +95,3 @@ public class DialogueTrigger : MonoBehaviour
         }
     }
 }
-

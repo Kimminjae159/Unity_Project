@@ -1798,7 +1798,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   ObjectDisable: 0
-  FogDisable: 0
   ExternalObject: {fileID: 0}
   DisableDuration: 3
 --- !u!1 &245301883
@@ -5560,7 +5559,6 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   ObjectDisable: 0
-  FogDisable: 0
   ExternalObject: {fileID: 0}
   DisableDuration: 3
 --- !u!4 &965653402 stripped
@@ -12732,7 +12730,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3368320422677435934, guid: 039c18f944bdf8d47a43782d8fbf5e86, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 11.487212
+      value: 13.8
       objectReference: {fileID: 0}
     - target: {fileID: 3368320422677435934, guid: 039c18f944bdf8d47a43782d8fbf5e86, type: 3}
       propertyPath: m_LocalPosition.y
