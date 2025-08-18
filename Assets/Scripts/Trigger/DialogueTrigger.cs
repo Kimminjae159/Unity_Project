@@ -3,12 +3,12 @@ using TMPro;
 using UnityEngine.UI;
 public class DialogueTrigger : MonoBehaviour
 {
-    [Header("Dialogue Controller를 지닌 오브젝트 (=Dialogue Manager 오브젝트)")]
+    [Header("Dialogue Manager 할당")]
     [Tooltip("이 트리거가 실행시킬 ScriptManager를 할당하세요.")]
-    public DialogueController dialogueManager;
+    public DialogueManager dialogueManager;
 
     [Header("실행시킬 Dialogue 에셋")]
-    public Dialogue dialogue;
+    public DialogueAsset dialogue;
 
     [Header("상호작용 에셋 지정 (DialogueUI -> Interaction_Text)")]
     public Button interactionText = null;
@@ -17,7 +17,7 @@ public class DialogueTrigger : MonoBehaviour
     [Tooltip("트리거가 여러번 실행되도록 하려면 체크하세요.")]
     public bool triggerReusing = true;
 
-    [Header("상호작용 모드 활성화 여부")]
+    [Header("상호작용 모드(상호작용 버튼 띄우기) 활성화 여부")]
     [Tooltip("상호작용 버튼이 뜨도록 하려면 체크하세요. 체크하지 않을 경우 자동으로 Trigger가 발동됩니다.")]
     public bool interactMode = false;
 
@@ -87,9 +87,9 @@ public class DialogueTrigger : MonoBehaviour
         // 아직 실행된 적 없거나, 여러 번 실행 가능한 경우에는 Dialogue 호출
         if (!hasTriggered || triggerReusing)
         {
-            Debug.Log("Call ActivateDialogue");
+            Debug.Log("Call StartDialogue");
             // 할당된 ScriptManager의 대화 시작 함수를 호출 + 콜백함수를 인수로 전달
-            dialogueManager.ActivateDialogue(dialogue, HandleDialogueEnd);
+            dialogueManager.StartDialogue(dialogue, HandleDialogueEnd);
             hasTriggered = true; // 실행되었다고 표시
             isDialogueRunning = true; // 실행중임을 명시
         }

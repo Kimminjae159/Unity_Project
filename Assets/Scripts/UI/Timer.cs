@@ -8,7 +8,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
     public float remainingTime;
 
-    public GameOverScript gameOverScript;
+    public GameOver gameOver;
 
     void TimeCountdown()
     {
@@ -34,6 +34,6 @@ public class Timer : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1);
-        gameOverScript.EndingFunc();
+        gameOver.EndingFunc();
     }
 }

@@ -9,15 +9,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a64bb563acbb3479fc65c293924c2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
   m_Name: NPC1_Greeting
   m_EditorClassIdentifier: 
-  sentences:
-  - "\uC548\uB155 \uC548\uB155"
-  - "\uC5B4\uB514\uB85C \uAC08\uB798"
-  hasChoices: 1
-  choices:
-  - choiceText: "\uC0C9\uB9F9"
-    sceneToLoad: level1
-  - choiceText: "\uBE7D"
-    sceneToLoad: 
+  dialoguePieces:
+  - sentence: "\uC548\uB155\uD558\uC138 \uC694\n\uC57D \uC0AC\uC785\uB2C8\uB2E4."
+    choices: []
+  - sentence: "\uC544\uC9C1 \uC801\uB2F9\uD55C \uB300\uD654\uB97C \uC120\uD0DD\uBC1B\uC9C0
+      \uBABB\uD588\uC2B5\uB2C8\uB2E4."
+    choices:
+    - choiceText: "\uADF8\uB807\uAD70"
+      nextDialogue: {fileID: 0}
+      sceneToLoad: 
+      sympathyChange: 0
+      scoreChange: 0
+  - sentence: "\uC5B4\uB290 Level\uB85C \uC774\uB3D9\uD558\uACE0 \uC2F6\uC73C\uC2E0\uAC00\uC694?"
+    choices:
+    - choiceText: Level 1
+      nextDialogue: {fileID: 0}
+      sceneToLoad: level1
+      sympathyChange: 0
+      scoreChange: 0
+    - choiceText: Level 2
+      nextDialogue: {fileID: 0}
+      sceneToLoad: level2
+      sympathyChange: 0
+      scoreChange: 0
+    - choiceText: Level 3
+      nextDialogue: {fileID: 0}
+      sceneToLoad: level3
+      sympathyChange: 0
+      scoreChange: 0

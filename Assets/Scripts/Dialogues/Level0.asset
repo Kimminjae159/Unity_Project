@@ -9,21 +9,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a64bb563acbb3479fc65c293924c2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
   m_Name: Level0
   m_EditorClassIdentifier: 
-  sentences:
-  - ">> Initializing Simulation...\r\n>> User ID: Unknown\r\n>> System Status: CORRUPTED\r\n>>
-    Location: Glitch Zone 07 - PHARMA\n\r\"Visual Fidelity: DEGRADED\", \"Language
-    System: ERROR\""
-  - "\u201C\uD658\uC601\uD569\uB2C8\uB2E4. \uC5EC\uAE34... \uC804 \uC138\uACC4\uC5D0\uC11C
-    \uAC00\uC7A5 \uBD88\uD3B8\uD55C \uC57D\uAD6D\uC785\uB2C8\uB2E4.  \r\n\uB2E8,
-    \uADF8 \uBD88\uD3B8\uD568\uC740... \uB2F9\uC2E0\uC758 \uAC83\uC774 \uC544\uB2C8\uB77C
-    \u2018\uADF8\uB4E4\uC758 \uAC83\u2019\uC774\uC5C8\uC9C0\uC694.\u201D\r"
-  - "\u201C\uC774 \uACF5\uAC04\uC740 \uC624\uB958 \uC0C1\uD0DC\uC785\uB2C8\uB2E4. 
-    \r\n\uAC10\uAC01 \uC2DC\uBBAC\uB808\uC774\uC158 \uBAA8\uB4DC\uAC00 \uBB34\uC791\uC704\uB85C
-    \uD65C\uC131\uD654\uB429\uB2C8\uB2E4.  \r\n\uB2F9\uC2E0\uC740 \uC9C0\uAE08, \u2018\uB2E4\uB978
-    \uC0AC\uB78C\uB4E4\uC758 \uBC29\uC2DD\uC73C\uB85C\u2019 \uC57D\uC744 \uCC3E\uC544\uC57C
-    \uD569\uB2C8\uB2E4.\u201D\r\r"
-  hasChoices: 0
-  choices: []
+  dialoguePieces:
+  - sentence: ">> Initializing Simulation...\r\n>> User ID: Unknown\r\n>> System Status:
+      CORRUPTED\r\n>> Location: Glitch Zone 07 - PHARMA\n\r\"Visual Fidelity: DEGRADED\",
+      \"Language System: ERROR\""
+    choices: []
+  - sentence: "\u201C\uD658\uC601\uD569\uB2C8\uB2E4. \uC5EC\uAE34... \uC804 \uC138\uACC4\uC5D0\uC11C
+      \uAC00\uC7A5 \uBD88\uD3B8\uD55C \uC57D\uAD6D\uC785\uB2C8\uB2E4.  \r\n\uB2E8,
+      \uADF8 \uBD88\uD3B8\uD568\uC740... \uB2F9\uC2E0\uC758 \uAC83\uC774 \uC544\uB2C8\uB77C
+      \u2018\uADF8\uB4E4\uC758 \uAC83\u2019\uC774\uC5C8\uC9C0\uC694.\u201D\r"
+    choices: []
+  - sentence: "\u201C\uC774 \uACF5\uAC04\uC740 \uC624\uB958 \uC0C1\uD0DC\uC785\uB2C8\uB2E4.
+      \r\n\uAC10\uAC01 \uC2DC\uBBAC\uB808\uC774\uC158 \uBAA8\uB4DC\uAC00 \uBB34\uC791\uC704\uB85C
+      \uD65C\uC131\uD654\uB429\uB2C8\uB2E4.  \r\n\uB2F9\uC2E0\uC740 \uC9C0\uAE08, \u2018\uB2E4\uB978
+      \uC0AC\uB78C\uB4E4\uC758 \uBC29\uC2DD\uC73C\uB85C\u2019 \uC57D\uC744 \uCC3E\uC544\uC57C
+      \uD569\uB2C8\uB2E4.\u201D\r\r"
+    choices: []

@@ -1,7 +1,8 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; // 씬 관리를 위해 필요합니다.
+using UnityEngine.Events;
 
-public class GameOverScript : MonoBehaviour
+public class GameOver : MonoBehaviour
 {
     // 게임오버 UI 전체를 담고 있는 GameObject (Canvas 또는 Panel)를 인스펙터에서 연결합니다.
     public GameObject gameOverCanvas;

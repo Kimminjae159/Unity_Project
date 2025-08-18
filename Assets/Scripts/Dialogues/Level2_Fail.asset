@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6a64bb563acbb3479fc65c293924c2e, type: 3}
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
   m_Name: Level2_Fail
   m_EditorClassIdentifier: 
-  sentences:
-  - "\u201C\uC798\uBABB \uBC1F\uC558\uB2E4\uACE0\uC694?\r\n\uB2F9\uC2E0\uC740 \u2018\uC0C9\u2019\uC774
-    \uBCF4\uC77C \uB54C \uC138\uC0C1\uC774 \uC26C\uC6E0\uB2E4\uB294 \uAC78 \uBAB0\uB790\uACA0\uC8E0.\u201D\r"
-  - "\u201C\uAE30\uC5B5\uD558\uC138\uC694. \uC5B4\uB5A4 \uC774\uC5D0\uAC8C \u2018\uBE68\uAC15\u2019\uC740
-    \uACBD\uACE0\uAC00 \uC544\uB2C8\uB77C, \uB2E8\uC21C\uD55C \uD68C\uC0C9\uC77C
-    \uBFD0\uC774\uAE30\uB3C4 \uD574\uC694.\u201D\r\r"
-  hasChoices: 0
-  choices: []
+  dialoguePieces:
+  - sentence: "\u201C\uC798\uBABB \uBC1F\uC558\uB2E4\uACE0\uC694?\r\n\uB2F9\uC2E0\uC740 \u2018\uC0C9\u2019\uC774
+      \uBCF4\uC77C \uB54C \uC138\uC0C1\uC774 \uC26C\uC6E0\uB2E4\uB294 \uAC78 \uBAB0\uB790\uACA0\uC8E0.\u201D\r"
+    choices: []
+  - sentence: "\u201C\uAE30\uC5B5\uD558\uC138\uC694. \uC5B4\uB5A4 \uC774\uC5D0\uAC8C \u2018\uBE68\uAC15\u2019\uC740
+      \uACBD\uACE0\uAC00 \uC544\uB2C8\uB77C, \uB2E8\uC21C\uD55C \uD68C\uC0C9\uC77C
+      \uBFD0\uC774\uAE30\uB3C4 \uD574\uC694.\u201D\r\r"
+    choices: []
