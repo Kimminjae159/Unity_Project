@@ -44,9 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce24e67ef389af2458c306e01408294b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 0}
-  timerUI: {fileID: 0}
-  gameOverUI: {fileID: 0}
+  dialogueManager: {fileID: 2864683520241984600, guid: 15f02edf0c4e5484e9a3d83fff8cd659, type: 3}
+  timerUI: {fileID: 2039087952886124467, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+  gameOverUI: {fileID: 7661404148397557826, guid: e5bc0a6553cd9ed46afceaa2a01ce6d9, type: 3}
   baseTimeLimit: 120
   timeReductionPerRestart: 10
   levelClearScript:
@@ -64,6 +64,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  startDialogue: {fileID: 11400000, guid: 1ee82dbc0eaf74d4aaf7a3863c3e0a64, type: 2}
-  gameOverDialogue: {fileID: 11400000, guid: efeb6277e2b34324aadff43f86dab444, type: 2}
-  levelClearDialogue: {fileID: 11400000, guid: 69602224cc410ca499f45629ed3240a8, type: 2}
+  startDialogue: {fileID: 0}
+  gameOverDialogue: {fileID: 0}
+  levelClearDialogue: {fileID: 0}

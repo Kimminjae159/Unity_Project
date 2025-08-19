@@ -47,6 +47,6 @@ MonoBehaviour:
   dialoguePanel: {fileID: 0}
   dialogueText: {fileID: 0}
   choicesLayout: {fileID: 0}
-  choiceButtonPrefab: {fileID: 0}
+  choiceButtonPrefab: {fileID: 6412143714402234262, guid: 1d7f8ceaec3db4c47938243cc6449f9b, type: 3}
   typingSpeed: 0.05
-  player: {fileID: 0}
+  player: {fileID: 2175964535295486785, guid: a348986df7d02c84590968de85178337, type: 3}
