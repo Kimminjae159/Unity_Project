@@ -9,8 +9,8 @@ using UnityEngine.Events; // Action 콜백을 사용하기 위함
 public class StageManager : MonoBehaviour
 {
     [Header("Component References")]
-    [SerializeField] private Timer timerManager;                 // 타이머 UI
-    [SerializeField] private GameOver gameOverUI;           // 게임오버 UI
+    [SerializeField] private GameObject playerUI;             // 플레이어 UI
+    [SerializeField] private GameObject gameOverUI;           // 게임오버 UI
     // [SerializeField] private GameClearUI gameClearUI;      // 게임클리어 UI (필요 시)
     // [SerializeField] private SympathyUI sympathyUI;        // 공감수치(체력) UI
 
@@ -53,7 +53,7 @@ public class StageManager : MonoBehaviour
         // sympathyUI.SetSympathy(GameManager.instance.sympathyValue);
 
         // 3. 모든 주요 UI 비활성화
-        if (timerManager) timerManager.gameObject.SetActive(false);
+        if (playerUI) playerUI.gameObject.SetActive(false);
         if (gameOverUI) gameOverUI.gameObject.SetActive(false);
         // if(gameClearUI) gameClearUI.gameObject.SetActive(false);
 
@@ -124,7 +124,7 @@ public class StageManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true; // 클리어도 게임 종료 상태로 간주
 
-        timerManager.gameObject.SetActive(false);
+        playerUI.gameObject.SetActive(false);
         // gameClearUI.SetActive(true);
 
         // 여기에 다음 레벨로 넘어가는 로직 추가 (예: 5초 후 씬 전환)
@@ -144,7 +144,7 @@ public class StageManager : MonoBehaviour
         Debug.Log($"게임 오버! 사유: {reason}");
 
         // 타이머 UI 비활성화, 게임오버 UI 활성화
-        timerManager.gameObject.SetActive(false);
+        playerUI.gameObject.SetActive(false);
         gameOverUI.gameObject.SetActive(true);
 
         // 게임오버 대화를 출력하고, 대화가 끝나면 버튼을 활성화하는 OnGameOverDialogueEnd를 콜백으로 전달
@@ -166,7 +166,7 @@ public class StageManager : MonoBehaviour
     private void StartGame()
     {
         // 타이머 UI 활성화
-        timerManager.gameObject.SetActive(true);
+        playerUI.gameObject.SetActive(true);
     }
 
     /// <summary>
@@ -175,7 +175,7 @@ public class StageManager : MonoBehaviour
     private void OnGameOverDialogueEnd()
     {
         // GameOver UI의 재시작/종료 버튼 활성화
-        gameOverUI.EndingFunc();
+        GameOver.instance.EndingFunc();
     }
 
     #endregion

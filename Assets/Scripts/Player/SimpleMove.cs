@@ -1,7 +1,6 @@
 using UnityEngine;
 
-// 내가 지정한 방향으로 이동하고 싶다. 
-// 포지션의 값이 바뀐다. 
+// wasd에 맞춰 오브젝트 이동 
 public class SimpleMove : MonoBehaviour
 {
     public Vector3 dir = new Vector3(0, 0, 1);
@@ -21,26 +20,13 @@ public class SimpleMove : MonoBehaviour
         controller = GetComponent<CharacterController>();   //그릇에 데이터를 담기. 
     }
 
-    public float mouseSpd = 200f;   // 마우스 감도
-    float mx = 0f;  // 마우스 x값을 저장
-    float my = 0f;  // 마우스 y값을 저장
     void Update()
     {
-        // 마우스의 움직임에 대한 값을 받아오자.
-        float mouse_x = Input.GetAxis("Mouse X");
-        float mouse_y = Input.GetAxis("Mouse Y");
-        // P = p0 + vt
-        mx = mx + mouse_x * mouseSpd * Time.deltaTime;
-        my = my + mouse_y * mouseSpd * Time.deltaTime;
-        // 값을 제한한다. (제한할 변수, min, max)
-        my = Mathf.Clamp(my, -90, 90);
-        transform.eulerAngles = new Vector3(0, mx, 0);
-        Camera.main.transform.eulerAngles = new Vector3(-my, mx, 0);
-
         // 내가 입력한 방향으로 이동하고 싶다. 
         float h = Input.GetAxis("Horizontal");  //a(-1)나 d(+1)를 누를 때 
         float v = Input.GetAxis("Vertical");  //s(-1)나 w(+1)를 누를 때 
 
+        
         dir = new Vector3(h, 0, v);
         // 정규화 Normalize = 방향을 유지하면서 벡터의 길이를 1로 고정 
         dir.Normalize();

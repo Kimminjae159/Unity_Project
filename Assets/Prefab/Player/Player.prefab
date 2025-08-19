@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 6149924868670579382}
   - component: {fileID: 4486175050454023432}
   - component: {fileID: 1739040401866090344}
+  - component: {fileID: 1625397295780720946}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -135,7 +136,6 @@ MonoBehaviour:
   gravity: -9.8
   yVelocity: 0
   rotateSpeed: 10
-  mouseSpd: 120
 --- !u!143 &4486175050454023432
 CharacterController:
   m_ObjectHideFlags: 0
@@ -178,6 +178,21 @@ MonoBehaviour:
   changeMaterial: {fileID: 2100000, guid: c2c12c9efc512274f90c1fcc4373c878, type: 2}
   SavePoint: 0
   PathColorizer: 1
+--- !u!114 &1625397295780720946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175964535295486785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a9e8f2b53e2274aba03aff8068533d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mouseSpd: 120
+  canRotX: 0
+  canRotY: 1
 --- !u!1 &3848605056589100592
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,6 +344,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mouseSpd: 120
+  canRotX: 1
+  canRotY: 0
 --- !u!1 &7828533794801005634
 GameObject:
   m_ObjectHideFlags: 0

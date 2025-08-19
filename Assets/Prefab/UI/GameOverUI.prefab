@@ -257,7 +257,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7661404148397557826}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
         m_MethodName: QuitGame
         m_Mode: 1
@@ -346,7 +346,6 @@ GameObject:
   - component: {fileID: 8380968668672921332}
   - component: {fileID: 362004458108010598}
   - component: {fileID: 8184169227669973093}
-  - component: {fileID: 7661404148397557826}
   m_Layer: 5
   m_Name: GameOverUI
   m_TagString: Untagged
@@ -438,19 +437,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7661404148397557826
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5986774522992230669}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a471d9ba0b73c74f89326e07c364532, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  gameOverCanvas: {fileID: 5986774522992230669}
 --- !u!1 &6087333531834247083
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +830,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7661404148397557826}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: GameOverScript, Assembly-CSharp
         m_MethodName: RestartGame
         m_Mode: 1

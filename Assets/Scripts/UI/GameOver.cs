@@ -11,6 +11,13 @@ public class GameOver : MonoBehaviour
 
     // 게임이 시작될 때 게임오버 UI를 보이지 않게 설정하는 것은 StageManager이므로 건들이지 않음
 
+    public static GameOver instance;
+    void Awake()
+    {
+        if (instance == null) instance = this;
+        else DestroyImmediate(this);
+    }
+
     // 게임 오버시, 외부에서 호출할 함수
     public void EndingFunc()
     {

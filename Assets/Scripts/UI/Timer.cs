@@ -10,6 +10,13 @@ public class Timer : MonoBehaviour
 
     private float remainingTime;
 
+    public static Timer instance;
+    void Awake()
+    {
+        if (instance == null) instance = this;
+        else DestroyImmediate(this);
+    }
+
     void Start()
     {
         remainingTime = GameManager.instance.timeLimit;
