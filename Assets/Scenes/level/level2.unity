@@ -397,7 +397,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -761,7 +761,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 031cf68e55e1950498b24224e0507286, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: m_Name
       value: chair
@@ -1061,7 +1061,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 031cf68e55e1950498b24224e0507286, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: m_Name
       value: chair
@@ -1797,9 +1797,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ObjectDisable: 0
-  ExternalObject: {fileID: 0}
-  DisableDuration: 3
+  IsAutoUsing: 0
 --- !u!1 &245301883
 GameObject:
   m_ObjectHideFlags: 0
@@ -1999,7 +1997,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2382,7 +2380,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 031cf68e55e1950498b24224e0507286, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: m_Name
       value: chair
@@ -2455,7 +2453,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -2543,7 +2541,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2767,7 +2765,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -3152,6 +3150,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 2175964535295486785, guid: a348986df7d02c84590968de85178337, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3294,7 +3296,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -3367,7 +3369,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -3455,7 +3457,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3850,7 +3852,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -3958,7 +3960,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4066,7 +4068,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4428,7 +4430,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -5072,7 +5074,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5313,7 +5315,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -5615,9 +5617,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  ObjectDisable: 0
-  ExternalObject: {fileID: 0}
-  DisableDuration: 3
+  IsAutoUsing: 0
 --- !u!4 &965653402 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
@@ -5690,7 +5690,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 031cf68e55e1950498b24224e0507286, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: m_Name
       value: chair
@@ -6429,7 +6429,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -6697,7 +6697,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -6849,7 +6849,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -7433,7 +7433,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -7600,7 +7600,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand (1)
@@ -7798,7 +7798,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -8160,7 +8160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8515,7 +8515,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8733,7 +8733,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -8873,7 +8873,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 031cf68e55e1950498b24224e0507286, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: m_Name
       value: chair
@@ -8961,7 +8961,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -9138,7 +9138,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -9401,7 +9401,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -9474,7 +9474,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -9699,7 +9699,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand (2)
@@ -10146,7 +10146,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 031cf68e55e1950498b24224e0507286, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: b3d30d0eb1fffa4439ad5e5960d93cf3, type: 3}
       propertyPath: m_Name
       value: chair
@@ -10340,7 +10340,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
@@ -10682,7 +10682,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 210af2e75ab76be4a9a0808140709f20, type: 2}
+  - {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11498,7 +11498,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 0efcf09f773b8414dbb62ece66fd9916, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: a6e4135e33893b141b7daefcc22624a6, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: 0efcf09f773b8414dbb62ece66fd9916, type: 3}
       propertyPath: m_Name
       value: desk
@@ -12157,7 +12157,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
-      objectReference: {fileID: 2100000, guid: 36d886adfabead040aa9f35dc371ca49, type: 2}
+      objectReference: {fileID: 2100000, guid: f69887395defcfb4190e172d3a6cd6fa, type: 2}
     - target: {fileID: 919132149155446097, guid: a04cc8f924f457b4aa7a7e915e9c5757, type: 3}
       propertyPath: m_Name
       value: display_stand
