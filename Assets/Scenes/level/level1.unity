@@ -302,6 +302,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3568666292220322339, guid: 4999c6b7570f9884988445188a3e78e9, type: 3}
   m_PrefabInstance: {fileID: 20113112}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &21812137 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3032665365620529211, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+  m_PrefabInstance: {fileID: 1496680735}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &23050636
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1694,7 +1705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2a08f1986d9aca4384772838c9b4b3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerText: {fileID: 0}
+  timerText: {fileID: 21812137}
 --- !u!4 &339931912
 Transform:
   m_ObjectHideFlags: 0
@@ -2919,24 +2930,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2688a508c8a61ce429ae582a56ed7839, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImageUI: {fileID: 216748025}
-  collectedItemSprite: {fileID: -961260297, guid: 17534e80a47cbc14eaaee1d826747bb0, type: 3}
-  itemHave: 0
-  OnItemCollected:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 573910457}
-        m_TargetAssemblyTypeName: FogRemover, Assembly-CSharp
-        m_MethodName: ApplyFogFunc
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!114 &573910457
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2984,8 +2977,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a471d9ba0b73c74f89326e07c364532, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverUI: {fileID: 0}
-  buttons: {fileID: 0}
+  gameOverUI: {fileID: 1656864167}
+  buttons: {fileID: 1914338031}
 --- !u!4 &583531924
 Transform:
   m_ObjectHideFlags: 0
@@ -5083,7 +5076,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7661404148397557826, guid: e5bc0a6553cd9ed46afceaa2a01ce6d9, type: 3}
   m_PrefabInstance: {fileID: 5162864615321974804}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1656864167}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9a471d9ba0b73c74f89326e07c364532, type: 3}
@@ -5345,8 +5338,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10130080ef962341806216d5040f985, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImgUI: {fileID: 0}
-  collectedItemSprite: {fileID: 0}
+  itemImgUI: {fileID: 216748025}
+  collectedItemSprite: {fileID: -961260297, guid: 17534e80a47cbc14eaaee1d826747bb0, type: 3}
 --- !u!4 &1504617160
 Transform:
   m_ObjectHideFlags: 0
@@ -5473,11 +5466,16 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  IsAutoUsing: 0
+  IsAutoUsing: 1
 --- !u!4 &1640571243 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3485218832812988690, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
   m_PrefabInstance: {fileID: 652879846}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1656864167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5986774522992230669, guid: e5bc0a6553cd9ed46afceaa2a01ce6d9, type: 3}
+  m_PrefabInstance: {fileID: 5162864615321974804}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1676133013
 PrefabInstance:
@@ -6114,6 +6112,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1913197246}
   m_CullTransparentMesh: 1
+--- !u!1 &1914338031 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3959551204195526481, guid: e5bc0a6553cd9ed46afceaa2a01ce6d9, type: 3}
+  m_PrefabInstance: {fileID: 5162864615321974804}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1990470614
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7276,6 +7279,10 @@ PrefabInstance:
       propertyPath: gameOverUI
       value: 
       objectReference: {fileID: 1351400593}
+    - target: {fileID: 1276797215280786345, guid: bafdc2f04cf187b49baff264d78dd6cf, type: 3}
+      propertyPath: timerManager
+      value: 
+      objectReference: {fileID: 339931911}
     - target: {fileID: 1276797215280786345, guid: bafdc2f04cf187b49baff264d78dd6cf, type: 3}
       propertyPath: startDialogue
       value: 
