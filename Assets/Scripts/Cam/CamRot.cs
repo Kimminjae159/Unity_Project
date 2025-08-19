@@ -6,12 +6,6 @@ public class CamRot : MonoBehaviour
     float mx = 0f;  // 마우스 x값을 저장
     float my = 0f;  // 마우스 y값을 저장
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-
-    }
-
     // Update is called once per frame
     void Update()
     {
