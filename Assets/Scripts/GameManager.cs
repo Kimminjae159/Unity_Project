@@ -8,7 +8,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour
 {
     // --- 싱글톤 인스턴스 ---
-    public static GameManager instance = null;
+    public static GameManager instance;
 
     // --- 게임 데이터 (씬 매니저가 참조) ---
     [Header("Game Core Data")]

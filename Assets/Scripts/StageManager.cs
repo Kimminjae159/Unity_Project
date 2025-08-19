@@ -9,15 +9,12 @@ using UnityEngine.Events; // Action 콜백을 사용하기 위함
 public class StageManager : MonoBehaviour
 {
     [Header("Component References")]
-    [SerializeField] private DialogueManager dialogueManager; // 대화 관리자
-    [SerializeField] private Timer timerUI;                 // 타이머 UI
+    [SerializeField] private Timer timerManager;                 // 타이머 UI
     [SerializeField] private GameOver gameOverUI;           // 게임오버 UI
     // [SerializeField] private GameClearUI gameClearUI;      // 게임클리어 UI (필요 시)
     // [SerializeField] private SympathyUI sympathyUI;        // 공감수치(체력) UI
 
     [Header("Scene Settings")]
-    [SerializeField] private float baseTimeLimit = 120f; // 이 레벨의 기본 제한 시간
-    [SerializeField] private float timeReductionPerRestart = 10f; // 재시작 시마다 감소할 시간
     [SerializeField] private UnityEvent levelClearScript;  // 레벨클리어시 행동할 Script
 
     [Header("Dialogue Assets")]
@@ -26,12 +23,13 @@ public class StageManager : MonoBehaviour
     [SerializeField] private DialogueAsset levelClearDialogue;  // 레벨클리어 대화
 
     // --- 내부 변수 ---
-    private float currentLevelTimeLimit; // 현재 레벨의 실제 제한 시간
     private bool isGameOver = false;     // 게임오버 상태 플래그 (중복 호출 방지)
 
     /// <summary>
     /// 씬이 로드될 때 호출됩니다.
+    /// 싱글톤 패턴을 적용하여 어디에서든 StageManager를 호출할 수 있도록 합니다.
     /// </summary>
+    public static StageManager instance;
     void Awake()
     {
         // GameManager 인스턴스가 없다면 오류 출력 후 종료
@@ -40,40 +38,32 @@ public class StageManager : MonoBehaviour
             Debug.LogError("GameManager instance not found!");
             return;
         }
-
+        // 싱글턴으로 유일 인스턴스 보장
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            DestroyImmediate(this);
+        }
         // GameManager로부터 데이터를 받아 씬 초기 구성
-        // 1. 난이도 조절: 재시작 횟수에 따라 제한 시간 조절
-        currentLevelTimeLimit = baseTimeLimit - (GameManager.instance.restartCount * timeReductionPerRestart);
-        if (currentLevelTimeLimit < 30f) currentLevelTimeLimit = 30f; // 최소 시간 보장
 
         // 2. 체력 UI 설정
         // sympathyUI.SetSympathy(GameManager.instance.sympathyValue);
 
         // 3. 모든 주요 UI 비활성화
-        if (timerUI) timerUI.gameObject.SetActive(false);
+        if (timerManager) timerManager.gameObject.SetActive(false);
         if (gameOverUI) gameOverUI.gameObject.SetActive(false);
         // if(gameClearUI) gameClearUI.gameObject.SetActive(false);
+
+        // 4. 씬의 Skybox 노출값 설정
+        RenderSettings.skybox.SetFloat("_Exposure", GameManager.instance.skyboxExposure);
     }
 
-    /// <summary>
-    /// 매 프레임 호출됩니다. 타이머를 처리합니다.
-    /// </summary>
     void Update()
     {
-        // 게임오버 상태이거나, 타이머가 비활성화 상태이면 로직을 실행하지 않음
-        if (isGameOver || !timerUI.gameObject.activeSelf)
-        {
-            return;
-        }
 
-        // UI 업데이트
-        //timerUI.UpdateTime(currentLevelTimeLimit);
-
-        // 시간 초과 시 게임오버 처리
-        // if (currentLevelTimeLimit <= 0)
-        // {
-        //     HandlePlayerGameOver("시간 초과");
-        // }
     }
 
     #region --- Public Methods (Called by Triggers) ---
@@ -92,7 +82,7 @@ public class StageManager : MonoBehaviour
         else
         {
             // 첫 시작 시에는 시작 대화를 출력하고, 대화가 끝나면 StartGame()을 콜백으로 실행
-            dialogueManager.StartDialogue(startDialogue, StartGame);
+            DialogueManager.instance.StartDialogue(startDialogue, StartGame);
         }
     }
 
@@ -103,7 +93,7 @@ public class StageManager : MonoBehaviour
     public void PlayerEvent(DialogueAsset eventDialogue)
     {
         // 이벤트 대화 출력
-        dialogueManager.StartDialogue(eventDialogue);
+        DialogueManager.instance.StartDialogue(eventDialogue);
         // 필요 시 특정 UI 활성화 등의 로직 추가
     }
 
@@ -134,10 +124,31 @@ public class StageManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true; // 클리어도 게임 종료 상태로 간주
 
-        timerUI.gameObject.SetActive(false);
+        timerManager.gameObject.SetActive(false);
         // gameClearUI.SetActive(true);
-        dialogueManager.StartDialogue(levelClearDialogue, ClearCallback);
+
         // 여기에 다음 레벨로 넘어가는 로직 추가 (예: 5초 후 씬 전환)
+        DialogueManager.instance.StartDialogue(levelClearDialogue, ClearCallback);
+    }
+
+    /// <summary>
+    /// 게임오버 상황을 최종적으로 처리하는 함수.
+    /// </summary>
+    /// <param name="reason">게임오버 사유</param>
+    public void HandlePlayerGameOver(string reason)
+    {
+        // 게임오버 중복 처리 방지
+        if (isGameOver) return;
+        isGameOver = true;
+
+        Debug.Log($"게임 오버! 사유: {reason}");
+
+        // 타이머 UI 비활성화, 게임오버 UI 활성화
+        timerManager.gameObject.SetActive(false);
+        gameOverUI.gameObject.SetActive(true);
+
+        // 게임오버 대화를 출력하고, 대화가 끝나면 버튼을 활성화하는 OnGameOverDialogueEnd를 콜백으로 전달
+        DialogueManager.instance.StartDialogue(gameOverDialogue, OnGameOverDialogueEnd);
     }
 
     #endregion
@@ -154,34 +165,8 @@ public class StageManager : MonoBehaviour
     }
     private void StartGame()
     {
-        // 씬의 Skybox 노출값 설정
-        RenderSettings.skybox.SetFloat("_Exposure", GameManager.instance.skyboxExposure);
-
-        // 타이머 UI의 script를 호출에서 그쪽에서 자체적으로 세팅하고 시작하도록 하기
-
-        // 타이머 UI 활성화 및 시간 세팅
-        timerUI.remainingTime = currentLevelTimeLimit;
-        timerUI.gameObject.SetActive(true);
-    }
-
-    /// <summary>
-    /// 게임오버 상황을 최종적으로 처리하는 함수.
-    /// </summary>
-    /// <param name="reason">게임오버 사유</param>
-    private void HandlePlayerGameOver(string reason)
-    {
-        // 게임오버 중복 처리 방지
-        if (isGameOver) return;
-        isGameOver = true;
-
-        Debug.Log($"게임 오버! 사유: {reason}");
-
-        // 타이머 UI 비활성화, 게임오버 UI 활성화
-        timerUI.gameObject.SetActive(false);
-        gameOverUI.gameObject.SetActive(true);
-
-        // 게임오버 대화를 출력하고, 대화가 끝나면 버튼을 활성화하는 OnGameOverDialogueEnd를 콜백으로 전달
-        dialogueManager.StartDialogue(gameOverDialogue, OnGameOverDialogueEnd);
+        // 타이머 UI 활성화
+        timerManager.gameObject.SetActive(true);
     }
 
     /// <summary>

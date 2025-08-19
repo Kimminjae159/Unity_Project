@@ -21,7 +21,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1225572745728033674
 Transform:
   m_ObjectHideFlags: 0
@@ -135,6 +135,7 @@ MonoBehaviour:
   gravity: -9.8
   yVelocity: 0
   rotateSpeed: 10
+  mouseSpd: 120
 --- !u!143 &4486175050454023432
 CharacterController:
   m_ObjectHideFlags: 0

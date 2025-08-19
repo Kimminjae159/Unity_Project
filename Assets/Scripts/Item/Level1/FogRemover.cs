@@ -9,11 +9,7 @@ public class FogRemover : MonoBehaviour
 
     Color originalFogColor;       // 기존 Fog 색상 (옵션)
     float originalFogDensity;     // 기존 Fog 밀도 (옵션)
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+
     // 외부에서 코루틴 함수 실행이 가능하도록 생성한 함수
     public void ApplyFogFunc()
     {

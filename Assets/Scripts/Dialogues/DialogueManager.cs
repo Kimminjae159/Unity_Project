@@ -36,6 +36,13 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;    // 코루틴이 진행중인지에 대한 여부를 해당 변수 할당 여부를 통해 판단
     private List<GameObject> activeChoiceButtons = new List<GameObject>(); // 버튼 클릭시 실행할 행동을 이것으로 선정
 
+    public static DialogueManager instance;
+    void Awake()
+    {
+        if (instance == null) instance = this;
+        else DestroyImmediate(this);
+    }
+
     void Start()
     {
         dialoguePanel.SetActive(false);

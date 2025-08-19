@@ -1,30 +1,24 @@
 using UnityEngine;
 using UnityEngine.SceneManagement; // 씬 관리를 위해 필요합니다.
 using UnityEngine.Events;
+using UnityEngine.UI;
 
 public class GameOver : MonoBehaviour
 {
-    // 게임오버 UI 전체를 담고 있는 GameObject (Canvas 또는 Panel)를 인스펙터에서 연결합니다.
-    public GameObject gameOverCanvas;
-    public GameObject otherUI;
+    // 게임오버 UI를 인스펙터에서 연결
+    public GameObject gameOverUI;
+    public GameObject buttons;
 
-    // 게임이 시작될 때 게임오버 UI를 보이지 않게 설정합니다.
-    void Start()
-    {
-        if (gameOverCanvas != null)
-        {
-            gameOverCanvas.SetActive(false);
-        }
-    }
+    // 게임이 시작될 때 게임오버 UI를 보이지 않게 설정하는 것은 StageManager이므로 건들이지 않음
 
-    // Timer 스크립트에서 호출할 게임오버 함수입니다.
+    // 게임 오버시, 외부에서 호출할 함수
     public void EndingFunc()
     {
         // 게임오버 UI를 화면에 표시합니다.
-        if (gameOverCanvas != null)
+        if (gameOverUI != null)
         {
-            gameOverCanvas.SetActive(true);
-            otherUI.SetActive(false);
+            gameOverUI.SetActive(true);
+            buttons.SetActive(false);
         }
         Debug.Log("Game Over!");
     }

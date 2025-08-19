@@ -5,10 +5,15 @@ using System.Collections;
 
 public class Timer : MonoBehaviour
 {
+    [Header("UI_Player의 timerText를 할당")]
     public TextMeshProUGUI timerText;
-    public float remainingTime;
 
-    public GameOver gameOver;
+    private float remainingTime;
+
+    void Start()
+    {
+        remainingTime = GameManager.instance.timeLimit;
+    }
 
     void TimeCountdown()
     {
@@ -25,15 +30,15 @@ public class Timer : MonoBehaviour
             {
                 remainingTime = 0;
                 StartCoroutine(GameOver());
-                timerText.color = Color.red;
             }
             TimeCountdown();
+            if(remainingTime < 31) timerText.color = Color.red;
         }
     }
 
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1);
-        gameOver.EndingFunc();
+        StageManager.instance.HandlePlayerGameOver("timeOut");
     }
 }
