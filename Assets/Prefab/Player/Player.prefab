@@ -136,6 +136,7 @@ MonoBehaviour:
   gravity: -9.8
   yVelocity: 0
   rotateSpeed: 10
+  anim: {fileID: 8825657994996075511}
 --- !u!143 &4486175050454023432
 CharacterController:
   m_ObjectHideFlags: 0
@@ -237,8 +238,8 @@ Camera:
   m_GameObject: {fileID: 3848605056589100592}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_ClearFlags: 2
+  m_BackGroundColor: {r: 0.25841936, g: 0.28834033, b: 0.3207547, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -539,6 +540,10 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: ee1ba36aa060dbe49ba8e96290b3bb72, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 798d4ed014ea0764ab3e3b94baa99508, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 98ca21dad0da1e6418387b79c6e23a69, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -603,12 +608,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3077921462669560551, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 4e437036609481c4087c1124638a93f7, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 98ca21dad0da1e6418387b79c6e23a69, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -617,5 +626,10 @@ PrefabInstance:
 --- !u!4 &3214204519591055757 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
+  m_PrefabInstance: {fileID: 3103433719169644134}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8825657994996075511 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
   m_PrefabInstance: {fileID: 3103433719169644134}
   m_PrefabAsset: {fileID: 0}
