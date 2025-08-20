@@ -15,6 +15,8 @@ public class SimpleMove : MonoBehaviour
     bool isGrounded = false;
     bool wrongPanel = false;
 
+    public Animator anim; //애니메이션 컴포넌트 변수 선언
+
     void Start()
     {
         controller = GetComponent<CharacterController>();   //그릇에 데이터를 담기. 
@@ -30,8 +32,16 @@ public class SimpleMove : MonoBehaviour
         dir = new Vector3(h, 0, v);
         // 정규화 Normalize = 방향을 유지하면서 벡터의 길이를 1로 고정 
         dir.Normalize();
+
+        anim.SetFloat("BlendX", h); //BlenderX에 h값 전달(좌우)
+        anim.SetFloat("BlendY", v); //BlenderY에 v값 전달(상하)
+
         if (controller.collisionFlags == CollisionFlags.Below)
         {
+            if(!wrongPanel&& !isGrounded)
+            {
+                anim.SetTrigger("isLanding");//Animation trigger 지정(착지 동작하도록)
+            }
             isGrounded = true;
             if (wrongPanel)
             {
@@ -42,8 +52,16 @@ public class SimpleMove : MonoBehaviour
                 yVelocity = 0;
             }
         }
+        else
+        {
+            if (isGrounded == true)
+            {
+                anim.SetTrigger("isFalling");
+            }
+        }
         if (Input.GetButtonDown("Jump") && isGrounded && !wrongPanel)
         {
+            anim.SetTrigger("isJump");//Animation trigger 지정(점프 동작하도록)
             yVelocity = jumpPower;
             isGrounded = false;
         }
