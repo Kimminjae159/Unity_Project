@@ -2346,11 +2346,31 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5416821020908100082, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
       propertyPath: m_Name
-      value: Item
+      value: Item_Portal
       objectReference: {fileID: 0}
     - target: {fileID: 5416821020908100082, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
       propertyPath: m_TagString
       value: Item
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2087422172}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ApplyPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Portal, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 9213959565550695650, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
       propertyPath: m_IsTrigger
@@ -12779,6 +12799,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2087422171}
+  - component: {fileID: 2087422172}
   m_Layer: 0
   m_Name: ItemLogic_Container
   m_TagString: Untagged
@@ -12801,6 +12822,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2087422172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2087422170}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fa51b30c488b5e48851df04d56caf8c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destination: {fileID: 618122617}
+  player: {fileID: 1055123967}
 --- !u!1 &2101758085
 GameObject:
   m_ObjectHideFlags: 0
@@ -13463,8 +13498,8 @@ SceneRoots:
   - {fileID: 914061563}
   - {fileID: 1193539532}
   - {fileID: 1393512479}
-  - {fileID: 1993094347}
   - {fileID: 1094251958}
+  - {fileID: 1993094347}
   - {fileID: 1869813274}
   - {fileID: 1078457598}
   - {fileID: 618122621}

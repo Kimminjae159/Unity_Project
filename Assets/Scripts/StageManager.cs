@@ -32,6 +32,8 @@ public class StageManager : MonoBehaviour
     /// 싱글톤 패턴을 적용하여 어디에서든 StageManager를 호출할 수 있도록 합니다.
     /// </summary>
     public static StageManager instance;
+    [Header("테스트 중이라면 false로 설정")]
+    public bool MemberCheckMode = true;
     private bool AllMemberOK = true;
     void Awake()
     {
@@ -51,7 +53,7 @@ public class StageManager : MonoBehaviour
             Debug.LogError("StageManager 스크립트에 GameOver 스크립트가 할당되지 않음. \n GameOver 스크립트가 Component로 존재하는 Object를 할당할 것");
             AllMemberOK = false;
         }
-        if (!AllMemberOK) return;
+        if (MemberCheckMode && !AllMemberOK) return;
 
         
         // 싱글턴으로 유일 인스턴스 보장
@@ -138,7 +140,7 @@ public class StageManager : MonoBehaviour
         if (isGameOver) return;
         isGameOver = true; // 클리어도 게임 종료 상태로 간주
 
-        playerUIManager.Show();
+        if(!playerUIManager) playerUIManager.Hide();
         // gameClearUI.SetActive(true);
 
         // 여기에 다음 레벨로 넘어가는 로직 추가 (예: 5초 후 씬 전환)

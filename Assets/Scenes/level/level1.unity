@@ -5811,6 +5811,26 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Item
       objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 632717704}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ApplyPortal
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Portal, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: OnItemCollected.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 9213959565550695650, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
       propertyPath: m_IsTrigger
       value: 1
