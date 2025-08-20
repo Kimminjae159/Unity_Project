@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int health = 5;          // 체력
     public int restartCount = 0;    // 재시작 횟수
     public float skyboxExposure = 1.3f; // 스카이박스 노출값
-    public float timeLimit = 600f;  // 시간 제한 (초 단위)
+    public float timeLimit = 120f;  // 시간 제한 (초 단위)
     public int score = 0;           // 점수 (필요한지 여부를 따져봐야 할듯함)
     public bool isRestart = false;  // 현재 씬이 재시작된 것인지 여부
 
@@ -67,6 +67,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void RestartLevel()
     {
+        Debug.Log("GameManager의 restart 호출");
         PrepareForNewScene(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     } 
@@ -77,7 +78,7 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public void GoToTitle()
     {
-        Debug.Log("Go too Title...");
+        Debug.Log("Go to Title...");
         SceneManager.LoadScene(0);
     }
 }

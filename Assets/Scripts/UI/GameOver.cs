@@ -60,12 +60,14 @@ public class GameOver : MonoBehaviour
     public void RestartGame()
     {
         // 현재 씬을 처음부터 다시 로드합니다.
+        Debug.Log("restart");
         GameManager.instance.RestartLevel();
     }
 
     // '종료' 버튼에 연결할 함수입니다.
     public void QuitGame()
     {
+        Debug.Log("quit");
         GameManager.instance.GoToTitle();
     }
 }
