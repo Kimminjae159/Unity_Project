@@ -5,7 +5,7 @@ using System.Collections;
 
 public class Timer : MonoBehaviour
 {
-    [Header("UI_Player의 timerText를 할당")]
+    [Header("UI_Player의 TimerText를 할당")]
     public TextMeshProUGUI timerText;
 
     private float remainingTime;
@@ -46,6 +46,6 @@ public class Timer : MonoBehaviour
     IEnumerator GameOver()
     {
         yield return new WaitForSeconds(1);
-        StageManager.instance.HandlePlayerGameOver("timeOut");
+        StageManager.instance.TriggerPlayerGameOver("timeOut");
     }
 }

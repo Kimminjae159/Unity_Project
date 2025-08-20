@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &4672656834818068476
+--- !u!1 &2172197060016317822
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,47 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 3393507088167713731}
-  - component: {fileID: 1276797215280786345}
+  - component: {fileID: 3438491502527604737}
+  - component: {fileID: 883935145801370359}
+  - component: {fileID: 7030326364346244039}
   m_Layer: 0
-  m_Name: StageManager
+  m_Name: System_Managers
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: -964228994112308473, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &3393507088167713731
+--- !u!4 &3438491502527604737
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672656834818068476}
+  m_GameObject: {fileID: 2172197060016317822}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -4, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1276797215280786345
+--- !u!114 &883935145801370359
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4672656834818068476}
+  m_GameObject: {fileID: 2172197060016317822}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ce24e67ef389af2458c306e01408294b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueManager: {fileID: 2864683520241984600, guid: 15f02edf0c4e5484e9a3d83fff8cd659, type: 3}
-  timerUI: {fileID: 2039087952886124467, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
-  gameOverUI: {fileID: 7661404148397557826, guid: e5bc0a6553cd9ed46afceaa2a01ce6d9, type: 3}
-  baseTimeLimit: 120
-  timeReductionPerRestart: 10
+  playerUIManager: {fileID: 0}
+  gameOverManager: {fileID: 0}
   levelClearScript:
     m_PersistentCalls:
       m_Calls:
@@ -67,3 +65,16 @@ MonoBehaviour:
   startDialogue: {fileID: 0}
   gameOverDialogue: {fileID: 0}
   levelClearDialogue: {fileID: 0}
+--- !u!114 &7030326364346244039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2172197060016317822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10130080ef962341806216d5040f985, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemImgUI: {fileID: 0}
