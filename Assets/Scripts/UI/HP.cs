@@ -10,8 +10,7 @@ public class HP : MonoBehaviour
     [Tooltip("생성된 HP 아이콘들이 위치할 부모 오브젝트 (Horizontal Layout Group이 있는 곳) \n Player UI -> HP Container를 할당 ")]
     public Transform iconContainer; // 2. HP 아이콘들이 생성될 부모 Transform (HP_Container)
 
-    [Tooltip("플레이어 최대 체력 설정")]
-    [SerializeField] private int maxHp = 5; // 3. 최대 체력 (기본값 5, 인스펙터에서 변경 가능)
+    private int maxHp = GameManager.instance.healthPoint; // 3. 최대 체력 (GameManager에서 결정)
 
 
  

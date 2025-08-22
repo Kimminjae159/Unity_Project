@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     /// (예: UI 버튼의 OnClick 이벤트에서 호출)
     /// </summary>
     /// <param name="isThisARestart">재시작하는 경우 true, 다음 레벨로 가는 경우 false</param>
-    public void PrepareForNewScene(bool isThisARestart)
+    public void PrepareForNewScene(bool isThisARestart = false)
     {
         isRestart = isThisARestart;
         if (isThisARestart)
@@ -60,6 +60,8 @@ public class GameManager : MonoBehaviour
             restartCount++;
         }
         // 다음 씬으로 넘어갈 때 점수나 기타 데이터를 초기화하거나 변경하는 로직 추가 가능
+        if (!isThisARestart)
+        { healthPoint = 5; }
     }
 
     /// <summary>
