@@ -52,13 +52,13 @@ public class SimpleMove : MonoBehaviour
                 yVelocity = 0;
             }
         }
-        else
-        {
-            if (isGrounded == true)
-            {
-                anim.SetTrigger("isFalling");
-            }
-        }
+        // else
+        // {
+        //     if (isGrounded == true)
+        //     {
+        //         anim.SetTrigger("isFalling");
+        //     }
+        // }
         if (Input.GetButtonDown("Jump") && isGrounded && !wrongPanel)
         {
             anim.SetTrigger("isJump");//Animation trigger 지정(점프 동작하도록)

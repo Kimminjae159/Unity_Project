@@ -32,7 +32,7 @@ Transform:
   m_GameObject: {fileID: 2175964535295486785}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2, z: 0}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -223,7 +223,7 @@ Transform:
   m_GameObject: {fileID: 3848605056589100592}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.08, z: 0.085}
+  m_LocalPosition: {x: 0, y: 1.11, z: 0.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -536,6 +536,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: male_player_futuristic_rig
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 798d4ed014ea0764ab3e3b94baa99508, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3077921462669560551, guid: 798d4ed014ea0764ab3e3b94baa99508, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -562,6 +566,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1225572745728033674}
     m_Modifications:
+    - target: {fileID: -8679921383154817045, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -602,6 +618,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8679921383154817045, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
       propertyPath: m_Name
       value: female_player_futuristic_rig
@@ -618,6 +638,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 98ca21dad0da1e6418387b79c6e23a69, type: 2}
+    - target: {fileID: 5866666021909216657, guid: 3758152202a3d1c4e96301d679de0677, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
