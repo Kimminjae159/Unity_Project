@@ -260,6 +260,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     private void EndDialogue()
     {
+        dialogueText.text = "";
         dialoguePanel.SetActive(false); // Dialogue 패널 제거
         ClearChoices();  // 선택지 제거
         if (player) player.GetComponent<SimpleMove>().enabled = true;   // 플레이어 무브 가능

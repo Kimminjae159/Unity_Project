@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     // --- 게임 데이터 (씬 매니저가 참조) ---
     [Header("Game Core Data")]
     public int sympathyValue = 0;   // 공감 수치 
-    public int healthPoint = 5;          // 최대 체력
+    public int healthPoint = 5;     // 최대 체력
     public int restartCount = 0;    // 재시작 횟수
     public float skyboxExposure = 1.3f; // 스카이박스 노출값
     public float timeLimit = 120f;  // 시간 제한 (초 단위)
@@ -49,19 +49,24 @@ public class GameManager : MonoBehaviour
 
     /// <summary>
     /// 새로운 씬을 로드하기 전에 호출하여 데이터를 준비하는 용도
-    /// (예: UI 버튼의 OnClick 이벤트에서 호출)
+    /// 스텟 초기화가 주 목적
     /// </summary>
     /// <param name="isThisARestart">재시작하는 경우 true, 다음 레벨로 가는 경우 false</param>
     public void PrepareForNewScene(bool isThisARestart = false)
     {
-        isRestart = isThisARestart;
-        if (isThisARestart)
+        isRestart = isThisARestart; // isRestart : 현재씬을 재시작한 경우 true, 다음씬으로 넘어갈 경우 false가 됨
+
+        // 공통 사항 : 재시작시 HP 복구
+        healthPoint = 5;
+
+        if (isThisARestart) // 재시작일 경우
         {
             restartCount++;
         }
-        // 다음 씬으로 넘어갈 때 점수나 기타 데이터를 초기화하거나 변경하는 로직 추가 가능
-        if (!isThisARestart)
-        { healthPoint = 5; }
+        else  // 다음 씬으로 넘어간 경우
+        {
+
+        }
     }
 
     /// <summary>

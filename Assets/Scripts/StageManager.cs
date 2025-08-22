@@ -69,13 +69,7 @@ public class StageManager : MonoBehaviour
         }
         // GameManager로부터 데이터를 받아 씬 초기 구성
 
-        // 2. 체력 UI 설정 --> 체력 UI에서 알아서 처리하도록 변경할 예정
-        // sympathyUI.SetSympathy(GameManager.instance.sympathyValue);
-
-        // 3. 모든 주요 UI 비활성화 --> 각 부분에서 알아서 처리하도록 변경
-        // if(gameClearUI) gameClearUI.gameObject.SetActive(false);
-
-        // 4. 씬의 Skybox 노출값 설정
+        // 씬의 Skybox 노출값 설정
         RenderSettings.skybox.SetFloat("_Exposure", GameManager.instance.skyboxExposure);
     }
 
@@ -191,6 +185,7 @@ public class StageManager : MonoBehaviour
     /// </summary>
     private void ClearCallback()
     {
+        GameManager.instance.PrepareForNewScene();
         levelClearScript.Invoke();
     }
     private void StartGame()
