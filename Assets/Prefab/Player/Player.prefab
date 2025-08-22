@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3574938783405274672}
   - component: {fileID: 8646900617537991274}
   - component: {fileID: 3486576346335620220}
-  - component: {fileID: 6149924868670579382}
   - component: {fileID: 4486175050454023432}
+  - component: {fileID: 6149924868670579382}
   - component: {fileID: 1739040401866090344}
   - component: {fileID: 1625397295780720946}
   m_Layer: 0
@@ -118,25 +118,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &6149924868670579382
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2175964535295486785}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e4e621796b6c4a048885d3c99d44f6ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dir: {x: 0, y: 0, z: 1}
-  speed: 3
-  jumpPower: 5
-  gravity: -9.8
-  yVelocity: 0
-  rotateSpeed: 10
-  anim: {fileID: 8825657994996075511}
 --- !u!143 &4486175050454023432
 CharacterController:
   m_ObjectHideFlags: 0
@@ -162,6 +143,25 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6149924868670579382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2175964535295486785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4e621796b6c4a048885d3c99d44f6ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dir: {x: 0, y: 0, z: 1}
+  speed: 3
+  jumpPower: 5
+  gravity: -9.8
+  yVelocity: 0
+  rotateSpeed: 10
+  anim: {fileID: 8825657994996075511}
 --- !u!114 &1739040401866090344
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -268,7 +268,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0

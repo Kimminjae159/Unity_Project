@@ -1,6 +1,7 @@
 using UnityEngine;
 using System;
-using UnityEngine.Events; // Action 콜백을 사용하기 위함
+using UnityEngine.Events;
+using UnityEngine.Rendering; // Action 콜백을 사용하기 위함
 
 /// <summary>
 /// 각 레벨 씬의 전반적인 흐름을 관리합니다.
@@ -25,6 +26,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private DialogueAsset levelClearDialogue;  // 레벨클리어 대화
 
     // --- 내부 변수 ---
+    public static Action<int> callUpdateHP; // 옵저버 패턴을 활용, HP가 변경되면 이벤트에 등록된 함수를 호출
     private bool isGameOver = false;     // 게임오버 상태 플래그 (중복 호출 방지)
 
     /// <summary>
@@ -77,9 +79,14 @@ public class StageManager : MonoBehaviour
         RenderSettings.skybox.SetFloat("_Exposure", GameManager.instance.skyboxExposure);
     }
 
-    void Update()
+    // 활성화시 Player 낙하 신호를 구독, 비활성화시 구독해제
+    void OnEnable()
     {
-
+        PlayerReset.CallPlayerReset += OnPlayerFall;
+    }
+    void OnDisable()
+    {
+        PlayerReset.CallPlayerReset -= OnPlayerFall;
     }
 
     #region --- Public Methods (Called by Triggers) ---
@@ -114,6 +121,14 @@ public class StageManager : MonoBehaviour
     }
 
     /// <summary>
+    /// 플레이어 낙사시 호출될 함수
+    /// </summary>
+    public void OnPlayerFall()
+    {
+        OnPlayerDamaged();
+    }
+
+    /// <summary>
     /// 플레이어 HP가 감소하는 상황일 때 호출
     /// </summary>
     public void OnPlayerDamaged()
@@ -124,7 +139,7 @@ public class StageManager : MonoBehaviour
         bool isOutOfSympathy = GameManager.instance.DecreaseHealth();
 
         // 체력 UI 업데이트
-        // sympathyUI.SetSympathy(GameManager.instance.sympathyValue);
+        callUpdateHP?.Invoke(GameManager.instance.healthPoint);
 
         if (isOutOfSympathy)
         {

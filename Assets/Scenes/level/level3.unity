@@ -1868,7 +1868,7 @@ Light:
   m_RenderMode: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 119
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 0
@@ -1900,6 +1900,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!224 &205242026 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 601853416750884412, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+  m_PrefabInstance: {fileID: 1220703659}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &224452444
 GameObject:
   m_ObjectHideFlags: 0
@@ -7824,6 +7829,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1006440986026740728, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006440986026740728, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006440986026740728, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006440986026740728, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1006440986026740728, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3679506294268933413, guid: e98b767c5d654aa42b2f4d542a1d4335, type: 3}
       propertyPath: m_Name
       value: UI_Player
@@ -8860,6 +8885,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4718973451567231152, guid: b04446a0d6eee504f8e26f924b4998ab, type: 3}
+      propertyPath: iconContainer
+      value: 
+      objectReference: {fileID: 205242026}
     - target: {fileID: 6436714807218977425, guid: b04446a0d6eee504f8e26f924b4998ab, type: 3}
       propertyPath: player
       value: 

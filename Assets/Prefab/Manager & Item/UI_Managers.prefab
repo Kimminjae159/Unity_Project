@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8890415353976655488}
   - component: {fileID: 1992500286108377489}
   - component: {fileID: 7711674813409611148}
+  - component: {fileID: 4718973451567231152}
   - component: {fileID: 6436714807218977425}
   m_Layer: 0
   m_Name: UI_Managers
@@ -76,6 +77,21 @@ MonoBehaviour:
   gameOverUI: {fileID: 0}
   gameOverText: {fileID: 0}
   buttonParent: {fileID: 0}
+--- !u!114 &4718973451567231152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139887642974910613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7f27e855e5ca2849aa4e8694c7d5e02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hpIconPrefab: {fileID: 2426686817943251299, guid: c18bc0b48ff47b14fafcc188b3043116, type: 3}
+  iconContainer: {fileID: 0}
+  maxHp: 5
 --- !u!114 &6436714807218977425
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -19,6 +20,7 @@ public class PlayerReset : MonoBehaviour
     public bool SavePoint = true;
     public bool PathColorizer = true;
 
+    public static Action CallPlayerReset;
     void Start()
     {
         // 최초 위치 기억
@@ -55,6 +57,7 @@ public class PlayerReset : MonoBehaviour
             moveScript.yVelocity = 0;        // 점프/낙하시 수직 속도 초기화
             // moveScript.isGround = false;     // 필요시 바닥상태 강제조정
         }
+        CallPlayerReset?.Invoke();
     }
     
     // 이전에 방문한 Instance에 대해 같은 작업을 반복하지 않도록 하기 위함
