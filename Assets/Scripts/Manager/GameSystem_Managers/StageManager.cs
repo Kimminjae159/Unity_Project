@@ -27,6 +27,7 @@ public class StageManager : MonoBehaviour
 
     // --- 내부 변수 ---
     public static Action<int> callUpdateHP; // 옵저버 패턴을 활용, HP가 변경되면 이벤트에 등록된 함수를 호출
+    public static Action<bool> callTimer; 
     private bool isGameOver = false;     // 게임오버 상태 플래그 (중복 호출 방지)
 
     /// <summary>
@@ -146,13 +147,15 @@ public class StageManager : MonoBehaviour
     /// </summary>
     public void PlayerLevelClear()
     {
+        Debug.Log($"레벨 클리어, isGameOver : {isGameOver}");
         if (isGameOver) return;
         isGameOver = true; // 클리어도 게임 종료 상태로 간주
 
-        if(!playerUIManager) playerUIManager.Hide();
+        if(playerUIManager) playerUIManager.Hide();
         // gameClearUI.SetActive(true);
 
-        // 여기에 다음 레벨로 넘어가는 로직 추가 (예: 5초 후 씬 전환)
+        // 여기에 다음 레벨로 넘어가는 로직 추가
+        //callTimer?.Invoke(false);
         DialogueManager.instance.StartDialogue(levelClearDialogue, ClearCallback);
     }
 
@@ -183,16 +186,18 @@ public class StageManager : MonoBehaviour
     /// 실제 게임 플레이를 시작하는 로직.
     /// (시작 대화가 끝난 후 또는 재시작 시 즉시 호출됨)
     /// </summary>
+    private void StartGame()
+    {
+        // 타이머 UI 활성화
+        playerUIManager.Show();
+        callTimer?.Invoke(true);
+    }
     private void ClearCallback()
     {
         GameManager.instance.PrepareForNewScene();
         levelClearScript.Invoke();
     }
-    private void StartGame()
-    {
-        // 타이머 UI 활성화
-        playerUIManager.Show();
-    }
+    
 
     #endregion
 }
