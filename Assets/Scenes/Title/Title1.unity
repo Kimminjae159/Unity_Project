@@ -1283,6 +1283,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ce09fc184cc14c1cb6d2bc444e00a41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bgmSounds:
+  - sceneName: Title1
+    bgmClip: {fileID: 8300000, guid: 64c38edb1034da04e8058a65f8c4aa3c, type: 3}
+  - sceneName: level 0
+    bgmClip: {fileID: 8300000, guid: dd2765ce610cf8647aedd0cb5318a9aa, type: 3}
+  - sceneName: level1
+    bgmClip: {fileID: 8300000, guid: 51c2601040f074c48b27f8e11af8b93e, type: 3}
+  - sceneName: level2
+    bgmClip: {fileID: 8300000, guid: 51c2601040f074c48b27f8e11af8b93e, type: 3}
+  - sceneName: level3
+    bgmClip: {fileID: 8300000, guid: 51c2601040f074c48b27f8e11af8b93e, type: 3}
+  - sceneName: level4
+    bgmClip: {fileID: 8300000, guid: 51c2601040f074c48b27f8e11af8b93e, type: 3}
 --- !u!4 &754486206
 Transform:
   m_ObjectHideFlags: 0

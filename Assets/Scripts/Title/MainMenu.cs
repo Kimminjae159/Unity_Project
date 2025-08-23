@@ -21,7 +21,7 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("게임 시작 버튼 클릭!");
         // "GameScene"은 실제 게임이 진행되는 씬의 이름으로 변경해야 합니다.
-        SceneManager.LoadScene("GameScene"); 
+        SceneManager.LoadScene("level 0"); 
     }
 
     public void OnClick_Tutorial()
