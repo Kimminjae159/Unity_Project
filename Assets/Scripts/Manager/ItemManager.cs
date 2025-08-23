@@ -21,7 +21,16 @@ public class ItemManager : MonoBehaviour
         if (!_instance) _instance = this;
         else DestroyImmediate(this);
         instance = _instance;
+        Init();
     }
+
+    // 초기화 : 아이템 스프라이트 제거 및 UI 이미지 알파값 0으로 설정
+    private void Init()
+    {
+        itemImgUI.sprite = null;
+        itemImgUI.color = new Color(itemImgUI.color.r, itemImgUI.color.g, itemImgUI.color.b, 0);
+    }
+
     /// <summary>
     /// isActive : 사용 가능 여부 결정. false 인 경우 즉시 return 하여 아래의 키다운을 인식하지 못하도록 함
     /// isReuable : 재사용 가능시에는 ItemSprite를 변경하지 않지만, 재사용 불가시에는 ItemSprite를 제거
@@ -38,8 +47,8 @@ public class ItemManager : MonoBehaviour
             isActive = false;
             if (!isReusable)
             {
-                itemImgUI.sprite = null;
-                itemImgUI.color = new Color(itemImgUI.color.r, itemImgUI.color.g, itemImgUI.color.b, 0);
+                Debug.Log("Update, Init()");
+                Init();
             }
             script.Invoke();
         }
@@ -49,7 +58,7 @@ public class ItemManager : MonoBehaviour
     /// 호출시 IsActive를 true로 만듦
     /// UI를 띄우는 아이템등을 위한 것
     /// </summary>
-    public void ItemIsActiveSetting()
+    public void ItemIsActiveOn()
     {
         isActive = true;
     }
@@ -70,12 +79,10 @@ public class ItemManager : MonoBehaviour
         itemImgUI.sprite = itemSprite;  // 전달 받은 이미지 할당
         itemImgUI.color = new Color(itemImgUI.color.r, itemImgUI.color.g, itemImgUI.color.b, 1); // alpha 값 설정
 
+        this.isReusable = isReusable;
         // 즉시 사용 아이템이 아닐 경우 = isAutoUsing이 false일 경우
         // 아이템 인벤토리는 1개이기 때문에 기존에 먹은 것을 밀어냄
         // 따라서 재사용가능을 알리는 isReusable을 갱신
-        if (!isAutoUsing)
-        {
-            this.isReusable = isReusable;
-        }
+    
     }
 }

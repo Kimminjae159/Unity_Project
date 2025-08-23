@@ -9,6 +9,7 @@ public class Timer : MonoBehaviour
     public TextMeshProUGUI timerText;
 
     private float remainingTime;
+    private bool isRunning = false;
 
     public static Timer instance;
     void Awake()
@@ -21,6 +22,19 @@ public class Timer : MonoBehaviour
     {
         remainingTime = GameManager.instance.timeLimit;
     }
+    void OnEnable()
+    {
+        StageManager.callTimer += TimerOnOff;
+    }
+    void OnDisable()
+    {
+        StageManager.callTimer -= TimerOnOff;
+    }
+    // run : true면 타이머 카운트 시작, false면 타미어 카운트 중지
+    public void TimerOnOff(bool run)
+    {
+        isRunning = run;
+    }
 
     void TimeCountdown()
     {
@@ -30,6 +44,7 @@ public class Timer : MonoBehaviour
     }
     void Update()
     {
+        if(!isRunning) { return; } // 타이머 카운팅 동작 여부를 결정
         if (remainingTime > 0)
         {
             remainingTime -= Time.deltaTime;
@@ -39,7 +54,7 @@ public class Timer : MonoBehaviour
                 StartCoroutine(GameOver());
             }
             TimeCountdown();
-            if(remainingTime < 31) timerText.color = Color.red;
+            if (remainingTime < 31) timerText.color = Color.red;
         }
     }
 

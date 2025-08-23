@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerReset : MonoBehaviour
 {
-    public float minY = -5f;      // 플레이어가 떨어지는 기준 y값
+    public float minY = -3f;      // 플레이어가 떨어지는 기준 y값
     private Vector3 startPos;     // 시작위치 저장
     private SimpleMove moveScript;      // 이동 스크립트 참조 (Optional)
     private CharacterController controller;
