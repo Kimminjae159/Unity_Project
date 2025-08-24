@@ -28,7 +28,7 @@ public class MainMenu : MonoBehaviour
     {
         Debug.Log("튜토리얼 버튼 클릭!");
         // "TutorialScene"은 튜토리얼 씬의 이름으로 변경해야 합니다.
-        SceneManager.LoadScene("TutorialScene");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void OnClick_Leaderboard()
