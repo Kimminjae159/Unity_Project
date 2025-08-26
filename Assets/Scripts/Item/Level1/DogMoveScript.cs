@@ -16,6 +16,7 @@ public class DogMoveScript : MonoBehaviour
     public LayerMask groundLayer; // 발판들이 속한 Layer (Inspector에서 설정)
 
     // === 내부 상태 변수들 ===
+    private float rotationDuration = 0.5f; //  Dog가 회전하는 데 걸리는 시간
     private bool isDogMoving = false; // Dog가 현재 이동 중인지 여부
     private GameObject currentPlatform = null; // Dog가 현재 밟고 있는 발판
 
@@ -133,6 +134,42 @@ public class DogMoveScript : MonoBehaviour
         Vector3 startPos = transform.position;
         // 다음 발판의 표면 위로 목표 위치 설정 (발판의 높이를 고려)
         Vector3 endPos = nextPlatform.transform.position + Vector3.up * (nextPlatform.GetComponent<Collider>().bounds.extents.y + 0.5f);
+
+
+        // --- 회전 로직 추가 ---
+        Vector3 moveDirection = endPos - startPos;
+        moveDirection.y = 0;
+
+        if (moveDirection != Vector3.zero)
+        {
+            // 모델의 Y축 -90도 오프셋을 보정.
+            // 1. 먼저 이동 방향을 바라보는 표준 회전값을 구함
+            Quaternion standardRotation = Quaternion.LookRotation(moveDirection);
+            // 2. 모델의 축 오프셋(-90도)에 해당하는 보정 회전값을 만듬
+            Quaternion correction = Quaternion.Euler(0, -90, 0);
+            // 3. 두 회전값을 곱하여 최종 목표 회전값을 계산
+            Quaternion targetRotation = standardRotation * correction;
+
+
+            // 현재 Dog의 회전값과 최종 목표 회전값 사이의 각도를 확인
+            if (Quaternion.Angle(transform.rotation, targetRotation) > 1.0f)
+            {
+                Quaternion startRotation = transform.rotation;
+                float rotationTimer = 0f;
+
+                while (rotationTimer < rotationDuration)
+                {
+                    rotationTimer += Time.deltaTime;
+                    float progress = rotationTimer / rotationDuration;
+                    transform.rotation = Quaternion.Slerp(startRotation, targetRotation, progress);
+                    yield return null;
+                }
+                // 정확하게 목표 방향을 바라보도록 보정
+                transform.rotation = targetRotation;
+                Debug.Log("회전 완료.");
+            }
+        }
+
 
         float timer = 0f;
         while (timer < jumpDuration)

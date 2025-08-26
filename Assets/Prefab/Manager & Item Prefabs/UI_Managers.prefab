@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 7711674813409611148}
   - component: {fileID: 4718973451567231152}
   - component: {fileID: 6436714807218977425}
+  - component: {fileID: 5282509440213230005}
   m_Layer: 0
   m_Name: UI_Managers
   m_TagString: Untagged
@@ -91,7 +92,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hpIconPrefab: {fileID: 2426686817943251299, guid: c18bc0b48ff47b14fafcc188b3043116, type: 3}
   iconContainer: {fileID: 0}
-  maxHp: 5
 --- !u!114 &6436714807218977425
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110,3 +110,18 @@ MonoBehaviour:
   choiceButtonPrefab: {fileID: 6412143714402234262, guid: 1d7f8ceaec3db4c47938243cc6449f9b, type: 3}
   typingSpeed: 0.05
   player: {fileID: 0}
+--- !u!114 &5282509440213230005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8139887642974910613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f681a20939d5942dc88fa2b2bea40530, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenuPanel: {fileID: 0}
+  optionsPanel: {fileID: 0}
+  tutorial: {fileID: 0}
