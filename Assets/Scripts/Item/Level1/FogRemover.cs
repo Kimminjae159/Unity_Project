@@ -26,7 +26,5 @@ public class FogRemover : MonoBehaviour
         RenderSettings.fog = true;
         RenderSettings.fogColor = originalFogColor;
         RenderSettings.fogDensity = originalFogDensity;
-
-        Destroy(gameObject);
     }
 }
