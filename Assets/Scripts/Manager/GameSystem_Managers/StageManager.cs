@@ -194,7 +194,7 @@ public class StageManager : MonoBehaviour
     }
     private void ClearCallback()
     {
-        GameManager.instance.PrepareForNewScene();
+
         levelClearScript.Invoke();
     }
     

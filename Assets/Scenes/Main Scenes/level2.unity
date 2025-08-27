@@ -2124,7 +2124,15 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -961260297, guid: 17534e80a47cbc14eaaee1d826747bb0, type: 3}
     - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: itemSprite
+      value: 
+      objectReference: {fileID: -286256195, guid: 61b6ea3b91ed2a743aac729f799e4c51, type: 3}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
       propertyPath: IsAutoUsing
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}
+      propertyPath: isAutoUsing
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5544637716149250042, guid: 8d628f165b0ea2a4e9883f7748d20c46, type: 3}

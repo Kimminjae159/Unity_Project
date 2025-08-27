@@ -13,7 +13,7 @@ public class SceneSwitch : MonoBehaviour
     {
         // 씬 이름이 비어있지 않다면 해당 씬을 로드합니다.
         if (nextScene) {
-            GameManager.instance.PrepareForNewScene();
+            GameManager.instance.PrepareForNewScene(SceneManager.GetActiveScene().buildIndex - 1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         } else {
             if (!string.IsNullOrEmpty(sceneName))

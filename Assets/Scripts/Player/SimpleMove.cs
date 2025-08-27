@@ -48,6 +48,10 @@ public class SimpleMove : MonoBehaviour
                 if (audioSource.isPlaying) audioSource.Stop();
             }
         }
+        else
+        {
+            if (audioSource.isPlaying) audioSource.Stop();
+        }
 
         dir = new Vector3(h, 0, v);
         // 정규화 Normalize = 방향을 유지하면서 벡터의 길이를 1로 고정 

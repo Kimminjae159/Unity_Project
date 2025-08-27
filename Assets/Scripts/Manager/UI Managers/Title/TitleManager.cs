@@ -11,6 +11,8 @@ public class TitleManager : MonoBehaviour
     [Tooltip("(tutorial UI 상위의 오브젝트 할당)")]
     public GameObject tutorial;
 
+    public GameObject leaderboard;
+
 
     // Start Button에 할당
     public void OnClickStart()
@@ -22,6 +24,11 @@ public class TitleManager : MonoBehaviour
     public void OnClickTutorial()
     {
         tutorial.SetActive(true);
+    }
+
+    public void OnClickLeaderBoard()
+    {
+        leaderboard.SetActive(true);
     }
 
     // Option Button에 할당

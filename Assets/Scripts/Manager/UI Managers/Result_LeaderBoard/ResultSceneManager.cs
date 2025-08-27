@@ -101,10 +101,10 @@ public class ResultSceneManager : MonoBehaviour
         comboScoreText.text = comboScore > 0 ? comboScore.ToString() : "--";
 
         // ClearTime 표시 (float 값이므로 0f와 비교, 소수점 2자리까지 표시)
-        clearTime1Text.text = GameManager.instance.ClearTime1 > 0 ? GameManager.instance.ClearTime1.ToString() : "--";
-        clearTime2Text.text = GameManager.instance.ClearTime2 > 0 ? GameManager.instance.ClearTime2.ToString() : "--";
-        clearTime3Text.text = GameManager.instance.ClearTime3 > 0 ? GameManager.instance.ClearTime3.ToString() : "--";
-        clearTime4Text.text = GameManager.instance.ClearTime4 > 0 ? GameManager.instance.ClearTime4.ToString() : "--";
+        clearTime1Text.text = GameManager.instance.ClearTime1 > 0 ? (GameManager.instance.ClearTime1*10).ToString() : "--";
+        clearTime2Text.text = GameManager.instance.ClearTime2 > 0 ? (GameManager.instance.ClearTime2 * 10).ToString() : "--";
+        clearTime3Text.text = GameManager.instance.ClearTime3 > 0 ? (GameManager.instance.ClearTime3 * 10).ToString() : "--";
+        clearTime4Text.text = GameManager.instance.ClearTime4 > 0 ? (GameManager.instance.ClearTime4 * 10).ToString() : "--";
 
         int totalClearTime = GameManager.instance.ClearTime1 +
                            GameManager.instance.ClearTime2 +

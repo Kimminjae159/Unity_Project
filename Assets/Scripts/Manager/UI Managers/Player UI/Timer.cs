@@ -57,6 +57,10 @@ public class Timer : MonoBehaviour
             if (remainingTime < 31) timerText.color = Color.red;
         }
     }
+    public int getRemainingTime()
+    {
+        return (int)remainingTime;
+    }
 
     IEnumerator GameOver()
     {

@@ -5834,6 +5834,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 8139887642974910613, guid: b04446a0d6eee504f8e26f924b4998ab, type: 3}
   m_PrefabInstance: {fileID: 914061563}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &914061565 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6436714807218977425, guid: b04446a0d6eee504f8e26f924b4998ab, type: 3}
+  m_PrefabInstance: {fileID: 914061563}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914061564}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00420aff5a6e44447a64258885fb6acc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &937834784
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9362,6 +9373,22 @@ PrefabInstance:
     - target: {fileID: 4868684222864099791, guid: 09819148d32d70b4a8b91d8a40343bd6, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5273741312394514893, guid: 09819148d32d70b4a8b91d8a40343bd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 914061565}
+    - target: {fileID: 5273741312394514893, guid: 09819148d32d70b4a8b91d8a40343bd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickOnNextButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 6465909026587144647, guid: 09819148d32d70b4a8b91d8a40343bd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 914061565}
+    - target: {fileID: 6465909026587144647, guid: 09819148d32d70b4a8b91d8a40343bd6, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ClickOnEscapeButton
       objectReference: {fileID: 0}
     - target: {fileID: 7611261408956659052, guid: 09819148d32d70b4a8b91d8a40343bd6, type: 3}
       propertyPath: m_AnchorMax.y

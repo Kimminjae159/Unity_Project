@@ -21,7 +21,6 @@ public class TutorialManager : MonoBehaviour
 
     [Header("UI 연결")]
     [SerializeField] private Image tutorialImage;
-    [SerializeField] private TextMeshProUGUI descriptionText;
     [SerializeField] private GameObject nextButton;
     [SerializeField] private GameObject prevButton;
 
@@ -53,14 +52,13 @@ public class TutorialManager : MonoBehaviour
     private void ShowPage(int index)
     {
         tutorialImage.sprite = pages[index].image;
-        descriptionText.text = pages[index].description;
 
         prevButton.SetActive(index > 0);
 
         if (index == pages.Length - 1)
         {
             // 마지막 페이지일 때 버튼 텍스트를 "돌아가기"로 변경
-            nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "창 닫기";
+            nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "창닫기";
         }
         else
         {

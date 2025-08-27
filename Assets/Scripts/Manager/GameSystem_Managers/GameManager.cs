@@ -70,15 +70,31 @@ public class GameManager : MonoBehaviour
     /// 새로운 씬을 로드하기 전에 호출하여 데이터를 준비하는 용도
     /// 스텟 초기화가 주 목적
     /// </summary>
-    /// <param name="isThisARestart">재시작하는 경우 true, 다음 레벨로 가는 경우 false</param>
-    public void PrepareForNewScene(bool isThisARestart = false)
+    /// <param name="isThisARestart">재시작하는 경우 0, 이동하는 Level의 단계를 인자로 넣음</param>
+    public void PrepareForNewScene(int sceneIndex)
     {
-        isRestart = isThisARestart; // isRestart : 현재씬을 재시작한 경우 true, 다음씬으로 넘어갈 경우 false가 됨
+        if (sceneIndex == 1)
+        {
+            ClearTime1 = Timer.instance.getRemainingTime();
+        }
+        else if (sceneIndex == 2)
+        {
+            ClearTime2 = Timer.instance.getRemainingTime();
+        }
+        else if (sceneIndex == 3)
+        {
+            ClearTime3 = Timer.instance.getRemainingTime();
+        }
+        else if (sceneIndex == 4)
+        {
+            ClearTime4 = Timer.instance.getRemainingTime();
+            comboScore = score;
+        }
 
         // 공통 사항 : 재시작시 HP 복구
         healthPoint = 5;
 
-        if (isThisARestart) // 재시작일 경우
+        if (sceneIndex == 0) // 재시작일 경우
         {
             restartCount++;
         }
@@ -97,7 +113,7 @@ public class GameManager : MonoBehaviour
     public void RestartLevel()
     {
         Debug.Log("GameManager의 restart 호출");
-        PrepareForNewScene(true);
+        PrepareForNewScene(0);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
