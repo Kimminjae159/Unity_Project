@@ -38,6 +38,8 @@ public class GameManager : MonoBehaviour
     private const int COMBO_BONUS = 10;   // 연속으로 밟을 때마다 추가되는 점수
     private const int CLEAR_BONUS = 500;  // 레벨 클리어 보너스
 
+
+    public static Action ScoreUpdateCall;
     // <summary>
     // 싱글톤 패턴 구현
     // </summary>
@@ -122,7 +124,7 @@ public class GameManager : MonoBehaviour
 
 
 
-    public static Action ScoreUpdateCall;
+    
     // Correct 발판 -> PlayerReset에서 , Wrong 발판 -> SimpleMove에서
     public void PlayerStepPlatform(bool isCorrect)
     {

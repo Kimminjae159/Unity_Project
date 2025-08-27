@@ -19,24 +19,16 @@ public class SimpleMove : MonoBehaviour
 
     private bool DontMove;
 
-    // public static SimpleMove instance;
-    // void Awake()
-    // {
-    //     if (instance == null)
-    //     {
-    //         instance = this;
-    //         DontDestroyOnLoad(gameObject);
-    //     }
-    //     else
-    //     {
-    //         DestroyImmediate(gameObject);
-    //     }
-    // }
-
+    [Header("오디오 설정")]
+    [SerializeField] private AudioClip jumpSound; // 점프 오디오 클립
+    [SerializeField] private AudioClip fallingFloor; // 낙하 오디오 클립
+    private AudioSource audioSource;
+    
     void Start()
     {
         controller = GetComponent<CharacterController>();   //그릇에 데이터를 담기. 
         DontMove = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -47,6 +39,14 @@ public class SimpleMove : MonoBehaviour
         {
             h = Input.GetAxis("Horizontal");  //a(-1)나 d(+1)를 누를 때 
             v = Input.GetAxis("Vertical");  //s(-1)나 w(+1)를 누를 때 
+            if (isGrounded && (h != 0f || v != 0f))
+            {
+                if (!audioSource.isPlaying) audioSource.Play();
+            }
+            else
+            {
+                if (audioSource.isPlaying) audioSource.Stop();
+            }
         }
 
         dir = new Vector3(h, 0, v);
@@ -81,6 +81,7 @@ public class SimpleMove : MonoBehaviour
         // }
         if (Input.GetButtonDown("Jump") && isGrounded && !wrongPanel && !DontMove)
         {
+            audioSource.PlayOneShot(jumpSound);
             anim.SetTrigger("isJump");//Animation trigger 지정(점프 동작하도록)
             yVelocity = jumpPower;
             isGrounded = false;
@@ -107,6 +108,7 @@ public class SimpleMove : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("Wrong"))
         {
+            audioSource.PlayOneShot(fallingFloor);
             GameManager.instance.PlayerStepPlatform(false);
             wrongPanel = true;
             Destroy(hit.gameObject);
