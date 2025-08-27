@@ -107,6 +107,7 @@ public class SimpleMove : MonoBehaviour
     {
         if (hit.gameObject.CompareTag("Wrong"))
         {
+            GameManager.instance.PlayerStepPlatform(false);
             wrongPanel = true;
             Destroy(hit.gameObject);
         }
@@ -122,7 +123,7 @@ public class SimpleMove : MonoBehaviour
     }
     public void somethingFunction()
     {
-        RenderSettings.skybox.SetFloat("_Exposure", 1);
+        RenderSettings.skybox.SetFloat("_Exposure", 1.3f);
     }
 
     public void PlayerDontMove(bool dontMove)

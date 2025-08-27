@@ -68,6 +68,8 @@ public class PlayerReset : MonoBehaviour
         {
             if (SavePoint) SavePointUpdate(hit);   // 세이브 포인트 갱신
             if (PathColorizer) PastPathColorizer(hit); // 밟아온 올바른 발판에 새로운 material 표시
+
+            GameManager.instance.PlayerStepPlatform(true); // Correct 발판을 밟았다고 알림
             visitedInstances.Add(hit.gameObject);
         }
     }

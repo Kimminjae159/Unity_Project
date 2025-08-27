@@ -45,12 +45,6 @@ public class GameOver : MonoBehaviour
     /// </summary>
     public void OnGameOver(DialogueAsset dialogue)
     {
-        // ScoreManager가 존재하면, 최종 점수를 저장하라고 명령
-        if (ScoreManager.instance != null)
-        {
-            ScoreManager.instance.FinalizeScoreAndSave();
-        }
-
         // 기존 게임오버 로직 실행
         Debug.Log("Game Over!");
         gameOverUI.SetActive(true);
@@ -66,11 +60,6 @@ public class GameOver : MonoBehaviour
     // '재시작' 버튼에 연결할 함수
     public void RestartGame()
     {
-        // 재시작 시 다음 플레이를 위해 ScoreManager 파괴
-        if (ScoreManager.instance != null)
-        {
-            Destroy(ScoreManager.instance.gameObject);
-        }
         // 기존 GameManager의 재시작 함수 호출
         GameManager.instance.RestartLevel();
     }
@@ -78,11 +67,6 @@ public class GameOver : MonoBehaviour
     // '타이틀로' 버튼에 연결할 함수
     public void QuitGame()
     {
-        // 타이틀로 돌아갈 때도 ScoreManager 파괴
-        if (ScoreManager.instance != null)
-        {
-            Destroy(ScoreManager.instance.gameObject);
-        }
         // 기존 GameManager의 타이틀 이동 함수 호출
         GameManager.instance.GoToTitle();
     }

@@ -1,5 +1,7 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System;
 
 /// <summary>
 /// 게임의 전반적인 상태와 데이터를 관리하며, 씬 전환 시에도 파괴되지 않습니다.
@@ -17,10 +19,25 @@ public class GameManager : MonoBehaviour
     public int restartCount = 0;    // 재시작 횟수
     public float skyboxExposure = 1.3f; // 스카이박스 노출값
     public float timeLimit = 120f;  // 시간 제한 (초 단위)
-    public int score = 0;           // 점수 (필요한지 여부를 따져봐야 할듯함)
     public bool isRestart = false;  // 현재 씬이 재시작된 것인지 여부
 
-    
+    public string Username = null;
+    public int comboScore = 0;
+    public int ClearTime1 = 0;
+    public int ClearTime2 = 0;
+    public int ClearTime3 = 0;
+    public int ClearTime4 = 0;
+    public int TotalScore = 0;
+
+    [Header("점수 데이터")]
+    public int score = 0;    // 점수 (필요한지 여부를 따져봐야 할듯함)
+    private int comboCount = 0;
+
+    [Header("새로운 점수 규칙")]
+    private const int BASE_SCORE = 100;  // 첫 발판 기본 점수
+    private const int COMBO_BONUS = 10;   // 연속으로 밟을 때마다 추가되는 점수
+    private const int CLEAR_BONUS = 500;  // 레벨 클리어 보너스
+
     // <summary>
     // 싱글톤 패턴 구현
     // </summary>
@@ -65,7 +82,9 @@ public class GameManager : MonoBehaviour
         }
         else  // 다음 씬으로 넘어간 경우
         {
-
+            score += CLEAR_BONUS;
+            comboCount = 0; // 다음 레벨을 위해 콤보 초기화
+            ScoreUpdateCall?.Invoke();
         }
     }
 
@@ -78,7 +97,7 @@ public class GameManager : MonoBehaviour
         Debug.Log("GameManager의 restart 호출");
         PrepareForNewScene(true);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    } 
+    }
 
     /// <summary>
     /// UI_GameOver의 'Title로 이동' 버튼 대응
@@ -87,6 +106,44 @@ public class GameManager : MonoBehaviour
     public void GoToTitle()
     {
         Debug.Log("Go to Title...");
+        isRestart = false;
+        comboCount = 0;
+        score = 0;
+        restartCount = 0;
+        Username = null;
+        comboScore = 0;
+        ClearTime1 = 0;
+        ClearTime2 = 0;
+        ClearTime3 = 0;
+        ClearTime4 = 0;
+        TotalScore = 0;
         SceneManager.LoadScene(0);
     }
+
+
+
+    public static Action ScoreUpdateCall;
+    // Correct 발판 -> PlayerReset에서 , Wrong 발판 -> SimpleMove에서
+    public void PlayerStepPlatform(bool isCorrect)
+    {
+        if (isCorrect)
+        {
+            // 새로운 콤보 점수 계산
+            // 콤보 0 (첫번째) = 100 + (10 * 0) = 100점
+            // 콤보 1 (두번째) = 100 + (10 * 1) = 110점
+            int earnedScore = BASE_SCORE + (COMBO_BONUS * comboCount);
+            score += earnedScore;
+
+            // 다음 콤보를 위해 콤보 카운트를 1 증가시킵니다.
+            comboCount++;
+
+            ScoreUpdateCall?.Invoke(); // 점수 UI에 변경사항을 알립니다.
+        }
+        else
+        {
+            // 콤보 카운트를 0으로 되돌려, 다음 정답 발판은 다시 100점부터 시작하게 합니다.
+            comboCount = 0;
+        }
+    }
+    
 }

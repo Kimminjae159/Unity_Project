@@ -13,8 +13,16 @@ MonoBehaviour:
   m_Name: Level0
   m_EditorClassIdentifier: 
   dialoguePieces:
-  - sentence: ">> Initializing Simulation...\r\n>> User ID: Unknown\r\n>> System
-      Status: CORRUPTED\r\n\r\"Visual Fidelity: DEGRADED\", \"Language System: ERROR\""
+  - sentence: '>> Initializing Simulation...
+
+      >> User ID: Unknown
+
+      >>
+      System Status: CORRUPTED
+
+'
+    choices: []
+  - sentence: "\"Visual Fidelity: DEGRADED\", \"Language System: ERROR\"\r\r"
     choices: []
   - sentence: "\u201C\uD658\uC601\uD569\uB2C8\uB2E4. \uC5EC\uAE34... \uC804 \uC138\uACC4\uC5D0\uC11C
       \uAC00\uC7A5 \uBD88\uD3B8\uD55C \uC57D\uAD6D\uC785\uB2C8\uB2E4.  \r\n\uB2E8,
