@@ -58,7 +58,7 @@ public class DialogueManager : MonoBehaviour
             NextClick = false;
             ContinueDialogue();
         }
-        else if (EscapeClick || Input.GetKeyDown(KeyCode.Escape))
+        else if (EscapeClick)
         {
             EscapeClick = false;
             // 특정 버튼 누를시 대화 및 선택지 강제 종료
@@ -91,7 +91,7 @@ public class DialogueManager : MonoBehaviour
         dialogueEnable = true;
 
         // 대사 출력 동안에 플레이어 Move를 비활성화
-        if (player) player.GetComponent<SimpleMove>().enabled = false;
+        if (player) player.GetComponent<SimpleMove>().PlayerDontMove(true);
 
         // 대화 흐름 시작
         ContinueDialogue();
@@ -263,7 +263,7 @@ public class DialogueManager : MonoBehaviour
         dialogueText.text = "";
         dialoguePanel.SetActive(false); // Dialogue 패널 제거
         ClearChoices();  // 선택지 제거
-        if (player) player.GetComponent<SimpleMove>().enabled = true;   // 플레이어 무브 가능
+        if (player) player.GetComponent<SimpleMove>().PlayerDontMove(false);   // 플레이어 무브 가능
 
         // 저장해둔 콜백 함수 실행
         onDialogueEndCallback?.Invoke();

@@ -9,7 +9,7 @@ public class SimpleMove : MonoBehaviour
     public float jumpPower = 5f;    // 점프(수직) 힘 
     public float gravity = -9.8f;   // 중력
     public float yVelocity = 0;     // y의 변화 
-                                    
+
     public float rotateSpeed = 10.0f;// 회전 속도를 조절할 수 있는 변수 (Inspector 창에서 수정 가능)
     CharacterController controller;
     bool isGrounded = false;
@@ -17,18 +17,38 @@ public class SimpleMove : MonoBehaviour
 
     public Animator anim; //애니메이션 컴포넌트 변수 선언
 
+    private bool DontMove;
+
+    // public static SimpleMove instance;
+    // void Awake()
+    // {
+    //     if (instance == null)
+    //     {
+    //         instance = this;
+    //         DontDestroyOnLoad(gameObject);
+    //     }
+    //     else
+    //     {
+    //         DestroyImmediate(gameObject);
+    //     }
+    // }
+
     void Start()
     {
         controller = GetComponent<CharacterController>();   //그릇에 데이터를 담기. 
+        DontMove = false;
     }
 
     void Update()
     {
+        float h = 0f, v = 0f;
         // 내가 입력한 방향으로 이동하고 싶다. 
-        float h = Input.GetAxis("Horizontal");  //a(-1)나 d(+1)를 누를 때 
-        float v = Input.GetAxis("Vertical");  //s(-1)나 w(+1)를 누를 때 
+        if (!DontMove)
+        {
+            h = Input.GetAxis("Horizontal");  //a(-1)나 d(+1)를 누를 때 
+            v = Input.GetAxis("Vertical");  //s(-1)나 w(+1)를 누를 때 
+        }
 
-        
         dir = new Vector3(h, 0, v);
         // 정규화 Normalize = 방향을 유지하면서 벡터의 길이를 1로 고정 
         dir.Normalize();
@@ -38,7 +58,7 @@ public class SimpleMove : MonoBehaviour
 
         if (controller.collisionFlags == CollisionFlags.Below)
         {
-            if(!wrongPanel&& !isGrounded)
+            if (!wrongPanel && !isGrounded)
             {
                 anim.SetTrigger("isLanding");//Animation trigger 지정(착지 동작하도록)
             }
@@ -59,7 +79,7 @@ public class SimpleMove : MonoBehaviour
         //         anim.SetTrigger("isFalling");
         //     }
         // }
-        if (Input.GetButtonDown("Jump") && isGrounded && !wrongPanel)
+        if (Input.GetButtonDown("Jump") && isGrounded && !wrongPanel && !DontMove)
         {
             anim.SetTrigger("isJump");//Animation trigger 지정(점프 동작하도록)
             yVelocity = jumpPower;
@@ -77,7 +97,7 @@ public class SimpleMove : MonoBehaviour
         // P(새로운 위치) = p0(기존의 위치) + v(방향) * t(시간) 
         // transform.position = transform.position + dir * speed * Time.deltaTime;
         controller.Move(dir * speed * Time.deltaTime);
-        
+
         // transform.position += dir;
         // transform.Translate(dir * speed * Time.deltaTime);
         // 내가 지정한 방향으로 이동하고 싶다. 
@@ -103,5 +123,10 @@ public class SimpleMove : MonoBehaviour
     public void somethingFunction()
     {
         RenderSettings.skybox.SetFloat("_Exposure", 1);
+    }
+
+    public void PlayerDontMove(bool dontMove)
+    {
+        DontMove = dontMove;
     }
 }

@@ -16,7 +16,7 @@ public class DogMoveScript : MonoBehaviour
     public LayerMask groundLayer; // 발판들이 속한 Layer (Inspector에서 설정)
 
     // === 내부 상태 변수들 ===
-    private float rotationDuration = 0.5f; //  Dog가 회전하는 데 걸리는 시간
+    private float rotationDuration = 0.3f; //  Dog가 회전하는 데 걸리는 시간
     private bool isDogMoving = false; // Dog가 현재 이동 중인지 여부
     private GameObject currentPlatform = null; // Dog가 현재 밟고 있는 발판
 
