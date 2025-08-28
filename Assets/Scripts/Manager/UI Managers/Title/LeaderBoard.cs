@@ -2,10 +2,16 @@ using UnityEngine;
 using TMPro;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 
 public class LeaderBoard : MonoBehaviour
 {
-    public TMP_Text leaderboardText;     // 리더보드를 표시할 TMP_Text
+    public TMP_Text name1;
+    public TMP_Text name2;
+    public TMP_Text name3;
+    public TMP_Text score1;
+    public TMP_Text score2;
+    public TMP_Text score3;
     public GameObject titleButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -23,26 +29,34 @@ public class LeaderBoard : MonoBehaviour
 
     private void LoadAndDisplayLeaderboard()
     {
+        // UI 컴포넌트들을 배열로 묶어 코드를 간결하게 만듭니다.
+        TMP_Text[] names = { name1, name2, name3 };
+        TMP_Text[] scores = { score1, score2, score3 };
+
         string json = PlayerPrefs.GetString(LeaderboardKey, "{}");
         LeaderboardData leaderboardData = JsonUtility.FromJson<LeaderboardData>(json);
 
-        if (leaderboardData.results == null || leaderboardData.results.Count == 0)
+        // 점수가 높은 순으로 정렬된 리스트를 가져옵니다.
+        List<PlayerResult> topResults = leaderboardData.results.OrderByDescending(r => r.score).ToList();
+
+        // 1등부터 3등까지 UI를 순차적으로 채웁니다.
+        for (int i = 0; i < 3; i++)
         {
-            leaderboardText.text = "저장된 기록이 없습니다.";
-            return;
+            // 해당 순위에 데이터가 존재하는지 확인합니다.
+            if (i < topResults.Count)
+            {
+                // 데이터가 있으면 이름과 점수를 할당합니다.
+                PlayerResult result = topResults[i];
+                names[i].text = result.nickName;
+                scores[i].text = result.score.ToString();
+            }
+            else
+            {
+                // 데이터가 없으면 "NULL"을 할당합니다.
+                names[i].text = "---";
+                scores[i].text = "---";
+            }
         }
-
-        var top3Results = leaderboardData.results.OrderByDescending(r => r.score).Take(3);
-
-        StringBuilder builder = new StringBuilder();
-        int rank = 1;
-        foreach (var result in top3Results)
-        {
-            builder.AppendLine($"{rank}.  {result.nickName}\t:  {result.score} 점");
-            rank++;
-        }
-
-        leaderboardText.text = builder.ToString();
     }
     public void GoTitle()
     {

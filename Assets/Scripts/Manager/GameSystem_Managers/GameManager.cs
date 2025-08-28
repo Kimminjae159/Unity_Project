@@ -96,10 +96,12 @@ public class GameManager : MonoBehaviour
 
         if (sceneIndex == 0) // 재시작일 경우
         {
+            isRestart = true;
             restartCount++;
         }
         else  // 다음 씬으로 넘어간 경우
         {
+            isRestart = false;
             score += CLEAR_BONUS;
             comboCount = 0; // 다음 레벨을 위해 콤보 초기화
             ScoreUpdateCall?.Invoke();
@@ -138,9 +140,6 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-
-
-    
     // Correct 발판 -> PlayerReset에서 , Wrong 발판 -> SimpleMove에서
     public void PlayerStepPlatform(bool isCorrect)
     {
@@ -163,5 +162,10 @@ public class GameManager : MonoBehaviour
             comboCount = 0;
         }
     }
-    
+
+    public void GetScore(int score)
+    {
+        this.score += score;
+        ScoreUpdateCall?.Invoke();
+    }
 }

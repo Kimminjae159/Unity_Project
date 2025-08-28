@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level4_Star
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\uB9C8\uC9C0\uB9C9 '\uACF5\uAC10\uC758 \uBCC4', \"\uD589\uB3D9\" \uC785\uB2C8\uB2E4"
+    choices: []
+  - sentence: "\uC774\uC81C \uACF5\uAC10\uC744 \uD589\uB3D9\uC73C\uB85C \uC62E\uAE38
+      \uCC28\uB840\uC785\uB2C8\uB2E4"
+    choices: []
+  - sentence: "\uC2DC\uAC01\uC7A5\uC560\uC778\uC744 \uC704\uD574 \uC810\uC790\xB7\uC74C\uD5A5
+      \uC548\uB0B4\uB97C \uC874\uC911\uD558\uACE0, \uC548\uC804\uD55C \uBCF4\uD589
+      \uD658\uACBD\uC744 \uC9C0\uCF1C\uC8FC\uC138\uC694"
+    choices: []
+  - sentence: "\uC774\uC8FC\uBBFC\xB7\uB09C\uBBFC\uACFC\uB294 \uC5B8\uC5B4\uBD09\uC0AC\xB7\uBB38\uD654\uAD50\uB958\xB7\uCC28\uBCC4\uC608\uBC29
+      \uD65C\uB3D9\uC73C\uB85C \uB2E4\uB9AC\uB97C \uB193\uC544\uC8FC\uC138\uC694."
+    choices: []
+  - sentence: "\uB2F9\uC2E0\uC758 \uC791\uC740 \uC2E4\uCC9C\uC774, \uC18C\uC678\uB41C
+      \uC790\uB4E4\uC758 \uBCF4\uC774\uC9C0 \uC54A\uB358 \uBCBD\uC744 \uD5C8\uBB34\uB294
+      \uBE5B\uC774 \uB429\uB2C8\uB2E4."
+    choices: []

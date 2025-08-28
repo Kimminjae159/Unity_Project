@@ -8711,19 +8711,6 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
---- !u!114 &1443110944511687795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3679506293811214119}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25ace19c3de4fab4f895794410eb1b80, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetRectTransform: {fileID: 0}
 --- !u!114 &1687554948546517080
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9182,7 +9169,6 @@ GameObject:
   - component: {fileID: 6231602999338947484}
   - component: {fileID: 7820876057850495704}
   - component: {fileID: 1687554948546517080}
-  - component: {fileID: 1443110944511687795}
   m_Layer: 5
   m_Name: PlayerUI
   m_TagString: Untagged
@@ -9258,6 +9244,8 @@ MonoBehaviour:
   yVelocity: 0
   rotateSpeed: 10
   anim: {fileID: 5124462069611374096}
+  jumpSound: {fileID: 0}
+  fallingFloor: {fileID: 0}
 --- !u!114 &4225917209392735305
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10579,16 +10567,16 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 203844589}
-  - {fileID: 1991297482}
   - {fileID: 1758475013}
   - {fileID: 1807077187}
+  - {fileID: 9011201989923591139}
   - {fileID: 442819944}
   - {fileID: 4520626103976126458}
-  - {fileID: 9011201989923591139}
-  - {fileID: 1303975311}
   - {fileID: 1765148755}
   - {fileID: 1446044843}
   - {fileID: 3091733622335679811}
-  - {fileID: 1755342620}
   - {fileID: 965009177}
+  - {fileID: 1303975311}
+  - {fileID: 203844589}
+  - {fileID: 1755342620}
+  - {fileID: 1991297482}

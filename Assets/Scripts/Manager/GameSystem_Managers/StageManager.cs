@@ -14,6 +14,7 @@ public class StageManager : MonoBehaviour
     [SerializeField] private PlayerUIManager playerUIManager;   // 플레이어 UI Manager
     [Tooltip("GameOver 스크립트가 컴포넌트로 있는 오브젝트를 할당")]
     [SerializeField] private GameOver gameOverManager;          // 게임오버 Manager
+    [SerializeField] private EventDialgoueMng eventUI;          // 게임오버 Manager
     // [SerializeField] private GameClearUI gameClearUI;      // 게임클리어 UI (필요 시)
     // [SerializeField] private SympathyUI sympathyUI;        // 공감수치(체력) UI
 
@@ -111,7 +112,7 @@ public class StageManager : MonoBehaviour
     public void PlayerEvent(DialogueAsset eventDialogue)
     {
         // 이벤트 대화 출력
-        DialogueManager.instance.StartDialogue(eventDialogue);
+        eventUI.EventDialogueStart(eventDialogue);
         // 필요 시 특정 UI 활성화 등의 로직 추가
     }
 

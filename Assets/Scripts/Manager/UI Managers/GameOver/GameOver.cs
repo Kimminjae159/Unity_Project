@@ -45,15 +45,17 @@ public class GameOver : MonoBehaviour
     /// </summary>
     public void OnGameOver(DialogueAsset dialogue)
     {
+        cursorMng.instance.RequestCursor();
         // 기존 게임오버 로직 실행
         Debug.Log("Game Over!");
         gameOverUI.SetActive(true);
         gameOverText.gameObject.SetActive(true);
-        DialogueManager.instance.StartDialogue(dialogue, AfterDialoguePrint);
+        DialogueManager.instance.StartDialogue(dialogue, AfterDialoguePrint, true);
     }
 
     private void AfterDialoguePrint()
     {
+        //cursorMng.instance.ReleaseCursor();
         buttonParent.SetActive(true);
     }
 

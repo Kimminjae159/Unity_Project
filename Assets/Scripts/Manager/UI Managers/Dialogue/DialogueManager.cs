@@ -36,6 +36,7 @@ public class DialogueManager : MonoBehaviour
     private Coroutine typingCoroutine;    // 코루틴이 진행중인지에 대한 여부를 해당 변수 할당 여부를 통해 판단
     private List<GameObject> activeChoiceButtons = new List<GameObject>(); // 버튼 클릭시 실행할 행동을 이것으로 선정
 
+    private bool gameOverCursor;
     public static DialogueManager instance;
     void Awake()
     {
@@ -73,7 +74,7 @@ public class DialogueManager : MonoBehaviour
     /// </summary>
     /// <param name="dialogueAsset">시작할 Dialogue Asset</param>
     /// <param name="callback">대화가 모두 끝났을 때 실행될 함수</param>
-    public void StartDialogue(DialogueAsset dialogueAsset, Action callback = null)
+    public void StartDialogue(DialogueAsset dialogueAsset, Action callback = null, bool cursor = false)
     {
         // 이미 대화가 진행 중이면 중복 실행 방지
         if (dialoguePanel.activeSelf)
@@ -81,7 +82,7 @@ public class DialogueManager : MonoBehaviour
             Debug.LogWarning("이미 대화가 진행중입니다.");
             return;
         }
-
+        gameOverCursor = cursor;
         this.dialogueAsset = dialogueAsset;
         onDialogueEndCallback = callback;
 
@@ -89,6 +90,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(true);
         dialoguePieceIndex = -1; // -1에서 시작하여 첫 ContinueDialogue 호출 시 0이 되도록 함
         dialogueEnable = true;
+
+        cursorMng.instance.RequestCursor();
 
         // 대사 출력 동안에 플레이어 Move를 비활성화
         if (player) player.GetComponent<SimpleMove>().PlayerDontMove(true);
@@ -264,6 +267,8 @@ public class DialogueManager : MonoBehaviour
         dialoguePanel.SetActive(false); // Dialogue 패널 제거
         ClearChoices();  // 선택지 제거
         if (player) player.GetComponent<SimpleMove>().PlayerDontMove(false);   // 플레이어 무브 가능
+
+        if(!gameOverCursor) cursorMng.instance.DialogueEnd();
 
         // 저장해둔 콜백 함수 실행
         onDialogueEndCallback?.Invoke();
