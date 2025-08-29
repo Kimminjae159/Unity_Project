@@ -146,7 +146,7 @@ public class StageManager : MonoBehaviour
     /// <summary>
     /// 플레이어가 '레벨 클리어' 트리거에 닿았을 때 호출됩니다.
     /// </summary>
-    public void PlayerLevelClear()
+    public void PlayerLevelClear(bool a = false)
     {
         Debug.Log($"레벨 클리어, isGameOver : {isGameOver}");
         if (isGameOver) return;
@@ -157,7 +157,7 @@ public class StageManager : MonoBehaviour
 
         // 여기에 다음 레벨로 넘어가는 로직 추가
         //callTimer?.Invoke(false);
-        DialogueManager.instance.StartDialogue(levelClearDialogue, ClearCallback);
+        DialogueManager.instance.StartDialogue(levelClearDialogue, ClearCallback, a);
     }
 
     /// <summary>

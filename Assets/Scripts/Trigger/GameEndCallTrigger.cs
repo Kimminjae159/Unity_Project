@@ -5,7 +5,7 @@ public class GameEndCallTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StageManager.instance.PlayerLevelClear();
+        StageManager.instance.PlayerLevelClear(true);
 
         gameObject.SetActive(false);
     }

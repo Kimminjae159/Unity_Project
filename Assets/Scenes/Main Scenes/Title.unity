@@ -4190,7 +4190,15 @@ PrefabInstance:
     m_TransformParent: {fileID: 2038438302}
     m_Modifications:
     - target: {fileID: 256355363495713687, guid: 9be74225adc36144d875c601dbce4ac9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256355363495713687, guid: 9be74225adc36144d875c601dbce4ac9, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 256355363495713687, guid: 9be74225adc36144d875c601dbce4ac9, type: 3}
+      propertyPath: m_AnchorMin.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1794607018203848188, guid: 9be74225adc36144d875c601dbce4ac9, type: 3}
@@ -4280,6 +4288,10 @@ PrefabInstance:
     - target: {fileID: 3013382246625125603, guid: 9be74225adc36144d875c601dbce4ac9, type: 3}
       propertyPath: m_Name
       value: Options_Panel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5735793758986150531, guid: 9be74225adc36144d875c601dbce4ac9, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5735793758986150531, guid: 9be74225adc36144d875c601dbce4ac9, type: 3}
       propertyPath: m_AnchorMax.y

@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
     [Header("점수 데이터")]
     public int score = 0;    // 점수 (필요한지 여부를 따져봐야 할듯함)
-    private int comboCount = 0;
+    public int comboCount = 0;
 
     [Header("새로운 점수 규칙")]
     private const int BASE_SCORE = 100;  // 첫 발판 기본 점수
@@ -62,6 +62,16 @@ public class GameManager : MonoBehaviour
     /// </summary>
     public bool DecreaseHealth()
     {
+        comboCount = 0;
+        if (score > 500)
+        {
+            score -= 500;
+        }
+        else
+        {
+            score = 0;
+        }
+        ScoreUpdateCall?.Invoke();
         healthPoint--;
         return healthPoint <= 0;
     }
@@ -93,19 +103,20 @@ public class GameManager : MonoBehaviour
 
         // 공통 사항 : 재시작시 HP 복구
         healthPoint = 5;
-
+        Debug.Log(sceneIndex);
+        if (isRestart) Debug.Log("123");
         if (sceneIndex == 0) // 재시작일 경우
-        {
-            isRestart = true;
-            restartCount++;
-        }
-        else  // 다음 씬으로 넘어간 경우
-        {
-            isRestart = false;
-            score += CLEAR_BONUS;
-            comboCount = 0; // 다음 레벨을 위해 콤보 초기화
-            ScoreUpdateCall?.Invoke();
-        }
+            {
+                //isRestart = true;
+                restartCount++;
+            }
+            else  // 다음 씬으로 넘어간 경우
+            {
+                isRestart = false;
+                score += CLEAR_BONUS;
+                comboCount = 0; // 다음 레벨을 위해 콤보 초기화
+                ScoreUpdateCall?.Invoke();
+            }
     }
 
     /// <summary>
@@ -160,6 +171,7 @@ public class GameManager : MonoBehaviour
         {
             // 콤보 카운트를 0으로 되돌려, 다음 정답 발판은 다시 100점부터 시작하게 합니다.
             comboCount = 0;
+            ScoreUpdateCall?.Invoke();
         }
     }
 

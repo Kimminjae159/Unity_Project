@@ -63,6 +63,7 @@ public class GameOver : MonoBehaviour
     public void RestartGame()
     {
         // 기존 GameManager의 재시작 함수 호출
+        GameManager.instance.isRestart = true;
         GameManager.instance.RestartLevel();
     }
 
