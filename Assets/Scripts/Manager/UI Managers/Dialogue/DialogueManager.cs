@@ -54,7 +54,7 @@ public class DialogueManager : MonoBehaviour
     {
         if (!dialogueEnable) return; // dialogue가 사용가능 상태가 아니면 바로 해당 프레임의 Update 활동 종료
         
-        if (NextClick)// || Input.GetKeyDown(KeyCode.Space))
+        if (NextClick || Input.GetKeyDown(KeyCode.Space))
         {
             NextClick = false;
             ContinueDialogue();
@@ -177,9 +177,6 @@ public class DialogueManager : MonoBehaviour
             yield return new WaitForSeconds(typingSpeed);
         }
         typingCoroutine = null; // 타이핑 완료
-
-        yield return new WaitForSeconds(1.5f); // 1.5초 뒤에 자동으로 업데이트 되도록
-        ClickOnNextButton();
     }
 
     /// <summary>
