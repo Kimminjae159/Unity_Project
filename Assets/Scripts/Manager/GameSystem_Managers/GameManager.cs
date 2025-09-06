@@ -102,21 +102,22 @@ public class GameManager : MonoBehaviour
         }
 
         // 공통 사항 : 재시작시 HP 복구
-        healthPoint = 5;
+        
         Debug.Log(sceneIndex);
         if (isRestart) Debug.Log("123");
         if (sceneIndex == 0) // 재시작일 경우
-            {
-                //isRestart = true;
-                restartCount++;
-            }
-            else  // 다음 씬으로 넘어간 경우
-            {
-                isRestart = false;
-                score += CLEAR_BONUS;
-                comboCount = 0; // 다음 레벨을 위해 콤보 초기화
-                ScoreUpdateCall?.Invoke();
-            }
+        {
+            healthPoint = 5;
+            //isRestart = true;
+            restartCount++;
+        }
+        else  // 다음 씬으로 넘어간 경우
+        {
+            isRestart = false;
+            score += CLEAR_BONUS;
+            comboCount = 0; // 다음 레벨을 위해 콤보 초기화
+            ScoreUpdateCall?.Invoke();
+        }
     }
 
     /// <summary>
@@ -137,6 +138,7 @@ public class GameManager : MonoBehaviour
     public void GoToTitle()
     {
         Debug.Log("Go to Title...");
+        sympathyValue = 0;
         isRestart = false;
         comboCount = 0;
         score = 0;
@@ -148,6 +150,7 @@ public class GameManager : MonoBehaviour
         ClearTime3 = 0;
         ClearTime4 = 0;
         TotalScore = 0;
+        healthPoint = 5;
         SceneManager.LoadScene(0);
     }
 

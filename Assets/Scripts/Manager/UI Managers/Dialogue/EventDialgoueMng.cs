@@ -21,6 +21,7 @@ public class EventDialgoueMng : MonoBehaviour
     [Tooltip("모든 대화가 끝난 후 UI가 비활성화되기까지의 대기 시간")]
     [SerializeField] private float endDelay = 1.0f;
 
+    public GameObject player;
     // --- 내부 상태 변수 ---
     private Coroutine dialogueCoroutine;
     private Action onDialogueEndCallback;
@@ -59,6 +60,8 @@ public class EventDialgoueMng : MonoBehaviour
     /// </summary>
     private IEnumerator ProcessDialogue(DialogueAsset dialogueAsset)
     {
+        if (player) player.GetComponent<SimpleMove>().PlayerDontMove(true);
+        Timer.instance.TimerOnOff(false);
         // DialogueAsset에 포함된 모든 대사 조각(DialoguePiece)을 순회합니다.
         foreach (var piece in dialogueAsset.dialoguePieces)
         {
@@ -75,6 +78,9 @@ public class EventDialgoueMng : MonoBehaviour
 
         // 모든 대사가 끝난 후, 지정된 시간만큼 대기합니다.
         yield return new WaitForSeconds(endDelay);
+
+        if (player) player.GetComponent<SimpleMove>().PlayerDontMove(false);
+        Timer.instance.TimerOnOff(true);
 
         // 저장해둔 콜백 함수가 있다면 실행합니다.
         onDialogueEndCallback?.Invoke();

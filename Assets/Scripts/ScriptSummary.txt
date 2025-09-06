@@ -1,0 +1,583 @@
+# Scripts Summary
+
+
+# Player / Camera
+
+### CamRot.cs
++ float mouseSpd // 마우스 감도
++ bool canRotX   // 카메라 회전 값 적용 여부 결정 
++ bool canRotX
+- float mx  // 마우스 x값을 저장
+- float my  // 마우스 y값을 저장
+
+- void Update() {} // 마우스 움직임에 대해 값을 받아와서 오브젝트의 local EulerAngle을 변화시킴
+
+
+
+# Player
+
+### PlayerReset.cs
++ float minY    // 플레이어 위치 리셋 결정 기준 값
+- Vector3 startPos  // 리셋될 때 돌아올 위치 저장
+- Vector3 tempPos // 새로 밝은 발판의 위치와 비교를 위한 임시 위치 저장 변수
+- SimpleMove moveScript  // 리셋 될 때 SimpleMove의 중력 가속도를 초기화 함
+- CharacterController controller  // 캐릭터 컨트롤러 사용
+
+- List<GameObject> visitedInstances // 밟아온 발판들 저장
++ string objTag = "Correct"; // 세이브 포인트 기능을 추가할 발판의 태그명 저장
++ bool SavePoint = true;    // 세이브 포인트 기능 결정
++ Material changeMaterial; // 경로 표시용 Material 할당
++ bool PathColorizer = true; // 지나온 길 색깔 표시 결정
++ static Action CallPlayerReset; // 플레이어 위치 리셋시 신호를 알리기 위함 (StageManager가 구독중)
+
+
+- void Start() { controller = <CharacterController>, moveScript = <SimpleMove> }
+- void Update() { if(minY 이하?) ResetToStart() } // 매 프레임마다 minY보다 낮은 위치에 플레이어가 존재하는지 확인
+- void ResetToStart() { CallPlayerReset?.Invoke() } // 현재위치 초기화 및 초기화 신호 전파
+- void OnControllerColliderHit() { visitedInstances.Add(hit.gameObject) } // Player가 부딪힌 발판 확인
+- void SavePointUpdate() {} // 세이브 포인트 갱신
+- void PastPathColorizer() {} // 밟은 발판 Materail 변경
+
+
+### SimpleMove.cs
++ Vector3 dir // Player 방향
++ float speed // m/s - 이동 속도
++ float jumpPower // 점프시 파워 결정
++ float gravity // 중력 가속도
++ float yVelocity // y축 가속도 (변화량)
++ float float rotateSpeed // 마우스에 의한 회전속도
++ Animation anim // 애니메이션 컴포넌트 할당, 상태에 따른 Trigger 신호 보내기 위함
+
+- CharacterController controller // 캐릭터 컨트롤러 할당
+- bool isGrounded   // '땅에 닿은 상태' : 현재 발이 땅에 닿아있는지 확인
+- bool wrongPanel   // '잘못된 발판 상태' : 마지막으로 밟은 발판이 잘못된 발판인지 여부 확인
+
+
+- void Start() { controller = <CharacterController> } 
+- void Update() 
+{ 
+    1. dir - new Vector3(h, 0, v) : wasd 입력에 맞춰 dir 방향을 결정한 후 정규화
+    2. anim.SetFloat("Blend") : 이동 방향에 따른 애니메이션 출력을 위해 anim에 입력 정보 전달
+    3. 현재 캐릭터 컨트롤러가 바닥에 닿았을 때
+        (1) '잘못된 발판 상태'가 아니고, '땅에 닿은 상태'도 아니라면 "isLanding" Trigger 신호 anim에 보내기
+        (2) '잘못된 발판 상태'이면 isGround = false, 아니라면 isGround = true로 만들고 yVelocity = 0으로 초기화
+    4. 점프 버튼을 눌렀을 때 '땅에 닿은 상태'이고 '잘못된 발판 상태'가 아니라면, "isJump" Trigger 신호를 anim에 보내고 yVelocity = jumpPower로 할당한 뒤 '땅에 닿은 상태'를 해제
+    5. 카메라 방향을 받아와서 정규화 한 뒤, 중력에 영향받은 yVelocity를 적용해서 캐릭터 컨트롤러 위치 조정
+}
+- void OnControllerColliderHit() 
+{ 
+    1. 밟은 발판이 잘못된 발판인지 확인, 맞다면 '잘못된 발판 상태'로 만들고 해당 발판 파괴, 아니라면 '잘못된 발판 상태'를 해제
+    2. 골에 도착하면 somethingFunction() 실행
+}
++ void somethingFunction() {} // skybox의 _Exposure 값을 1로 설정
+
+
+### PlayerScoreInteraction.cs
+ScoreManager의 instance를 사용함
+
+- OnControllerColliderHit()
+{
+    1. Correct 태그의 발판을 밟으면 ScoreManager의 AddScoreForCorrectStep을 호출
+    2. Wrong 태그의 발판을 밟으면 ScoreManager의 ResetCombo를 호출
+    3. "Finish" 태그의 발판을 밟으면 ScoreManager의 AddScoreForLevelClear를 호출
+}
+
+# Dialogues
+
+### DialogueAsset.cs
++ DialoguePiece[] dialoguePieces -> public string sentence & public Choice[] choices
++ Choice ->
+    1. string choiceText : 버튼에 표시될 텍스트
+    2. DialogueAsset nextDialogue : 선택지 별 다른 대화 에셋 출력을 원할시 사용
+    3. string sceneToLoad : 해당 선택지를 고를시 이동할 씬의 이름, 비어있으면 씬 이동 안함
+    4. int sympathyChange : 해당 선택지를 고를시 변화할 공감 수치 값 설정
+    5. int scoreChange : 해당 선택지를 고를시 변화할 점수 수치 값 설정
+
+
+# Item
+대부분의 script는 ItemLogic_container에 할당됨
+단, DogMoveScript.cs는 Dog 오브젝트에 할당됨
+
+
+## Level1
+
+### DogMoveScript.cs
++ GameObject platformParent // Correct 발판들의 부모 오브젝트 할당
++ GameObject playerObject   // Player 할당
+
++ float jumpHeight  // Dog 오브젝트 점프 높이 결정
++ float jumpDuratio // Dog 오브젝트가 점프해서 다음 발판으로 이동하는데 걸리는 시간 결정
++ float groundCheckDistance // Dog 오브젝트가 발판을 감지하기 위해 사용하는 RayCast의 거리
++ LayerMask groundLayer // 발판들이 속한 Layer <- RayCast를 사용하기 때문에 필요
+
+- bool isDogMoving  // Dog가 현재 이동 애니메이션이 발동 중인지 여부 저장
+- GameObject currentPlatform // Dog 오브젝트가 현재 밟고 있는 발판 오브젝트 저장
+- Vector3 correct01Position // Dog 오브젝트의 시작 위치 (correct01 발판 위치) 저장
+
+
++ void ApplyDog() {} // 외부에서 Dog 오브젝트를 활성화 하기 위해 존재, 호출 되면 Dog 오브젝트가 Correct01 발판 위에 생성됨
+- void Awake() {} // correct01 오브젝트를 찾은 뒤 Position을 저장, Dog 오브젝트 비활성화 
+- void OnTriggerEnter() { if(!isDogMoving) StartCoroutine( DogMove() )  } // Player와 부딪혔을 때, '이동중 상태'가 아니면 DogMove 함수를 코루틴으로 실행
+- IEnumerator DogMove()
+{
+    이동 상태로 설정
+    1. 현재 위치한 발판의 명칭을 Raycast를 통해 추출
+        - 만약 발판이 "correct17"이면 마지막 발판이므로 Dog 오브젝트 사라짐 <<- Dog 오브젝트의 수명을 결정하는 중요한 부분
+    2. 명칭을 기반, 다음 발판 오브젝트를 찾아내여 목표 좌표를 설정
+    3. Sin 함수 기반, jumpHeight를 최댓값으로 하는 2차 함수의 포물선을 그리며 jumpDuration 동안 Dog 오브젝트가 이동
+    4. 이동 완료시 현재 위치를 업데이트
+    이동 상태 해제
+}
+- int ExtractNumberFromName(string name){} // 인자로 온 string에서 숫자 추출
+- GameObject FindPlatformByName(string platformName){} // 인자로 온 string에 해당하는 오브젝트를 Platform 오브젝트의 자식 중에서 찾음
+
+
+### FogRemover.cs
++ float DisableDuration // 안개 비활성화 시간 결정
+- Color originalFogColor // 기존 Fog 색상 저장
+- float originalFogDensity // 기존 Fog 밀도 저장
+
++ void ApplyFogFunc() { StartCoroutine( DisableFogFunc() )} // 외부에서 안개 제거 아이템 동작을 위해 호출되는 함수, 안개 제거 함수를 코루틴으로 호출함
+- IEnumerator DisableFogFunc() {} // 현재 안개 상태의 밀도와 색을 저장, fog를 비활성화 한 뒤 DisableDuration초 후에 다시 fog를 활성화하고 저장한 밀도와 색으로 안개를 설정
+
+
+## Level2
+
+### PlatformColorizer.cs
++ Color correctColor // 올바른 발판을 표시할 색
++ Color wrongColor // 틀린 발판을 표시할 색
++ float duration  // 아이템 지속 시간
++ Transform platformToColorize // 오브젝트 탐색을 위해 발판들의 부모 오브젝트 할당
+- Coroutine effectCoroutine // 코루틴 저장
+
++ void PanelsColorizer() { StartCoroutine(HighlightRoutine()) } // 외부에서 아이템 동작을 위해 호출되는 함수, 발판의 색을 바꾸는 함수를 코루틴으로 호출함
+- IEnumerator HighlightRoutine() {} // 각 발판 별 원본 색을 배열에 저장, 이후 Correct 태그를 가진 발판은 correctColor로, Wrong 태그를 가진 발판은 wrongColor로 설정한 뒤 duration 이후 원본 색상으로 복구
+
+
+## Level3
+Puzzle Hint UI는 Level 3에만 존재하는 canvas
+
+### PanelHiding.cs
++ float delayBeforeHide // 오브젝트가 사라지기 전 대기 시간
++ float hideDuration  // 오브젝트가 보이지 않는 시간 (아이템 지속 시간)
+
++ void ApplyPanelHide() {} // 외부에서 호출, "wrong"태그의 발판들에 한해 코루틴으로 각각 숨겨 동시에 숨기듯이 표현
+- IEnumerator HideAndShowPanel(GameObject panel) {} // Wrong 태그를 가진 오브젝트를 비활성화 했다가, hideDuration초 이후 다시 활성화 함
+
+### PuzzleHintContrloller.cs
++ GameObject PuzzleHintUI
+
+- Start() { PuzzleHintUI.SetActive(false) } // PuzzleHintUI 비활성화
++ void openHintUI( UI.SetActive(true) ) // 외부에서 호출시 PuzzleHintUI를 활성화함, ItemManager에서 이 함수를 전달받아 발동시킴
++ void closeHintUI( UI.SetActive(false), ItemManager.instance.ItemIsActiveOn() ) // PuzzleHintUI의 X 버튼에 할당됨. 반복 사용을 위해 ItemManager의 isActive 변수를 true로 설정함
+
+## Shared
+
+### Portal.cs
++ GameObject destination // 목표 위치가 될 오브젝트 할당
++ GameObject player // Player 할당
+
++ void ApplyPortal() {} // 호출시, Player의 CharacterController를 비활성화 한 뒤에 destination에 할당된 오브젝트의 transform 좌표로 변경하고 CharacterController를 다시 활성화
+
+-------------------------
+
+# Trigger
+
+## DialogueTrigger.cs // 안 씀
++ Dialogue dialogue
++ void TriggerDialogue()
+
+
+## ItemTrigger.cs
++ UnityEvent SpriteforItem // Trigger 발동시 ItemManager로 전달할 Script의 함수를 할당
++ bool isAutoUsing // 즉발 아이템이면 true, Inventory에 들어가 'I' 버튼을 눌러야 사용가능하면 false
++ Sprite itemSprite // 아이템 획득시 Inventory에 띄울 이미지 할당
++ bool isReuable   // 재사용이 가능한 아이템이면 true로 설정, 1회면 사용가능하면 false로 설정
+
+- void OnTriggerEnter() { ItemManager.instance.ItemGet(SpriteforItem, itemSprite, isAutoUsing, isReuable) } // ItemManager의 ItemGet을 호출, 인자로 Item의 특성과 Inspector 창에서 할당받은 Script의 특정 함수를 전달함
+
+
+## FogTrigger.cs -- Level 1에만 사용됨 --
++ GameObject playerObject // 플레이어 오브젝트 할당
++ Color FogColor    // 목표 Fog 색상 지정
++ float FogDensity  // 목표 Fog 밀도 지정
++ float transitionDuration // 안개 생성 애니메이션 길이
+- float originExposure  // 안개 이전 skybox의 exposure값 저장, 안개 생성 애니메이션을 위한 것
+
+- void OnTriggerEnter() { StartCoroutine(FogMakingAnimation()) } // player가 Trigger와 부딪혔을 경우 skybox의 exposure 값을 저장하고 FogMakingAnimation 함수 코루틴으로 호출
+- IEnumerator FogMakingAnimation() {} // 현재 Fog 상태에서 목표 fog 밀도와 색상까지 선형적으로 증가시킴, 그리고 Trigger 오브젝트 삭제
+
+
+## PlayerEnterClearTrigger.cs 
++ bool IsEnterTrigger // StageManager의 PlayerLevelEnter() 함수 호출을 결정
++ bool IsClearTrigger // StageManager의 PlayerLevelClear() 함수 호출을 결정
+
+- void OnTriggerEnter() { StageManager.instance.PlayerLevelEnter() or PlayerLevelClear() } // StageManager의 Instance를 활용해 호출
+
+
+## SceneSwitch.cs
++ string sceneName // 전환할 씬 이름 설정
+
+- void OnTriggerEnter(Collider) // Trigger로써, Player와 충돌할 때 발동됨
++ void ApplySceneSwitch() // 외부에서 Scene 전환을 위해 호출할 때 사용됨
+
+--------------------------------
+
+# Manager
+
+## DialogueManager.cs
++ static DialogueManager instance // 싱글톤 패턴
+
++ GameObject dialoguePanel // dialogue Panel 할당
++ TextMeshProUGUI dialogueText // 텍스트를 생성할 UI TMP 할당
++ Transform choicesLayout   // 선택지 버튼들이 자식들로 생성될, Vertical Layout Group 컴포넌트를 가진 Empty object 할당
++ GameObject choiceButtonPrefab // 생성할 선택지 버튼의 프리팹을 Project 폴더에서 할당
++ float typingSpeed // Dialogue에 글자 타이핑 되는 속도 
++ GameObject player // 플레이어의 움직임 봉인 용도
+
+- DialogueAsset dialogueAsset //  StartDialogue 함수의 파라미터로 전달된 Dialogue Asset을 저장
+- Action onDialogueEndCallback // StartDialogue 함수의 파라미터로 전달된 콜백 함수를 저장
+- int dialoguePieceIndex // Dialogue Piece들 중 현재 출력중인 piece의 인덱스 저장
+- List<GameObject> activeChoiceButtons // Dialogue Asset의 Choice 갯수에 따라 버튼 생성을 위해 선택지를 임시저장할 List
+
+- bool dialogueEnable // Dialogue UI가 활성화 되었는지 추적함
+- bool NextClick // Dialogue 창에서 Next 버튼을 눌렀는지 여부를 저장
+- bool EscapeClick // Dialogue 창에서 Escape 버튼 눌렀는지 여부 저장
+- bool ChoicesBtnClick // 선택지가 떴을 때 버튼 눌렀는지 여부를 확인
+- Coroutine typingCoroutine // 코루틴을 할당해 현재 코루틴이 진행되고 있는지 여부를 null 여부로 판단
+
+
+- void Awake() {} // 싱글턴 패턴
+- void Start() // Dialogue UI 비활성화
+- void Update() // dialogueEnable = true일 때, 사용자의 Space 혹은 Escape 입력을 받고 ContinueDialogue()를 호출하거나 EndDialogue()를 호출
+
++ void StartDialogue(DialogueAsset, Action) // 외부에서 해당 함수를 호출함으로서 Dialogue UI가 활성화 되고, 전달받은 Asset 기반으로 Dialogue 출력함
+{
+    1. 현재 대화가 실행중이면 중복 실행 방지
+    2. 콜백 함수 저장, Dialogue UI 활성화
+    3. Player의 Move 담당 Script를 비활성화시켜 움직이지 못하도록 함
+    ContinueDialogue() 호출
+}
++ void ContinueDialogue() 
+{
+    1. 이 함수가 호출되었을 때, typingCoroutine이 활성화 되어 있으면 코루틴 정지후 즉시 Piece의 모든 String 출력
+    2. 이 함수가 호출되었을 때, 선택지 버튼이 활성화 되어 떠 있으면 아무런 변화 없이 return 함
+        다만, 선택지를 이전 프레임에서 선택했다면 정당한 호출이므로 다음 조건문(5.)으로 이동
+    3. dialoguePieceIndex 를 1 증가시킴
+    4. dialoguePieceIndex가 Piece 갯수 이상이라면 EndDialogue() 호출해서 대화 종료
+    5. 1, 2, 4에서 return 되지 않았다면 ProcessDialoguePiece()를 호출해 현재 Dialogue Piece를 출력
+}
+- void ProcessDialoguePiece(DialoguePiece)
+{
+    1. ClearChoices() 호출해서 이전 선택지 버튼 확실히 제거
+    2. 대사가 존재하면 TypeSentence()를 코루틴으로 호출하고 typingCoroutine에 할당, 없다면 텍스트 창 비움
+    3. 선택지 처리를 위해 ShowChoices()를 호출
+}
+- IEnumerator TypeSentence(string) {} // 전달받은 String을 dialogueText에 출력, 모든 타이핑이 끝나면 typingCoroutine을 null로 초기화
+- void ShowChoices(Choice[]) { button.onClick.AddListener(() => { OnChoiceSelected(choice); }); } // choice 들을 생성하고 OnClick 이벤트를 OnChoiceSelected()를 호출하도록 할당
+- void OnChoiceSelected(Choice) {} // 플레이어가 선택한 Choice의 Flag 값에 따라 특정 행동을 함
+- void EndDialogue() { 
+                    // 대화 종료, Dialogue UI의 Text를 초기화하고 panel 비활성화
+    ClearChoices()                                      // 선택지 비활성화
+    player.GetComponent<SimpleMove>().enabled = true    // 플레이어 Move 활성화
+    onDialogueEndCallback?.Invoke()                     // 콜백함수 실행
+                    // 내부 상태 초기화
+}
+- void ClearChoices() {} // 화면에 표시된 선택지 버튼들 Destory 및 choicesLayout 비활성화하여 완전 제거
+
++ void ClickOnEscapeButton() // Dialogue UI의 EscapeButton의 OnClick() 동작을 이 함수에 연결
++ void ClickOnNextButton() //  Dialogue UI의 NextButton의 OnClick() 동작을 이 함수에 연결
+
+
+
+## ItemManager.cs
+Item Trigger에서 GetItem() 함수를 호출하면서 전달한 파라미터 값을 이용, 획득한 아이템을 관리
++ static ItemManager instance // 싱글턴 패턴 사용
++ public Image itemImgUI // Item Sprite를 띄울 아이템 UI를 할당
+- UnityEvent script // 전달받은, 아이템의 기능역할을 할 함수를 저장
+- bool isActive   // 아이템 사용 가능 여부 결정, false이면 Update에서 바로 return됨
+- bool isReusable // 재사용 여부 결정
+
+- void Awake() { Init() } // 싱글턴 이후 초기화
+- void Init() // Item UI의 이미지 스프라이트 초기화
+- void Update() // isActive가 true일때, I버튼을 누르면 전달받은 script의 함수를 실행, isActive = false로 설정, 재사용 가능이면 Init()호출하지 않음
++ void ItemIsActiveOn() {} // 재사용 가능한 아이템에서 호출, isActive = true로 설정하여 재사용 가능하게 함
++ void GetItem(UnityEvent, Sprite, bool, bool) { script.Invoke() } // ItemTrigger에서 호출하는 함수, ItemTrigger에서 아이템의 동작을 정의하는 Script와, 즉발 가능 여부, 아이템의 스프라이트, 재사용 가능여부를 결정해서 전달함
+
+
+## SceneMemory.cs
+TutorialManager.cs의 GoToNextPage() 함수에서 SceneMemory의 previousScene 변수를 사용
++ static string previousScene
+
+---
+
+## GameSystem_Managers
+
+### GameManager.cs
++ static GameManager instance // 싱글턴 + DontDestroyOnLoad
++ int sympathyValue = 0;   // 공감 수치 누적 저장
++ int healthPoint = 5;     // 현재 체력 저장
++ int restartCount = 0;    // 재시작 횟수 저장
++ float skyboxExposure = 1.3f; // 스카이박스 기본 노출값 설정
++ float timeLimit = 120f;  // 기본 시간 제한 값 (초 단위)
++ int score = 0;           // 점수 ( ScoreManager에서 이곳으로 함수 양도 )
++ bool isRestart = false;  // 현재 씬이 재시작된 것인지 여부 저장
+
+- void Awake() {} // 싱글턴 패턴
++ bool DecreaseHealth() {} // 호출 즉시 healthPoint 값을 1 감소시키고 및 현재 체력이 0이하인지 여부를 반환, 게임오버 판단은 StageManager에서 함
++ void PrepareForNewScene(bool isThisARestart) // 새로운 씬 로드하기전에 호출해야 하는 함수, 호출할 때 현재씬을 재시작한 것인지 파라미터로 전달받아서 파악, isRestart값 결정, healthPoint 초기화, restart시 restartCount증가
++ void RestartLevel() {} // 재시작시 호출됨. 현재씬을 재시작함과 동시에 PrepareForNewScene(true)를 호출
++ void GoToTitle() {} // 타이틀로 이동, 정확히는 Index가 0인 씬으로 이동
+
+
+### StageManager.cs
+Player의 낙하신호를 구독, HP와 Timer에 신호를 보냄
+낙사시 호출되어 피를 깍고 HP에 신호를 보내 체력게이지 업데이트, 마지막으로 게임오버 여부 판단
+시작/이벤트/레벨 클리어 Trigger에 닿았을 시 상황에 맞는 Dialogue를 출력하도록 DialogueManager의 startDialogue를 호출함
+시작시 모든 Dialogue 출력이 마치면 PlayerUI를 활성화 시키고 Timer 활성화 신호 전달
+
++ PlayerUIManager playerUIManager // PlayerUIManager 스크립트가 있는 오브젝트 할당
++ GameOver gameOverManager // GameOver 스크립트가 있는 오브젝트 할당
+
++ UnityEvent levelClearScript // Level 클리어시 실행할 함수를 할당
+
++ DialogueAsset startDialogue // Level 시작시 Dialogue Asset 할당, PlayerEnterClearTrigger에 의해 사용됨
++ DialogueAsset gameOverDialogue // Level에서 GameOver시 출력할 dialogue Asset 할당, 내부 함수 TriggerPlayerGameOver에서 사용되며, GameOver의 OnGameOver 함수 호출 인자로 사용됨
++ DialogueAsset levelClearDialogue // Level 클리어시 출력할 dialogue  Asset 할당, PlayerEnterClearTrigger에 의해 사용됨
+
++ static Action<int> callUpdateHP // HP가 변경되면 변경된 값을 인자로 HP Script에 신호 전달
++ static Action<bool> callTimer // 시작 Dialogue가 모두 출력되면 Timer Script에 신호 전달
+- bool isGameOver //  중복 호출 방지를 위한 게임오버 상태 플래그
++ static StageManager instance 
+
+
+
+- void Awake() {} // 싱글턴, 씬의 Skybox 노출값 설정 (초기화)
+- void OnEnable() { PlayerReset.CallPlayerReset += OnPlayerFall } // PlayerReset에서 플레이어 위치가 Reset되면 OnPlayerFall을 호출
+- void OnDisable() { PlayerReset.CallPlayerReset -= OnPlayerFall } // 구독 해제
+
++ void PlayerLevelEnter() {} // PlayerEnterClearTrigger의 Clear에서 호출, startDialogue를 출력한 뒤에 StartGame() 호출, 다만 재시작(GameManager의 isRestart) 일 경우 바로 startgame() 호출
+- void StartGame() { playerUIManager.Show(), callTimer?.Invoke(true) } // PlayerUI 활성화한 뒤에 Timer 작동 신호 보냄
+
++ void PlayerEvent(DialogueAsset eventDialogue) // EventTrigger에서 실행할 DialogueAsset과 함께 호출하면 해당 dialogueAsset을 DialogueManager의 startDialogue의 인자로 보내서 출력하도록 함
+
++ void PlayerLevelClear() { playerUIManager.Hide(), DialogueManager.instance.StartDialogue(levelClearDialogue, ClearCallback) } // PlayerEnterClearTrigger의 Clear에서 호출, PlayerUI를 없앤 뒤에 levelClearDialogue를 출력하도록 함
+- void ClearCallback() { GameManager.instance.PrepareForNewScene(), levelClearScript.Invoke() } // GameManager의 PrepareForNewScene을 호출해 초기화, 레벨 클리어시 실행하도록 할당한 함수 실행
+
++ void OnPlayerFall() { OnPlayerDamaged() } // 낙사시 호출됨, PlayerReset 신호를 받고 호출되는 함수
++ void OnPlayerDamaged() { GameManager.instance.DecreaseHealth(), callUpdateHP?.Invoke(GameManager.instance.healthPoint) } // GameManager를 이용해 현재 체력을 깎고 HP에 신호를 보내 UI 업데이트 명령, 이후 현재 체력이 0 이하면 TriggerPlayerGameOver를 호출
++ void TriggerPlayerGameOver(string reason) { playerUIManager.Hide(), gameOverManager.OnGameOver(gameOverDialogue) } // 체력이 모두 떨어졌거나 타임오버되면 호출됨. PlayerUI를 비활성화 하고 GameOver의 OnGameOver()를 gameOverDialogue를 인자로 호출하여 GameOver에서 게임오버 처리를 하도록 함
+
+
+
+---
+
+
+
+## UI_Managers
+
+### PlayerUIManager.cs
+모든 Player UI 요소를 일괄 처리하기 위해 존재.
++ GameObject playerUI // Player UI 오브젝트를 할당
+
+- void Start() { Hide() } // Player UI Manager는 스스로 Player UI를 비활성화 함
++ void Show() {} // Player UI를 활성화
++ void Hide() {} // Player UI를 비활성화 
+
+
+### GameOver.cs
+GameOver UI와 연결, 게임 종료시 GameOver UI를 활성화 시킨 뒤 Dialogue를 출력하고 버튼을 마지막으로 출력 
+GameManager와 ScoreManager, DialogueManager의 인스턴스를 사용함
+
++ GameObject gameOverUI // GameOverUI를 할당
++ TextMeshProUGUI gameOverText // GameOver Text 문구 할당
++ GameObject buttonParent  // GameOver 버튼들을 자식으로 가지는 Empty Object 할당
+
+- void Awake() {} // 시작시 GameOverUI를 비활성화
++ void OnGameOver(DialogueAsset) { ScoreManager.instance.FinalizeScoreAndSave(), DialogueManager.instance.StartDialogue(dialogue, AfterDialoguePrint) } 
+    // 외부에서 해당 함수를 호출하여 GameOver 처리, 현재 최종 점수를 저장하고, 전달받은 파라미터를 인자로하여 게임오버 Dialogue를 출력
+- void AfterDialoguePrint() { } // GameOver Dialogue가 끝나면 실행되는 콜백 함수로, 재시작과 타이틀 버튼 출력
++ void RestartGame() { GameManager.instance.RestartLevel() } // GameManager의 재시작 함수 호출해 현재 씬을 재로드
++ void QuitGame() { GameManager.instance.GoToTitle() } // GameManager의 GoToTitle 함수를 호출해 Title 씬을 로드
+
+
+### HP.cs
+PlayerUI의 HP UI와 연결됨
+StageManager의 HP 변경 신호를 구독하며, GameManager의 healthPoint값을 참조
+
++ GameObject hpIconPrefab // HP 아이콘 프리팹
++ Transform iconContainer // HP 아이콘들이 생성될 Horizontal Layout Group
+- int maxHp // 최대 체력, 초기화시 해당 체력 수치 많큼 HP 아이콘을 생성함
+- List<GameObject> hpIcons // HP 아이콘을 순서대로 저장
+
+- void Start() { maxHp = GameManager.instance.healthPoint, InitializeHp() } // GameManager로부터 healthPoint값을 받아오고, InitializeHp()를 호출시켜 초기화
+- void OnEnable() { StageManager.callUpdateHP += UpdateHp } // StageManager의 체력 업데이트 함수 구독
+- void OnDisable() { StageManager.callUpdateHP -= UpdateHp } // 메모리 누수 방지를 위해 StageManager의 체력 업데이트 함수 해지
+- void InitializeHp() {} // 기존에 존재하던 아이콘을 모두 삭제하고 maxHP 만큼 아이콘 생성
++ void UpdateHp(int currentHp) {} // StageManager에서 현재 체력값을 인자로 하여 호출
+
+
+
+### Timer.cs
+싱글턴 패턴으로 외부에서 Timer instance를 쓸 수 있도록 함 (근데 정작 참조하는건 없음)
+Player UI의 Timer 부분을 담당
+StageManager의 callTimer를 구독, GameManager의 timeLimit 값을 참조해서 초기 Time값을 결정
+타임 오버시 StageManager의 TriggerPlayerGameOver를 호출
+
++ TextMeshProUGUI timerText // Player UI의 timer text를 띄울 UI 할당
+- float remainingTime // 현재 남은 시간 (초)
+- bool isRunning  // Timer의 작동 여부 결정, false면 remainingTime이 감소하지 않음
++ static Timer instance 
+
+- void Start() { remainingTime = GameManager.instance.timeLimit } // remainingTime 초기화
+- void OnEnable() { StageManager.callTimer += TimerOnOff } // StageManager의 callTimer 구독
+- void OnDisable() { StageManager.callTimer -= TimerOnOff } // 메모리 누수를 막기 위해 StageManager의 callTimer 구독 해제
++ void TimerOnOff(bool) // StageManager에서 Tiemr의 카운트 시작 타이밍을 결정하기 위한 함수, callTimer 신호가 오면 발동됨
+- void TimeCountdown() {} // remainingTime을 기반으로 Timer UI에 띄울 숫자를 계산하고 텍스트를 UI에 띄움
+- void Update() {} // isRunning = true일 때, remainingTime -= Time.deltaTime를 반복하며 감소시킴. 0이하가 되면 GameOver() 함수를 실행
+- IEnumerator GameOver() { StageManager.instance.TriggerPlayerGameOver("timeOut") } // StageManager의 TriggerPlayerGameOver를 호출하여 GameOver를 알림
+
+
+
+### PauseMenuManager.cs
++ GameObject pauseMenuPanel // Pause시 활성화할 MenuPanel을 할당 
++ GameObject optionsPanel // Menu에서 option 버튼을 누를 시 활성화될 OptionPanel을 할당
+- bool isPaused // 퍼즈 상태 기록 용
+
+- void Start() {} // pauseMenuPanel과 optionsPanel을 비활성화 함
+- void Update() {} // ESC 키를 누를 경우, isPaused = true면 ResumeGame()을 호출, false면 PauseGame을 호출
+- void PauseGame() {} // Time의 timeScale을 0으로(=정지) 설정, Cursor 활성화
+- void ResumeGame() // Resume 버튼에 할당, Time의 timeScale을 1으로(=1배속) 설정, Cursor 비활성화
++ void OnClick_Options() // Option버튼에 할당, 누를시 Option창 활성화하고 PauseMenu 비활성화
++ void OnClick_Tutorial() // Tutorial 버튼에 할당, 누를시 Tutorial Scene을 로드
++ void OnClick_GoToTitle() // Title 버튼에 ㅎ라당, 누를시 Title로 이동
++ void CloseOptions() // Option 창의 Quit 버튼에 할당. Option창 비활성화 하고 PauseMenu 활성화
+
+
+### UIScore.cs
++ TextMeshProUGUI scoreText
+
+- OnEnable() {ScoreManager.instance.OnScoreUpdated += UpdateScoreText; }
+- OnDisable() {ScoreManager.instance.OnScoreUpdated -= UpdateScoreText; }
+- void Start() { UpdateScoreText(); }
+- void UpdateScoreText() {} // ScoreManager에 저장된 score 값으로 ScoreText 업데이트
+
+
+### ScoreManager
++ static ScoreManager instance // DontDestroyOnLoad로 설정됨
+
++ int score // 점수 저장
+- int comboCount // 콤보 카운트
+
+- const int BASE_SCORE = 100  // 발판 기본 점수
+- const int COMBO_BONUS = 10  // 연속으로 밟을 때마다 추가되는 점수
+- const int CLEAR_BONUS = 500 // 레벨 클리어 보너스
+
+- HashSet<int> steppedOnPlatforms // 밟았던 발판에 대해서는 점수가 상승하지 않도록 밟은 발판들을 저장해서 기억함
++ event Action OnScoreUpdated // UIScore.cs에 신호 보냄
+
+
+- void Awake() { SceneManager.sceneLoaded += OnSceneLoaded } // DontDestroyOnLoad로 설정, SceneManager에 OnSceneLoaded를 추가해 씬 로드시마다 OnSceneLoaded()함수가 호출되도록 함
+- void OnSceneLoaded(Scene scene, LoadSceneMode mode) {steppedOnPlatforms.Clear() } // 새 씬이 로드될 때마다 밟았던 발판 기록을 초기화
++ void AddScoreForCorrectStep(GameObject) {} // steppedOnPlatforms에 현재 밟은 발판의 고유 ID가 존재하는지 확인, 없다면 추가하고 점수 계산, 있다면 그대로 return하여 점수 계산 안함
++ void ResetCombo() {} // 콤보 카운트를 0으로 되돌림
++ void AddScoreForLevelClear() {} // 레벨 클리어시 호출, CLEAR_BONUS만큼 추가되며 콤보를 초기화. UIScore에 신호 보냄
++ void FinalizeScoreAndSave() { SaveScoreToLeaderboard(score) } // 게임 오버시 호출되며, 최종 점수를 리더보드에 저장함
+- void SaveScoreToLeaderboard(int finalScore) // "LeaderboardScores"라는 키를 가지고 Local에 Score를 저장, 저장된 값은 Local에서만 고유하게 저장되며, 같은 키를 통해 저장한 값을 불러올 수 있음
+{
+    PlayerPrefs.SetString("LeaderboardScores", scores + finalScore.ToString() + ",");
+    PlayerPrefs.Save();
+}
+
+--------------------------
+
+
+타이틀 매니저에 모든 기능을 전달하는 걸로 수정할 예정
+
+## Title_Managers
+
+### Title.cs << 삭제 필요
+Title Scene에서 Title UI에 할당되어 Start버튼과 Quit버튼에 연결됨
++ string gameSceneName // Start버튼 누를시 이동할 씬
+
++ void OnClickStart() // gameSceneName에 해당하는 Scene으로 이동함
++ void OnClickQuit() // 게임 종료함
+
+### TitleManager.cs
+Title Scene에서 Title UI의 Option 창에서의 버튼들의 동작 결정
++ GameObject optionWin // 옵션 창 UI 할당
++ Button[] titleBtn // 옵션창에 있는 버튼이 아닌, 타이틀의 버튼들을 일괄적으로 할당
+
+- void Start() { optionWin.SetActive(false) } // 옵션창 초기에 비활성화 
++ void OnClickConfirm() { titleBtnSetting(true) } // Option창의 Confirm Button에 할당, 호출시 GameManager에 변경사항을 저장하고 Option 창 비활성화 하고 title의 버튼들을 활성화
++ void OnClickCancle() { titleBtnSetting(true) } // Option창의 Cancle Button에 할당, 호출시 단순히 Option 창 비활성화 하고 title의 버튼들을 활성화
++ void OnClickStart() // title의 Start Button에 할당, index 1 (=Level0)인 Scene을 로드
++ void OnClickOption() { titleBtnSetting(false) } // title의 Option Button에 할당, 옵션창을 활성화 하고 title 버튼을 비활성화
++ void OnClickQuit() // title의 Quit Button에 할당
+- void titleBtnSetting(bool) {} // title의 버튼을 전달받은 파라미터에 따라 (비)활성화 함
+
+
+
+
+## Title
+
+### BGMManager.cs
+현재 각 Scene별로 뒤에서 틀어주는 BackGroundMusic 밖에 없음. Scene에서 특정 행동 결과로 나오는 음악은 따로 설정해야 할 듯
++ static BGMManager instance // 싱글턴을 위한 static 인스턴스
++ Sound[] bgmSounds // 각 Scene별, 상황별로 쓸 BGM을 목록으로 할당
+    Sound -> string sceneName, AudioClip bgmClip // Sound는 구조체로, Scene 이름과 오디오 파일 둘 을 멤버로 가진다.
+
+- AudioSource audioSource // BGMManager의 오디오 소스 컴포넌트를 할당
+- Dictionary<string, AudioClip> bgmDictionary  // Sound 구조체의 변수 값을 저장하기 위한 Dictionary
+- string BGM_VOLUME_KEY = "BgmVolume" // PlayerPrefs에서 BGM 관련 수치를 변경하는 옵션을 키기위한 Flag 값
+
+
+- void Awake() { DontDestroyOnLoad(gameObject), SceneManager.sceneLoaded += OnSceneLoaded  }  
+// DontDestroyOnLoad로 계속 유지되도록 설정, SceneManager의 sceneLoaded에 OnSceneLoaded를 추가해 Scene로드시 자동으로 SceneName과 함께 OnSceneLoaded함수를 호출하도록 함
+- void OnSceneLoaded(Scene, LoadSceneMode)
+{
+    1. Dictionary에 저장된 bgm 목록에서 현재 Scene에 해당되는 BGM을 추출
+    2. 만약 BGM이 Dict에 존재한다면, 그것이 현재 재생중인 것과 같은지 비교 후 해당 BGM을 재생
+    3. 없다면 현재 재생중인 것을 멈추고 아예 재생 목록을 비움
+}
++ void SetVolume(float volume) // 외부에서 호출할 때 설정한 인자값으로 볼륨 설정
+- void LoadVolume() { SetVolume(0.8f) } // 볼륨 초기값 설정. 80% 볼륨으로 설정함
++ float GetCurrentVolume() {} // 현재 볼륨값을 반환
+
+
+### MainMenu.cs
+TitleManager에 합류당할 예정
++ void PlayGame()
++ void QuitGame()
+
+
+### OptionManager.cs
+SFX slider도 추가할 필요
+
++ Slider bgmSlider // BGM 조절 Slider
++ GameObject optionsPanel // option창 할당
+
+- void Start() { bgmSlider.onValueChanged.AddListener(OnBgmSliderChanged) } // 슬라이더 값 변경시 호출될 리스너 함수를 추가
+- void OnBgmSliderChanged(float) { BGMManager.instance.SetVolume(value) } // BGMManager의 SetVolume 함수를 슬라이더값을 인자로 하여 호출
++ void OnClick_CloseOption // 닫기 버튼에 연결
+- void OnDestroy(){} // Destory될시 리스터 해제 과정을 추가해 메모리 누수 방지
+
+
+
+## Tutorial
+
+### TutorialManager.cs
+아예 튜토리얼 씬을 만들어서 호출시켜 버림, UI 로 변경해서 Title에 편입시키는게 좋을 듯
+
++ TutorialPage[] pages // 아래에 연결된 UI에 띄울 이미지와 String을 조합해서 추가
+
++ Image tutorialImage // Tutorial 이미지를 띄울 UI 할당
++ TextMeshProUGUI descriptionText // Tutorial 설명을 띄울 UI 할당
++ GameObject nextButton // 다음장으로 이동하는 버튼 UI 할당
++ GameObject prevButton // 이전장으로 이동하는 버튼 UI 할당
+
+- void Start() { ShowPage(currentPageIndex) } // 페이지를 보여줌
+- void Update() { GoToNextPage(); } // 마우스 포인터가 UI 오브젝트 위에 있으면 마우스로 버튼 클릭만 가능, 없다면 스페이스바를 눌러 넘기기 가능, GoToNextPage 호출
+- void ShowPage(int index) { prevButton.SetActive(index > 0) } // index에 해당하는 이미지와 설명 띄움. 두번째 페이지부터 "이전"버튼을 활성화, 마지막 페이지이면 nextButton의 텍스트를 "돌아가기로 설정"함
++ void GoToNextPage() {} // nextButton에 할당되거나 space를 눌러서 호출됨. 다음 페이지를 띄움. 만약 마지막 페이지이면 SceneMemory에 저장된 Scene으로 돌아가거나 Title로 돌아감
++ void GoToPrevPage() {} // 이전 페이지로 돌아감

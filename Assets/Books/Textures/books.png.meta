@@ -1,5 +1,12 @@
 fileFormatVersion: 2
 guid: f3c99298fbcc03e4ba8ecf8651058e16
+AssetOrigin:
+  serializedVersion: 1
+  productId: 3356
+  packageName: Mobile Books
+  packageVersion: 2.1
+  assetPath: Assets/Books/Textures/books.png
+  uploadId: 749883
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -115,10 +122,3 @@ TextureImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 3356
-  packageName: Mobile Books
-  packageVersion: 2.1
-  assetPath: Assets/Books/Textures/books.png
-  uploadId: 749883

@@ -11,13 +11,19 @@ public class SceneSwitch : MonoBehaviour
     // 외부에서 이 Trigger를 사용하도록 하기 위함
     public void ApplySceneSwitch()
     {
+        Debug.Log("call level switch");
         // 씬 이름이 비어있지 않다면 해당 씬을 로드합니다.
-        if (nextScene) {
+        if (nextScene)
+        {
+            Debug.Log("NextScene");
             GameManager.instance.PrepareForNewScene(SceneManager.GetActiveScene().buildIndex - 1);
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-        } else {
+        }
+        else
+        {
             if (!string.IsNullOrEmpty(sceneName))
             {
+                Debug.Log(sceneName);
                 SceneManager.LoadScene(sceneName);
             }
         }

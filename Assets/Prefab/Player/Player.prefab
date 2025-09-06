@@ -183,7 +183,7 @@ MonoBehaviour:
   minY: -20
   objTag: Correct
   changeMaterial: {fileID: 2100000, guid: c2c12c9efc512274f90c1fcc4373c878, type: 2}
-  SavePoint: 0
+  SavePoint: 1
   PathColorizer: 1
 --- !u!114 &1625397295780720946
 MonoBehaviour:

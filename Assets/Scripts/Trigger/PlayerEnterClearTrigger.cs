@@ -9,11 +9,17 @@ public class PlayerEnterClearTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("PEC");
             if (IsEnterTrigger)
+            {
+                Debug.Log("TT");
                 StageManager.instance.PlayerLevelEnter();
+            }
             else if (IsClearTrigger)
+            {
+                Debug.Log("ICT");
                 StageManager.instance.PlayerLevelClear();
-        
+            }
             gameObject.SetActive(false);
         }
     }
