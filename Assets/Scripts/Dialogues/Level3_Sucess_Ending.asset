@@ -39,6 +39,6 @@ MonoBehaviour:
       sceneToLoad: 
       sympathyChange: 4
       scoreChange: 0
-  - sentence: "\"\uC88B\uC544\uC694, \uC774\uC81C \uB9C8\uC9C0\uB9C9 \uC57D\uC744
-      \uC5BB\uC73C\uB7EC \uAC00\uBCF4\uC8E0.\""
+  - sentence: "\"\uC88B\uC544\uC694, \uC774\uC81C \uB9C8\uC9C0\uB9C9 \uACF5\uAC10\uC758
+      \uC57D\uC744 \uC5BB\uC73C\uB7EC \uAC00\uBCF4\uC8E0.\""
     choices: []

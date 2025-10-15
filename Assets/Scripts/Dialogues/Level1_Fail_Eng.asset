@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level1_Fail_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\"Was it confusing?\nYou were lost in the dark for only a few minutes\u2026\nbut
+      Lumi waited for you until the very end.\""
+    choices: []
+  - sentence: "\u201CDon\u2019t be discouraged just because you fell.\nWhat truly
+      matters is rebuilding trust\u2014\nand standing up again, together.\u201D"
+    choices: []

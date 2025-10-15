@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level2_Sucess_Ending_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\u201CYou\u2019ve learned that the world can be understood even without
+      relying on color.\u201D\r"
+    choices: []
+  - sentence: "\u201CWhat you saw wasn\u2019t just shades of gray.\nAfter all, the
+      rainbow doesn\u2019t look the same to everyone.\u201D\r\r"
+    choices: []
+  - sentence: "\u201CPeople see color in different ways \u2014\nand what matters
+      is realizing\nthat this isn\u2019t wrong, it\u2019s simply different.\u201D"
+    choices: []
+  - sentence: "\u201CA color that blends into the background for one person\nmight
+      be a life-saving signal for another.\u201D\r\r\r"
+    choices: []
+  - sentence: "\u201CWhat you can do now\u2026\u201D\r\r\r\r"
+    choices: []
+  - sentence: "\u201Cis start seeing the world through meaning, not color.\nCreate
+      designs that everyone can read,\nand colors that leave no one behind.\u201D"
+    choices: []
+  - sentence: "\u201CBecause even a small act of consideration\ncan become a light
+      that makes someone\u2019s world clearer.\u201D\r\r\r\r"
+    choices: []
+  - sentence: 
+    choices:
+    - choiceText: "'\uB2E4\uB984\uC744 \uC774\uD574\uD558\uB294 \uACF5\uAC10\uC758
+        \uC57D'\uC744 \uC5BB\uB294\uB2E4."
+      nextDialogue: {fileID: 0}
+      sceneToLoad: 
+      sympathyChange: 4
+      scoreChange: 0
+  - sentence: "\u201CTrust, cooperation, and understanding of the difference\u2026\nI
+      wonder\u2014what kind of empathy will your next medicine hold?\u201D"
+    choices:
+    - choiceText: "'\uB2E4\uB984\uC744 \uC774\uD574\uD558\uB294 \uACF5\uAC10\uC758
+        \uC57D'\uC744 \uC5BB\uB294\uB2E4."
+      nextDialogue: {fileID: 0}
+      sceneToLoad: 
+      sympathyChange: 4
+      scoreChange: 0

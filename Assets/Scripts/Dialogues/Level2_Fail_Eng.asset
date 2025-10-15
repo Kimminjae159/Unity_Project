@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level2_Fail_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\u201CYou stepped on the wrong tile?\nYou probably never realized
+      how easy the world felt\nwhen you could see color.\u201D\r"
+    choices: []
+  - sentence: "\u201CRemember \u2014 for some people,\n\u2018red\u2019 isn\u2019t
+      a warning at all.\nIt\u2019s just another shade of gray.\u201D\r\r"
+    choices: []

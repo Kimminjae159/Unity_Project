@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level1_Star_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: This is your first 'Star of Empathy'.
+    choices: []
+  - sentence: "Around 285 million people worldwide\u2014including 260,000 in Korea\u2014live
+      with visual impairment."
+    choices: []
+  - sentence: Many face social isolation due to limited access to Braille, audio
+      guidance, and accessible information.
+    choices: []
+  - sentence: "The path you\u2019re finding now, guided only by your senses,\nis
+      the beginning of understanding their everyday world."
+    choices: []

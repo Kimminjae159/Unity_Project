@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level5_Final Ending_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\u201CYou have now fully regained your empathy.\u201D"
+    choices: []
+  - sentence: "\u201CYou\u2019re no longer afraid when you can\u2019t see,\nno longer
+      lonely when you can\u2019t hear,\nand no longer powerless when you can\u2019t
+      read.\u201D\r"
+    choices: []
+  - sentence: "\u201CBecause now, you\u2019ve learned to see the world through someone
+      else\u2019s discomfort.\u201D\r"
+    choices: []
+  - sentence: "\u201CNow, your journey of trials has finally come to an end.\u201D\r"
+    choices: []
+  - sentence: "\u201CPlease, leave behind your journey \u2014\nso others may find
+      their own way.\u201D\r"
+    choices: []

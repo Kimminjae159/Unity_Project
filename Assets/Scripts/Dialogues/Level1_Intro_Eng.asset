@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level1_Intro_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\u201CYour vision has begun to fade.\nThis darkness may feel unfamiliar
+      and temporary to you,\nbut for someone else\u2026 it\u2019s a world they live
+      in every day.\u201D"
+    choices: []
+  - sentence: "\u201CFrom now on, you\u2019ll learn how to find your way in a world
+      that cannot be seen.\nFollow the sounds, the space around you\u2014\nand your
+      own intuition.\u201D"
+    choices: []
+  - sentence: "\u201CWalking alone might feel difficult at first.\nBut soon, you\u2019ll
+      meet your companion\u2014\na guide dog named Lumi,\nwho will become the eyes
+      you can no longer use.\u201D"
+    choices: []
+  - sentence: "\u201CTrust and cooperation will be the strongest compass you have
+      in this darkness.\u201D"
+    choices: []

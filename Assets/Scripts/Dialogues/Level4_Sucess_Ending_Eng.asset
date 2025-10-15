@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level4_Sucess_Ending_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\u201CNow you can see, hear, and understand everything\u2026\nYou\u2019re
+      no longer the person you once were.\u201D\r"
+    choices: []
+  - sentence: "\u201CShine this new clarity onto the worlds that were once hidden
+      from you.\u201D\r"
+    choices: []
+  - sentence: 
+    choices:
+    - choiceText: "You have obtained the \u201CMedicine of Empathy\u201D \u2014 one
+        that embraces everyone."
+      nextDialogue: {fileID: 0}
+      sceneToLoad: 
+      sympathyChange: 4
+      scoreChange: 0

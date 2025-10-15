@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level1_Sucess_Ending_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\u201CWell done. Together with Lumi,\nyou\u2019ve learned how to understand\u2014\neven
+      without seeing.\u201D\r"
+    choices: []
+  - sentence: "\u201CYour vision may still be blurred,\nbut now you know what it
+      means\nto trust someone and walk beside them.\u201D"
+    choices: []
+  - sentence: "\u201CLumi guided you, yes\u2026\nbut you followed her too.\nThat\u2019s
+      where empathy begins\u2014\nin mutual trust.\u201D"
+    choices: []
+  - sentence: "\u201CLumi always becomes someone\u2019s guide,\nbut she can\u2019t
+      stay forever.\u201D"
+    choices: []
+  - sentence: "\u201CBecause now,\nyou\u2019ve learned how to find your own way.\u201D\r"
+    choices: []
+  - sentence: "\u201CEmpathy sometimes means walking together,\nand sometimes letting
+      go\u2014\nso others can grow on their own.\u201D\r\r"
+    choices: []
+  - sentence: 
+    choices:
+    - choiceText: "'\uD611\uB825\uACFC \uC2E0\uB8B0\uC5D0\uC11C \uD0DC\uC5B4\uB09C
+        \uACF5\uAC10\uC758 \uC57D\u2019\uC744 \uC5BB\uB294\uB2E4."
+      nextDialogue: {fileID: 0}
+      sceneToLoad: 
+      sympathyChange: 4
+      scoreChange: 0
+  - sentence: "\u201CGood. Now, let\u2019s move on\nto find the next medicine.\u201D"
+    choices: []

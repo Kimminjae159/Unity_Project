@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level3_Sucess_Ending_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: "\u201CYou found the rule hidden in the symbols.\nYou\u2019ve learned
+      a little about how to understand\neven without reading.\u201D\r\r"
+    choices: []
+  - sentence: "\u201CThere are still people in this world who stop in front of words.\nSome
+      fear going to the hospital\nor walk away without buying medicine,\nsimply because
+      they can\u2019t read the text.\u201D"
+    choices: []
+  - sentence: "\u201CBut now, you can understand their struggles\nand support their
+      right to learn and be included.\u201D"
+    choices: []
+  - sentence: "\u201CHelping others learn to read\nis the first step to giving them
+      back their rights.\u201D\r\r\r"
+    choices: []
+  - sentence: 
+    choices:
+    - choiceText: "\u2018\uC774\uD574\uB97C \uC787\uB294 \uACF5\uAC10\uC758 \uC57D\u2019\uC744
+        \uC5BB\uC5C8\uB2E4."
+      nextDialogue: {fileID: 0}
+      sceneToLoad: 
+      sympathyChange: 4
+      scoreChange: 0
+  - sentence: "\u201CGood. Now, let\u2019s go find\nthe final medicine of empathy.\u201D"
+    choices: []

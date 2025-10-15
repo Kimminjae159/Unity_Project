@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 419cf589509f2d94d8e6c69f28cfd1ad, type: 3}
+  m_Name: Level4_Star_Eng
+  m_EditorClassIdentifier: 
+  dialoguePieces:
+  - sentence: The final 'Star of Empathy' is Action.
+    choices: []
+  - sentence: "Now it\u2019s time to turn your empathy into action."
+    choices: []
+  - sentence: Support people with visual impairments by respecting braille and audio
+      guides, and by keeping walking spaces safe.
+    choices: []
+  - sentence: 'Support lifelong literacy education for adults with limited literacy
+      skills,
+
+      and build bridges with immigrants and refugees through language
+      volunteering, cultural exchange, and anti-discrimination efforts.'
+    choices: []
+  - sentence: Your small act of kindness can become the light that breaks down the
+      invisible walls around others.
+    choices: []
