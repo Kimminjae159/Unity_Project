@@ -58,11 +58,11 @@ public class TutorialManager : MonoBehaviour
         if (index == pages.Length - 1)
         {
             // 마지막 페이지일 때 버튼 텍스트를 "돌아가기"로 변경
-            nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "창닫기";
+            nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Close";
         }
         else
         {
-            nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "다음";
+            nextButton.GetComponentInChildren<TextMeshProUGUI>().text = "Next";
         }
     }
 

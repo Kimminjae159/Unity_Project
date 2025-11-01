@@ -28,8 +28,7 @@ MonoBehaviour:
     choices: []
   - sentence: 
     choices:
-    - choiceText: "\u2018\uC774\uD574\uB97C \uC787\uB294 \uACF5\uAC10\uC758 \uC57D\u2019\uC744
-        \uC5BB\uC5C8\uB2E4."
+    - choiceText: "Obtained the \"Medicine of Empathy\" \u2014 one that bridges understanding."
       nextDialogue: {fileID: 0}
       sceneToLoad: 
       sympathyChange: 4

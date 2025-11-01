@@ -21,8 +21,8 @@ MonoBehaviour:
     choices: []
   - sentence: 
     choices:
-    - choiceText: "You have obtained the \u201CMedicine of Empathy\u201D \u2014 one
-        that embraces everyone."
+    - choiceText: "Otained the \u201CMedicine of Empathy\u201D \u2014 one that embraces
+        everyone."
       nextDialogue: {fileID: 0}
       sceneToLoad: 
       sympathyChange: 4

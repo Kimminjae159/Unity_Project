@@ -2,10 +2,23 @@ using UnityEngine;
 
 public class GetStar : MonoBehaviour
 {
-    public DialogueAsset dialogue;
+    public DialogueAsset dialogue_kr;
+    public DialogueAsset dialogue_en;
+    private DialogueAsset dialogue;
     public AudioSource audioSource;
     public AudioClip audioClip;
-
+    void Start()
+    {
+        int languageMode = GameManager.instance.language;
+        if (languageMode == 0)
+        {
+            dialogue = dialogue_kr;
+        }
+        else if(languageMode==1)
+        {
+            dialogue = dialogue_en;
+        }
+    }
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))

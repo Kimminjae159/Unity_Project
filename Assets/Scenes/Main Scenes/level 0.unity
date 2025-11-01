@@ -363624,6 +363624,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2536965902854215243, guid: bdecbc8f8bee7b843b5dea5629dceb95, type: 3}
+      propertyPath: language
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4188797945306075258, guid: bdecbc8f8bee7b843b5dea5629dceb95, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.7753
@@ -409385,7 +409389,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939794271efac984f8748ba3a095b698, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: {fileID: 11400000, guid: 984812b7d6e63de48b218bc9113b3383, type: 2}
+  dialogue_kr: {fileID: 11400000, guid: 984812b7d6e63de48b218bc9113b3383, type: 2}
+  dialogue_en: {fileID: 11400000, guid: 454dbfcba83398f4798ccfd959e4595a, type: 2}
 --- !u!65 &2064627221
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -429475,9 +429480,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-  startDialogue: {fileID: 0}
-  gameOverDialogue: {fileID: 0}
-  levelClearDialogue: {fileID: 11400000, guid: 539d57fc1a34c704284b5c7cee47199c, type: 2}
+  startDialogue_kr: {fileID: 0}
+  gameOverDialogue_kr: {fileID: 0}
+  levelClearDialogue_kr: {fileID: 11400000, guid: 539d57fc1a34c704284b5c7cee47199c, type: 2}
+  startDialogue_en: {fileID: 0}
+  gameOverDialogue_en: {fileID: 0}
+  levelClearDialogue_en: {fileID: 11400000, guid: e895ca6fea87594408bcdb26c91df849, type: 2}
   MemberCheckMode: 0
 --- !u!1001 &1728948080404356169
 PrefabInstance:

@@ -1,7 +1,8 @@
 using UnityEngine;
 using System;
 using UnityEngine.Events;
-using UnityEngine.Rendering; // Action 콜백을 사용하기 위함
+using UnityEngine.Rendering;
+using Unity.Burst.CompilerServices; // Action 콜백을 사용하기 위함
 
 /// <summary>
 /// 각 레벨 씬의 전반적인 흐름을 관리합니다.
@@ -21,10 +22,18 @@ public class StageManager : MonoBehaviour
     [Header("Scene Settings")]
     [SerializeField] private UnityEvent levelClearScript;  // 레벨클리어시 행동할 Script
 
-    [Header("Dialogue Assets")]
-    [SerializeField] private DialogueAsset startDialogue;       // 시작 대화
-    [SerializeField] private DialogueAsset gameOverDialogue;    // 게임오버 대화
-    [SerializeField] private DialogueAsset levelClearDialogue;  // 레벨클리어 대화
+    [Header("KR Dialogue Assets")]
+    [SerializeField] private DialogueAsset startDialogue_kr;       // 한국어 시작 대화
+    [SerializeField] private DialogueAsset gameOverDialogue_kr;    // 한국어 게임오버 대화
+    [SerializeField] private DialogueAsset levelClearDialogue_kr;  // 한국어 레벨클리어 대화
+    [Header("EN Dialogue Assets")]
+    [SerializeField] private DialogueAsset startDialogue_en;       // 영어 시작 대화
+    [SerializeField] private DialogueAsset gameOverDialogue_en;    // 영어 게임오버 대화
+    [SerializeField] private DialogueAsset levelClearDialogue_en;  // 영어 레벨클리어 대화
+
+    private DialogueAsset startDialogue;       // 시작 대화
+    private DialogueAsset gameOverDialogue;    // 게임오버 대화
+    private DialogueAsset levelClearDialogue;  // 레벨클리어 대화
 
     // --- 내부 변수 ---
     public static Action<int> callUpdateHP; // 옵저버 패턴을 활용, HP가 변경되면 이벤트에 등록된 함수를 호출
@@ -59,7 +68,7 @@ public class StageManager : MonoBehaviour
         }
         if (MemberCheckMode && !AllMemberOK) return;
 
-        
+
         // 싱글턴으로 유일 인스턴스 보장
         if (instance == null)
         {
@@ -69,7 +78,21 @@ public class StageManager : MonoBehaviour
         {
             DestroyImmediate(this);
         }
-        // GameManager로부터 데이터를 받아 씬 초기 구성
+        // GameManager에 설정된 Language mode로 dialogue 설정 (타이틀에서만 변경가능한 걸로)
+        int languageMode = GameManager.instance.language;
+        if (languageMode == 0)
+        {
+            startDialogue = startDialogue_kr;       
+            gameOverDialogue = gameOverDialogue_kr; 
+            levelClearDialogue = levelClearDialogue_kr;
+        }
+        else if (languageMode == 1)
+        {
+            startDialogue = startDialogue_en;
+            gameOverDialogue = gameOverDialogue_en;
+            levelClearDialogue = levelClearDialogue_en;
+        }
+
 
         // 씬의 Skybox 노출값 설정
         RenderSettings.skybox.SetFloat("_Exposure", GameManager.instance.skyboxExposure);

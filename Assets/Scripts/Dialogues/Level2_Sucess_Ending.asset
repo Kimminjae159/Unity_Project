@@ -51,10 +51,4 @@ MonoBehaviour:
       scoreChange: 0
   - sentence: "\uD611\uB825\uACFC \uC2E0\uB8B0, \uADF8\uB9AC\uACE0 \uB2E4\uB984...\\n\uB2E4\uC74C
       \uACF5\uAC10\uC758 \uC57D\uC740 \uC5B4\uB5A4 \uC57D\uC77C\uAE4C\uC694?"
-    choices:
-    - choiceText: "'\uB2E4\uB984\uC744 \uC774\uD574\uD558\uB294 \uACF5\uAC10\uC758
-        \uC57D'\uC744 \uC5BB\uB294\uB2E4."
-      nextDialogue: {fileID: 0}
-      sceneToLoad: 
-      sympathyChange: 4
-      scoreChange: 0
+    choices: []

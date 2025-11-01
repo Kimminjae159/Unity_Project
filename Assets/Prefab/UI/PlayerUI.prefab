@@ -381,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetRectTransform: {fileID: 5736949401162749147}
+  gage: {fileID: 8678419551380410296}
 --- !u!1 &4050333251298422978
 GameObject:
   m_ObjectHideFlags: 0

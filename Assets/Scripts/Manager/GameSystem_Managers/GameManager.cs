@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour
     public int ClearTime4 = 0;
     public int TotalScore = 0;
 
+    public int language = 0; // 언어 설정. 0 : 한국어, 1 : 영어
+
     [Header("점수 데이터")]
     public int score = 0;    // 점수 (필요한지 여부를 따져봐야 할듯함)
     public int comboCount = 0;
@@ -182,5 +184,12 @@ public class GameManager : MonoBehaviour
     {
         this.score += score;
         ScoreUpdateCall?.Invoke();
+    }
+
+    // 0 : 한국어
+    // 1 : 영어
+    public void languageSet(int mode = 0)
+    {
+        language = mode;
     }
 }

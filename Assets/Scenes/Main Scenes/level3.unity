@@ -3506,7 +3506,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: cde022b69a714384a95d9495dde60149, type: 2}
     - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
+      propertyPath: startDialogue_en
+      value: 
+      objectReference: {fileID: 11400000, guid: fd32428c1d128e649b7591862c35be50, type: 2}
+    - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
+      propertyPath: startDialogue_kr
+      value: 
+      objectReference: {fileID: 11400000, guid: 3b43561e5dab0484d8568e277325e868, type: 2}
+    - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
       propertyPath: levelClearDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: a8e8bbe15c22930478eefe8877ed6cf2, type: 2}
+    - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
+      propertyPath: gameOverDialogue_en
+      value: 
+      objectReference: {fileID: 11400000, guid: 128b3b4bfb36b7943944bb05d0d20528, type: 2}
+    - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
+      propertyPath: gameOverDialogue_kr
+      value: 
+      objectReference: {fileID: 11400000, guid: cde022b69a714384a95d9495dde60149, type: 2}
+    - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
+      propertyPath: levelClearDialogue_en
+      value: 
+      objectReference: {fileID: 11400000, guid: 495c708fb0ce264429671a1a80cf7dde, type: 2}
+    - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
+      propertyPath: levelClearDialogue_kr
       value: 
       objectReference: {fileID: 11400000, guid: a8e8bbe15c22930478eefe8877ed6cf2, type: 2}
     - target: {fileID: 883935145801370359, guid: 230594fd18cac6045806ac7281f9bca8, type: 3}
@@ -10523,6 +10547,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6587839734804001558, guid: cf350c42b170416479885a890c68a478, type: 3}
       propertyPath: dialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 52547bc149c313e4c897b9cf3c259a47, type: 2}
+    - target: {fileID: 6587839734804001558, guid: cf350c42b170416479885a890c68a478, type: 3}
+      propertyPath: dialogue_en
+      value: 
+      objectReference: {fileID: 11400000, guid: 1b5f4e371161b0e4f9bf1cef2e91e57b, type: 2}
+    - target: {fileID: 6587839734804001558, guid: cf350c42b170416479885a890c68a478, type: 3}
+      propertyPath: dialogue_kr
       value: 
       objectReference: {fileID: 11400000, guid: 52547bc149c313e4c897b9cf3c259a47, type: 2}
     m_RemovedComponents: []

@@ -193,6 +193,9 @@ public class DialogueManager : MonoBehaviour
         {
             GameObject buttonGO = Instantiate(choiceButtonPrefab, choicesLayout); // 버튼 생성 Transform 위치에 맞춰 버튼 인스턴트 생성
             buttonGO.GetComponentInChildren<TextMeshProUGUI>().text = choice.choiceText; // 생성한 버튼에 문자 할당
+            buttonGO.GetComponentInChildren<RectTransform>().sizeDelta = new Vector2(
+                buttonGO.GetComponentInChildren<RectTransform>().sizeDelta.x, 120
+            );
 
             Button button = buttonGO.GetComponent<Button>();
             // 버튼 클릭 시, 해당 choice에 연결된 UnityEvent를 실행
