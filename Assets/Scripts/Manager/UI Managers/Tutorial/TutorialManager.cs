@@ -11,9 +11,8 @@ public class TutorialManager : MonoBehaviour
     [System.Serializable]
     public struct TutorialPage
     {
-        public Sprite image;
-        [TextArea(3, 5)]
-        public string description;
+        public Sprite image_kr;
+        public Sprite image_en;
     }
 
     [Header("튜토리얼 페이지 목록")]
@@ -51,7 +50,15 @@ public class TutorialManager : MonoBehaviour
 
     private void ShowPage(int index)
     {
-        tutorialImage.sprite = pages[index].image;
+        int langMode = GameManager.instance.language;
+        if (langMode == 0)
+        {
+            tutorialImage.sprite = pages[index].image_kr;
+        }
+        else if (langMode == 1)
+        {
+            tutorialImage.sprite = pages[index].image_en; 
+        }
 
         prevButton.SetActive(index > 0);
 
